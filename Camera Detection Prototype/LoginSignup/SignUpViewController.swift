@@ -8,6 +8,32 @@ import Firebase
 import FirebaseAuth
 
 class SignUpViewController: UIViewController {
+        
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
+        view.endEditing(true)
+    }
+    
+    override func viewDidLoad() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
+    }
+    
+    func isValidPasswordString(pwdStr:String) -> Bool {
+        
+        let pwdRegEx = "(?:(?:(?=.*?[0-9])(?=.*?[-!@#$%&*ˆ+=_])|(?:(?=.*?[0-9])|(?=.*?[A-Z])|(?=.*?[-!@#$%&*ˆ+=_])))|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[-!@#$%&*ˆ+=_]))[A-Za-z0-9-!@#$%&*ˆ+=_]{6,15}"
+        
+        let pwdTest = NSPredicate(format:"SELF MATCHES %@", pwdRegEx)
+        return pwdTest.evaluate(with: pwdStr)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
     
     @IBAction func dismissSignup(_ sender: Any) {
         dismiss(animated: true, completion: nil)

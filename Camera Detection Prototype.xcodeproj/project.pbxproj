@@ -129,8 +129,9 @@
 		E17D215F205D701B002E467B /* Sweet Pea_2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sweet Pea_2.ttf"; path = "Camera Detection Prototype/New Group/Sweet Pea_2.ttf"; sourceTree = SOURCE_ROOT; };
 		E181064B2056DD9D009B7B57 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		E1A425C52098DCDA004EACBE /* Gotham Bold Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Bold Regular.ttf"; sourceTree = "<group>"; };
-		E1A425C62098DCE1004EACBE /* Gotham Rounded Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Rounded Book.ttf"; sourceTree = "<group>"; };
+		E1A425C62098DCE1004EACBE /* Gotham Rounded light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Rounded light.ttf"; sourceTree = "<group>"; };
 		E1A425C82098DF82004EACBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "IBDesignables/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E1A425CA20992BDD004EACBE /* Gotham Rounded Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham Rounded Book.ttf"; path = "../../../../Downloads/Connections-master/Extension/Gotham Rounded Book.ttf"; sourceTree = "<group>"; };
 		E1A8541F20863F4A00599AA2 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		E1A8A304203B0D1A00F60B21 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E1B3710D1FBF259900877BA2 /* StepTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTwo.swift; sourceTree = "<group>"; };
@@ -460,7 +461,8 @@
 			isa = PBXGroup;
 			children = (
 				E1A425C52098DCDA004EACBE /* Gotham Bold Regular.ttf */,
-				E1A425C62098DCE1004EACBE /* Gotham Rounded Book.ttf */,
+				E1A425C62098DCE1004EACBE /* Gotham Rounded light.ttf */,
+				E1A425CA20992BDD004EACBE /* Gotham Rounded Book.ttf */,
 				E17D215F205D701B002E467B /* Sweet Pea_2.ttf */,
 			);
 			name = Fonts;

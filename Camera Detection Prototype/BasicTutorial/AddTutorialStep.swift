@@ -11,6 +11,11 @@ import UIKit
 import Firebase
 
 class AddTutorialStep: UIViewController {
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
+        view.endEditing(true)
+    }
 
     var tutorial: Tutorial!
     
@@ -24,17 +29,14 @@ class AddTutorialStep: UIViewController {
     
     @IBOutlet weak var stepTableView: UITableView!
     
-    //   var textView: UITextView?
-    
-    
-   // let test = Texter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         stepLabel.text = "Step 1"
         
-       // test.viewController = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddTutorialStep.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
     }
     
@@ -42,6 +44,9 @@ class AddTutorialStep: UIViewController {
         tutorialSteps.append(TutorialStep(tutorialStepDescription: self.tutorialStepDescription.text!))
         tutorialStepDescription.text = nil
         stepLabel.text = "Step \(tutorialSteps.count + 1)"
+        
+        stepTableView.reloadData()
+        
     }
     
     @IBAction func finishUploadButton(_ sender: Any) {
@@ -72,6 +77,18 @@ class AddTutorialStep: UIViewController {
                     }
                 })
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle:   UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            tutorialSteps.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .middle)
+            tableView.endUpdates()
         }
     }
         

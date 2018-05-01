@@ -8,6 +8,12 @@ import Firebase
 import FirebaseAuth
 
 class HomepageViewController: UICollectionViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UICollectionViewDelegateFlowLayout {
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
+        view.endEditing(true)
+    }
+    
     func updateSearchResults(for searchController: UISearchController) {
 
     }
@@ -24,6 +30,9 @@ class HomepageViewController: UICollectionViewController, UISearchBarDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomepageViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         collectionView?.register(nib, forCellWithReuseIdentifier: reuseIdentifier)

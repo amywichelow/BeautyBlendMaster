@@ -11,8 +11,15 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
     }
     
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
+        view.endEditing(true)
+    }
     
     @IBAction func signUpButton(_ sender: Any) {
         
@@ -41,18 +48,15 @@ class LoginViewController: UIViewController {
                 self.present(vc!, animated: true, completion: nil)
 
                 
+            }     else {
+                let alert = UIAlertController(title: "Error", message: "Incorrect Email Address or Password", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
             }
         }
         
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(true)
-//        if Auth.auth().currentUser != nil {
-//            performSegue(withIdentifier: "HomepageViewControllerContainer", sender: self)
-//        }
-//    }
-    
     
 }
 
