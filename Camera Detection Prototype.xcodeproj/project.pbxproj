@@ -22,9 +22,7 @@
 		E1115AD32046F40700DCCC30 /* HomepageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1115AD22046F40700DCCC30 /* HomepageStoryboard.storyboard */; };
 		E11CBD91206020CE004FFE80 /* StepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CBD90206020CE004FFE80 /* StepViewController.swift */; };
 		E11CBD932061198E004FFE80 /* TutorialStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CBD922061198E004FFE80 /* TutorialStep.swift */; };
-		E11CBD9420612AF3004FFE80 /* Gotham Bold Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E17D2169205FD96B002E467B /* Gotham Bold Regular.ttf */; };
 		E11CBD9520612AF6004FFE80 /* Sweet Pea_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E17D215F205D701B002E467B /* Sweet Pea_2.ttf */; };
-		E11CBD9620612AF8004FFE80 /* Gotham Rounded Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E17D2168205FD898002E467B /* Gotham Rounded Book.ttf */; };
 		E11CBD982061361C004FFE80 /* TutorialStep+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CBD972061361C004FFE80 /* TutorialStep+Extension.swift */; };
 		E11CBD9A20616EBB004FFE80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E11CBD9920616EBB004FFE80 /* Assets.xcassets */; };
 		E12D7AE320442A0D00E6B7F2 /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D7AE220442A0D00E6B7F2 /* HomepageViewController.swift */; };
@@ -41,6 +39,7 @@
 		E173586D20499A9800043B5F /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E173586920499A9800043B5F /* FBSDKMessengerShareKit.framework */; };
 		E178B0F020545AC20047CA9A /* TutorialUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178B0EF20545AC20047CA9A /* TutorialUploadViewController.swift */; };
 		E181064C2056DD9D009B7B57 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181064B2056DD9D009B7B57 /* UploadViewController.swift */; };
+		E1A425C92098DF82004EACBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1A425C82098DF82004EACBE /* GoogleService-Info.plist */; };
 		E1A8542020863F4A00599AA2 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8541F20863F4A00599AA2 /* UserProfileViewController.swift */; };
 		E1A8A305203B0D1A00F60B21 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8A304203B0D1A00F60B21 /* SignUpViewController.swift */; };
 		E1B3710E1FBF259900877BA2 /* StepTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3710D1FBF259900877BA2 /* StepTwo.swift */; };
@@ -127,10 +126,11 @@
 		E173586820499A9700043B5F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		E173586920499A9800043B5F /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
 		E178B0EF20545AC20047CA9A /* TutorialUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialUploadViewController.swift; sourceTree = "<group>"; };
-		E17D215F205D701B002E467B /* Sweet Pea_2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sweet Pea_2.ttf"; path = "Camera Detection Prototype/Assets.xcassets/Sweet Pea_2.ttf"; sourceTree = SOURCE_ROOT; };
-		E17D2168205FD898002E467B /* Gotham Rounded Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham Rounded Book.ttf"; path = "../../../../Downloads/Connections-master/Extension/Gotham Rounded Book.ttf"; sourceTree = "<group>"; };
-		E17D2169205FD96B002E467B /* Gotham Bold Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham Bold Regular.ttf"; path = "../../../../Library/Fonts/Gotham Bold Regular.ttf"; sourceTree = "<group>"; };
+		E17D215F205D701B002E467B /* Sweet Pea_2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sweet Pea_2.ttf"; path = "Camera Detection Prototype/New Group/Sweet Pea_2.ttf"; sourceTree = SOURCE_ROOT; };
 		E181064B2056DD9D009B7B57 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		E1A425C52098DCDA004EACBE /* Gotham Bold Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Bold Regular.ttf"; sourceTree = "<group>"; };
+		E1A425C62098DCE1004EACBE /* Gotham Rounded Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Rounded Book.ttf"; sourceTree = "<group>"; };
+		E1A425C82098DF82004EACBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "IBDesignables/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1A8541F20863F4A00599AA2 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		E1A8A304203B0D1A00F60B21 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E1B3710D1FBF259900877BA2 /* StepTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTwo.swift; sourceTree = "<group>"; };
@@ -154,7 +154,6 @@
 		E1F4D5291FB34F170063DE5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1F4D5351FB3537F0063DE5F /* StepOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepOne.swift; sourceTree = "<group>"; };
 		E3525B053A36B248E4150244 /* Pods_Camera_Detection_PrototypeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camera_Detection_PrototypeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4C5F7802097D72600414D95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1A6D59868B9BCE0C6B1D918 /* Pods-Camera Detection PrototypeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camera Detection PrototypeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Camera Detection PrototypeTests/Pods-Camera Detection PrototypeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -457,14 +456,15 @@
 			path = IBDesignables;
 			sourceTree = "<group>";
 		};
-		E17D215E205D700D002E467B /* Fonts */ = {
+		E1A425C72098DD07004EACBE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				E17D2168205FD898002E467B /* Gotham Rounded Book.ttf */,
-				E17D2169205FD96B002E467B /* Gotham Bold Regular.ttf */,
+				E1A425C52098DCDA004EACBE /* Gotham Bold Regular.ttf */,
+				E1A425C62098DCE1004EACBE /* Gotham Rounded Book.ttf */,
 				E17D215F205D701B002E467B /* Sweet Pea_2.ttf */,
 			);
-			path = Fonts;
+			name = Fonts;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		E1A8541E20863F3200599AA2 /* Profile */ = {
@@ -500,7 +500,7 @@
 		E1F4D5061FB34F170063DE5F /* Camera Detection Prototype */ = {
 			isa = PBXGroup;
 			children = (
-				E17D215E205D700D002E467B /* Fonts */,
+				E1A425C72098DD07004EACBE /* Fonts */,
 				E10B79E520594D71004D6925 /* Folding Tab Bar */,
 				E12D7AE920445C3300E6B7F2 /* Delegate */,
 				E12D7AE820445C3100E6B7F2 /* LoginSignup */,
@@ -511,7 +511,7 @@
 				E12D7AEA20445CA800E6B7F2 /* BasicTutorial */,
 				E12D7AEB20445D7F00E6B7F2 /* IBDesignables */,
 				E1F4D5131FB34F170063DE5F /* Info.plist */,
-				E4C5F7802097D72600414D95 /* GoogleService-Info.plist */,
+				E1A425C82098DF82004EACBE /* GoogleService-Info.plist */,
 				E181064B2056DD9D009B7B57 /* UploadViewController.swift */,
 				E11CBD9920616EBB004FFE80 /* Assets.xcassets */,
 			);
@@ -653,13 +653,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1115AD32046F40700DCCC30 /* HomepageStoryboard.storyboard in Resources */,
-				E11CBD9620612AF8004FFE80 /* Gotham Rounded Book.ttf in Resources */,
 				E1F4D5121FB34F170063DE5F /* LaunchScreen.storyboard in Resources */,
 				E11CBD9520612AF6004FFE80 /* Sweet Pea_2.ttf in Resources */,
 				E10B7A0F20594D71004D6925 /* Info.plist in Resources */,
-				E11CBD9420612AF3004FFE80 /* Gotham Bold Regular.ttf in Resources */,
 				E11CBD9A20616EBB004FFE80 /* Assets.xcassets in Resources */,
 				E16247662046FD080085F0DF /* CustomCell.xib in Resources */,
+				E1A425C92098DF82004EACBE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
