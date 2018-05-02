@@ -15,7 +15,6 @@
             <string>GothamBold</string>
         </array>
         <array key="Gotham Rounded Book.ttf">
-            <string>Gotham-Light</string>
             <string>GothamRounded-Book</string>
         </array>
     </customFonts>
@@ -52,6 +51,7 @@
                             <outlet property="delegate" destination="bFn-o1-r4d" id="sh5-Ek-2Ql"/>
                         </connections>
                     </collectionView>
+                    <tabBarItem key="tabBarItem" id="DXc-mx-Ja4"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="a48-ZN-cfM">
                         <nil key="title"/>
@@ -90,7 +90,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
             </objects>
-            <point key="canvasLocation" x="2213.04347826087" y="-2.4456521739130435"/>
+            <point key="canvasLocation" x="2574" y="-2"/>
         </scene>
         <!--Tutorial Upload-->
         <scene sceneID="Clp-Dm-UvJ">
@@ -116,15 +116,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wR-4P-QF9">
-                                        <rect key="frame" x="20" y="47" width="80" height="24"/>
+                                        <rect key="frame" x="20" y="47" width="89" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="14"/>
                                         <state key="normal" title="Take Photo"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Hq-bw-jzT">
                                         <rect key="frame" x="20" y="72" width="89" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="14"/>
                                         <state key="normal" title="Camera Roll"/>
                                     </button>
                                 </subviews>
@@ -303,7 +303,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2de-sr-8j5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2911.594202898551" y="-2.4456521739130435"/>
+            <point key="canvasLocation" x="3818.8405797101454" y="-2.4456521739130435"/>
         </scene>
         <!--Add Steps-->
         <scene sceneID="rxh-bL-myr">
@@ -355,15 +355,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFI-Hf-sEs">
-                                        <rect key="frame" x="20" y="58" width="82" height="24"/>
+                                        <rect key="frame" x="20" y="58" width="97" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="14"/>
                                         <state key="normal" title="Take Photo"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjM-QU-Vsj">
-                                        <rect key="frame" x="20" y="82" width="82" height="24"/>
+                                        <rect key="frame" x="20" y="82" width="97" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="14"/>
                                         <state key="normal" title="Camera Roll"/>
                                     </button>
                                     <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T6z-jc-Den" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
@@ -411,7 +411,7 @@
                                         <rect key="frame" x="8" y="8" width="153" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="16"/>
-                                        <color key="textColor" red="0.70196078429999997" green="0.61568627450000002" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.58431372549019611" green="0.46666666666666667" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -455,7 +455,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0J9-b4-8Ew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3688.4057971014495" y="-2.4456521739130435"/>
+            <point key="canvasLocation" x="4595.652173913044" y="-2.4456521739130435"/>
         </scene>
         <!--Step View Contoller-->
         <scene sceneID="3uh-nd-dmH">
@@ -510,18 +510,16 @@
                                     <action selector="nextStepButton:" destination="FET-cU-yUq" eventType="touchUpInside" id="edn-Ji-rZ1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICD-N6-HFZ">
+                                <rect key="frame" x="111" y="90" width="193" height="23"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="19"/>
+                                <color key="textColor" red="0.58431372549019611" green="0.46666666666666667" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ibg-QK-93D" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
                                 <rect key="frame" x="26" y="81" width="362" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICD-N6-HFZ">
-                                        <rect key="frame" x="154" y="9" width="54" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="19"/>
-                                        <color key="textColor" red="0.70196078429999997" green="0.61568627450000002" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -604,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PVw-2h-ciE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2911.594202898551" y="765.48913043478262"/>
+            <point key="canvasLocation" x="2926" y="765"/>
         </scene>
         <!--Upload View Controller-->
         <scene sceneID="jFb-95-14A">
@@ -619,7 +617,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zl1-7N-gkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5337" y="-2"/>
+            <point key="canvasLocation" x="6243.4782608695659" y="-2.4456521739130435"/>
         </scene>
         <!--App Container View Controller-->
         <scene sceneID="isf-N8-2VE">
@@ -664,7 +662,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gJ-2O-vRr">
-                                <rect key="frame" x="107" y="686" width="135" height="30"/>
+                                <rect key="frame" x="89" y="686" width="153" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.55363884230000004" colorSpace="custom" customColorSpace="sRGB"/>
@@ -682,9 +680,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Makeup Tutorial App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kj-Ak-pYu">
-                                <rect key="frame" x="101" y="175" width="210" height="17"/>
+                                <rect key="frame" x="101" y="175" width="212" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -787,7 +785,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Already have an account?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUe-Qd-SKf">
-                                <rect key="frame" x="107" y="686" width="143" height="30"/>
+                                <rect key="frame" x="82" y="686" width="168" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.55363884230000004" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1201,12 +1199,30 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="bFn-o1-r4d" kind="relationship" relationship="rootViewController" id="H7p-fj-hNp"/>
+                        <segue destination="FHZ-KS-aVZ" kind="relationship" relationship="rootViewController" id="H7p-fj-hNp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1tP-x0-teM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2214" y="-716"/>
+            <point key="canvasLocation" x="2220" y="-761"/>
+        </scene>
+        <!--Folding Tab Bar Controller-->
+        <scene sceneID="a1P-OW-6Vx">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="FHZ-KS-aVZ" customClass="YALFoldingTabBarController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="6IE-Ga-7o9"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="flg-Na-ild" customClass="YALCustomHeightTabBar">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="bFn-o1-r4d" kind="relationship" relationship="viewControllers" id="2IE-G4-ufV"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Msx-wa-Yxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3049" y="-761"/>
         </scene>
     </scenes>
     <resources>

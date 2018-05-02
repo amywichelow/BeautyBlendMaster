@@ -42,11 +42,6 @@ class UploadViewController: UIViewController {
 
 }
 
-
-
-
-
-
 extension String {
     
     static func randomString(length: Int) -> String {

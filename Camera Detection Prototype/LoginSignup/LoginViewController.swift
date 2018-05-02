@@ -5,8 +5,11 @@
 
 import UIKit
 import Firebase
+import NVActivityIndicatorView
+
 
 class LoginViewController: UIViewController {
+
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +56,10 @@ class LoginViewController: UIViewController {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
+                
+                
             }
+
         }
         
     }
