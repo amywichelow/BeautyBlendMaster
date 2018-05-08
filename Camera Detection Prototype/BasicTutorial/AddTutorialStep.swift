@@ -16,6 +16,12 @@ class AddTutorialStep: UIViewController {
         //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
         view.endEditing(true)
     }
+    
+    //text field goes away when done is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
     var tutorial: Tutorial!
     
@@ -62,9 +68,7 @@ class AddTutorialStep: UIViewController {
     
     
     func upload(completion: @escaping (_ success: Bool) -> Void) {
-        
-        
-        
+
         newTutorialRef.setValue(tutorial.toDict()) { error, ref in
             
             var count = 0
@@ -83,6 +87,7 @@ class AddTutorialStep: UIViewController {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle:   UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             tutorialSteps.remove(at: indexPath.row)

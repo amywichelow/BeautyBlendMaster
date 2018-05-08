@@ -6,8 +6,12 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import Floaty
 
-class HomepageViewController: UICollectionViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UICollectionViewDelegateFlowLayout {
+class HomepageViewController: UICollectionViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UICollectionViewDelegateFlowLayout, FloatyDelegate {
+    
+    
+    var floaty = Floaty()
     
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
@@ -31,9 +35,8 @@ class HomepageViewController: UICollectionViewController, UISearchBarDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomepageViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
+        layoutFAB()
+
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         collectionView?.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         
@@ -51,14 +54,50 @@ class HomepageViewController: UICollectionViewController, UISearchBarDelegate, U
 
     
     }
-
     
-    @IBAction func UploadButton(_ sender: UIBarButtonItem) {
+    
+    func layoutFAB() {
+        let item = FloatyItem()
+        item.handler = { item in
+            
+        }
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TutorialUploadViewController")
-        self.present(vc!, animated: true, completion: nil)
+        floaty.addItem("Upload", icon: UIImage(named: "settings")) { item in
+            self.performSegue(withIdentifier: "TutorialUpload", sender: nil)
+            
+        }
+        floaty.addItem("Profile", icon: UIImage(named: "palette")) { item in
+            self.performSegue(withIdentifier: "profileViewController", sender: nil)
+            
+        }
+        floaty.addItem("Logout", icon: UIImage(named: "")) { item in
+            
+            do {
+                try Auth.auth().signOut()
+                print(Auth.auth().currentUser)
+            } catch (let error) {
+                print((error as NSError).code)
+            }
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
+            self.present(vc!, animated: true, completion: nil)
+            
+        }
+        
+        floaty.paddingX = self.view.frame.width/2 - floaty.frame.width/2
+        floaty.fabDelegate = self
+        
+        self.view.addSubview(floaty)
         
     }
+
+    
+//    @IBAction func UploadButton(_ sender: UIBarButtonItem) {
+//        
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TutorialUploadViewController")
+//        self.present(vc!, animated: true, completion: nil)
+//        
+//    }
     
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -73,6 +112,7 @@ class HomepageViewController: UICollectionViewController, UISearchBarDelegate, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCell
         let tutorial = tutorials[indexPath.row]
         
+        cell.isSelected = false
         cell.tutorialName?.text = tutorial.tutorialName
         cell.username.text = tutorial.user
         cell.duration.text = "\(tutorial.duration)"
@@ -83,20 +123,31 @@ class HomepageViewController: UICollectionViewController, UISearchBarDelegate, U
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == "showTutorial"{
+            let vc = segue.destination as! StepViewContoller
+            vc.tutorial = sender as! Tutorial
+        }
         
     }
     
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: 170, height: 300)
-        }
-        
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-            return sectionInsets
-        }
-        
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        collectionView.deselectItem(at: indexPath, animated: true)
+        let tutorial = tutorials[indexPath.row]
+        performSegue(withIdentifier: "showTutorial", sender: tutorial)
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView,
+                    layout collectionViewLayout: UICollectionViewLayout,
+                    sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 170, height: 300)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                    layout collectionViewLayout: UICollectionViewLayout,
+                    insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+}

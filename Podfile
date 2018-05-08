@@ -25,6 +25,7 @@ pod 'Firebase/Storage'
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
 pod 'FBSDKLoginKit'
+pod 'Floaty', '~> 3.0.0'
 
 pod 'NVActivityIndicatorView'
 

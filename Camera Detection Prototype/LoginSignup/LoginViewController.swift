@@ -19,9 +19,15 @@ class LoginViewController: UIViewController {
         
     }
     
+    //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
         view.endEditing(true)
+    }
+    
+    //text field goes away when done is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func signUpButton(_ sender: Any) {

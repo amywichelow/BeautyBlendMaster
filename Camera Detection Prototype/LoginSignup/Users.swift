@@ -14,11 +14,13 @@ class Users {
     
     var uuid: String?
     let username: String?
+    let userImageUrl: String?
     
     init?(snapshot: DataSnapshot) {
         if let snapshotData = snapshot.value as? [String: Any] {
             uuid = snapshot.key
             username = snapshotData["username"] as? String
+            userImageUrl = snapshotData["profileImage"] as? String
         } else {
             return nil
         }

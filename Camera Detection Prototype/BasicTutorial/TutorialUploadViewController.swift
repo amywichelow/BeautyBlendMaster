@@ -9,6 +9,12 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    //text field goes away when done is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     @IBAction func durationSliderAction(_ sender: Any) {
         
 

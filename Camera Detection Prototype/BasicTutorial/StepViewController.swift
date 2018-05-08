@@ -13,8 +13,14 @@ import FirebaseStorage
 
 class StepViewContoller: UIViewController {
     
+    var tutorial: Tutorial!
+    
     override func viewDidLoad() {
-        
+        print(tutorial.tutorialName)
+        title = tutorial.tutorialName
+        for set in tutorial.steps {
+            print(set.tutorialStepDescription)
+        }
     }
     
 }

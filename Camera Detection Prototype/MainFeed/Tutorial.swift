@@ -27,6 +27,9 @@ class Tutorial {
             tutorialName = snapshotData ["tutorialName"] as! String
             difficulty = snapshotData ["difficulty"] as! Int
             duration = snapshotData ["duration"] as! Int
+            
+            print(snapshot.childSnapshot(forPath: "steps"))
+            
         } else {
             return nil
         }
