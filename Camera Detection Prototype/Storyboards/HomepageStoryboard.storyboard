@@ -189,8 +189,8 @@
                                                     <action selector="durationSliderAction:" destination="FET-cU-yUq" eventType="valueChanged" id="Pf9-IF-uKN"/>
                                                 </connections>
                                             </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Q9-2j-tDw">
-                                                <rect key="frame" x="266" y="13" width="23" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Q9-2j-tDw">
+                                                <rect key="frame" x="266" y="13" width="36" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -235,8 +235,8 @@
                                                     <action selector="difficultySliderAction:" destination="FET-cU-yUq" eventType="valueChanged" id="934-Id-EcD"/>
                                                 </connections>
                                             </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyA-SI-o8d">
-                                                <rect key="frame" x="266" y="12" width="20" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyA-SI-o8d">
+                                                <rect key="frame" x="266" y="12" width="35" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -463,7 +463,7 @@
                                 <rect key="frame" x="26" y="480" width="362" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wC4-LF-j0U">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wC4-LF-j0U">
                                         <rect key="frame" x="0.0" y="0.0" width="362" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.96088588237762451" green="0.95253419876098633" blue="0.98038923740386963" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -487,6 +487,7 @@
                                 </state>
                                 <connections>
                                     <action selector="nextStepButton:" destination="FET-cU-yUq" eventType="touchUpInside" id="ioJ-Ax-XAR"/>
+                                    <action selector="nextStepButton:" destination="n20-tx-J8r" eventType="touchUpInside" id="xa2-zZ-NhL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pt1-td-VDW">
@@ -522,6 +523,9 @@
                         <viewLayoutGuide key="safeArea" id="Or7-2P-nYQ"/>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="stepLabel" destination="ICD-N6-HFZ" id="USX-77-ZWT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Odb-KH-SIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -530,7 +534,7 @@
         <!--User Profile View Controller-->
         <scene sceneID="XHk-6o-dLu">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Rdw-hG-hV0" customClass="UserProfileViewController" customModule="Camera_Detection_Prototype" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" hidesBottomBarWhenPushed="YES" id="Rdw-hG-hV0" customClass="UserProfileViewController" customModule="Camera_Detection_Prototype" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b9t-NP-gmb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -590,7 +594,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUY-DS-8vr">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUY-DS-8vr">
                                 <rect key="frame" x="127" y="154" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -724,7 +728,7 @@
                                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mZc-kV-NVN">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mZc-kV-NVN">
                                         <rect key="frame" x="97" y="29" width="148" height="148"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -737,6 +741,9 @@
                                         <rect key="frame" x="111" y="185" width="120" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Edit Profile Image"/>
+                                        <connections>
+                                            <action selector="editProfileImage:" destination="6g8-km-b6n" eventType="touchUpInside" id="jE2-lo-8ck"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92603760960000003" green="0.89298135040000004" blue="0.9507291913" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -756,16 +763,21 @@
                                 </state>
                                 <connections>
                                     <action selector="nextStepButton:" destination="FET-cU-yUq" eventType="touchUpInside" id="3o2-5m-N3y"/>
+                                    <action selector="saveButton:" destination="6g8-km-b6n" eventType="touchUpInside" id="97r-vD-NY5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="9IF-Au-a7v"/>
                     </view>
+                    <connections>
+                        <outlet property="profileImageView" destination="mZc-kV-NVN" id="o3B-pe-Hfi"/>
+                        <outlet property="usernameText" destination="3Oh-fa-Paf" id="3Yu-Mi-7cY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rb5-oS-oIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3618.840579710145" y="764.67391304347836"/>
+            <point key="canvasLocation" x="3623" y="765"/>
         </scene>
         <!--Upload View Controller-->
         <scene sceneID="jFb-95-14A">
@@ -1096,7 +1108,7 @@
                                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPJ-wg-ZUq">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPJ-wg-ZUq">
                                         <rect key="frame" x="243" y="37" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>

@@ -46,22 +46,45 @@ class AddTutorialStep: UIViewController {
         
     }
     
+    //HOW TO CHECK A PICTURE HAS BEEN ADDED BEFORE ADDING ANOTHER STEP?
+    
     @IBAction func addStepButton(_ sender: Any) {
+        
+        if tutorialStepDescription.text!.isEmpty {
+            let alertController = UIAlertController(title: "Error", message: "Please ensure you have entered a description for this step", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil) } else {
+            
         tutorialSteps.append(TutorialStep(tutorialStepDescription: self.tutorialStepDescription.text!))
         tutorialStepDescription.text = nil
         stepLabel.text = "Step \(tutorialSteps.count + 1)"
         
         stepTableView.reloadData()
+            
+        }
         
     }
     
     @IBAction func finishUploadButton(_ sender: Any) {
+        
+        if tutorialStepDescription.text! != "" {
+            let alertController = UIAlertController(title: "Error", message: "Please ensure you have added all steps before uploading tutorial", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil) } else {
+            
         upload { success in
             print("All steps uploaded")
             
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
             self.present(vc!, animated: true, completion: nil)
             
+            }
         }
     }
     

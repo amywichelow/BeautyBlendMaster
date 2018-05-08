@@ -13,9 +13,19 @@ import FirebaseStorage
 
 class StepViewContoller: UIViewController {
     
+    @IBOutlet weak var stepLabel: UILabel!
+    
+    @IBAction func nextStepButton(_ sender: Any) {
+        stepLabel.text = "Step \(tutorialSteps.count + 1)"
+    }
+    
     var tutorial: Tutorial!
+    var tutorialSteps = [TutorialStep]()
     
     override func viewDidLoad() {
+        
+        stepLabel.text = "Step 1"
+        
         print(tutorial.tutorialName)
         title = tutorial.tutorialName
         for set in tutorial.steps {

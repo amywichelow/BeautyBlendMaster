@@ -65,6 +65,9 @@ PODS:
   - NVActivityIndicatorView (4.0.0):
     - NVActivityIndicatorView/Presenter (= 4.0.0)
   - NVActivityIndicatorView/Presenter (4.0.0)
+  - SDWebImage (4.2.1):
+    - SDWebImage/Core (= 4.2.1)
+  - SDWebImage/Core (4.2.1)
 
 DEPENDENCIES:
   - FBSDKCoreKit
@@ -76,6 +79,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - Floaty (~> 3.0.0)
   - NVActivityIndicatorView
+  - SDWebImage (~> 4.0)
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -95,7 +99,8 @@ SPEC CHECKSUMS:
   leveldb-library: 9e29a1d913f922444127a7d0f28b025a0e2ba053
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   NVActivityIndicatorView: 54c9b93b6f25a4f467512680c0c90c09a1095cf2
+  SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
 
-PODFILE CHECKSUM: 5db305affb3e1a9b87dde6a1da899791cbfe20e9
+PODFILE CHECKSUM: 205ce43205aba10501df668f697e4b3d28dba9db
 
 COCOAPODS: 1.3.1

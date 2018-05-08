@@ -62,15 +62,15 @@ class HomepageViewController: UICollectionViewController, UISearchBarDelegate, U
             
         }
         
-        floaty.addItem("Upload", icon: UIImage(named: "settings")) { item in
+        floaty.addItem("Upload", icon: UIImage(named: "uploadIconAsset 32")) { item in
             self.performSegue(withIdentifier: "TutorialUpload", sender: nil)
             
         }
-        floaty.addItem("Profile", icon: UIImage(named: "palette")) { item in
+        floaty.addItem("Profile", icon: UIImage(named: "profileIconAsset 33")) { item in
             self.performSegue(withIdentifier: "profileViewController", sender: nil)
             
         }
-        floaty.addItem("Logout", icon: UIImage(named: "")) { item in
+        floaty.addItem("Logout", icon: UIImage(named: "logoutIconAsset 31")) { item in
             
             do {
                 try Auth.auth().signOut()

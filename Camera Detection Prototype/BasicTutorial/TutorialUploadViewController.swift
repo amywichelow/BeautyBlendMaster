@@ -15,11 +15,17 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func durationSliderAction(_ sender: Any) {
-        
+//HOW DO I STOP IT FROM SAYING 5.0 AND SAY 5 INSTEAD
+    
+    @IBAction func durationSliderAction(_ sender: UISlider!) {
 
-        let currentValue = Int(durationSlider.value)
-        durationValue.text = "\(currentValue)"
+        self.durationSlider.setValue((round(sender.value / 5) * 5), animated: false)
+        print("\(sender.value)")
+        
+        durationValue.text = ("\(sender.value)")
+        
+//        let currentValue = Int(durationSlider.value)
+//        durationValue.text = "\(currentValue)"
         
     }
     
@@ -51,11 +57,15 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        durationSlider.addTarget(self, action:  #selector(durationSliderAction),for: .valueChanged)
+
+
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TutorialUploadViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
     }
     
+
     @IBAction func cancelButton(_ sender: Any) {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
@@ -63,10 +73,23 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    //HOW DO I GET IT TO CHECK ALL FIELDS AT THE SAME TIME?
     
     @IBAction func nextStepButton(_ sender: Any) {
         
+       if tutorialNameTextField.text!.isEmpty {
+            let alertController = UIAlertController(title: "Error", message: "Please ensure all fields are complete", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil) } else {
+        
         tutorial = Tutorial(tutorialName: self.tutorialNameTextField.text!, duration: Int(self.durationValue.text!)!, difficulty: Int(self.difficultyValue.text!)!)
+            
+            return
+            
+        }
 
     }
     
