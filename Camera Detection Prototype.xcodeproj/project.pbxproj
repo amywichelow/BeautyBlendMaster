@@ -21,6 +21,7 @@
 		E14BAFEC205825A8003F064F /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BAFEB205825A8003F064F /* Tutorial.swift */; };
 		E14BAFEE205826E8003F064F /* AddTutorialStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BAFED205826E8003F064F /* AddTutorialStep.swift */; };
 		E14E871F208F982F006CB608 /* Texter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E871D208F982F006CB608 /* Texter.swift */; };
+		E159221420A4ADF5000ED013 /* ShareTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159221320A4ADF5000ED013 /* ShareTutorialViewController.swift */; };
 		E15AF6942097791F00739809 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF6932097791F00739809 /* Users.swift */; };
 		E16247662046FD080085F0DF /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16247652046FD080085F0DF /* CustomCell.xib */; };
 		E173586A20499A9800043B5F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E173586620499A9300043B5F /* Bolts.framework */; };
@@ -95,6 +96,7 @@
 		E14BAFEB205825A8003F064F /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial.swift; path = "Camera Detection Prototype/MainFeed/Tutorial.swift"; sourceTree = SOURCE_ROOT; };
 		E14BAFED205826E8003F064F /* AddTutorialStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTutorialStep.swift; sourceTree = "<group>"; };
 		E14E871D208F982F006CB608 /* Texter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texter.swift; sourceTree = "<group>"; };
+		E159221320A4ADF5000ED013 /* ShareTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTutorialViewController.swift; sourceTree = "<group>"; };
 		E15AF6932097791F00739809 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		E16247652046FD080085F0DF /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		E173586620499A9300043B5F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				E178B0EF20545AC20047CA9A /* TutorialUploadViewController.swift */,
 				E14BAFED205826E8003F064F /* AddTutorialStep.swift */,
 				E11CBD90206020CE004FFE80 /* StepViewController.swift */,
+				E159221320A4ADF5000ED013 /* ShareTutorialViewController.swift */,
 			);
 			path = BasicTutorial;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				E178B0F020545AC20047CA9A /* TutorialUploadViewController.swift in Sources */,
 				E1B3710E1FBF259900877BA2 /* StepTwo.swift in Sources */,
 				E1E1F7A220332F8D0099D10A /* AppManager.swift in Sources */,
+				E159221420A4ADF5000ED013 /* ShareTutorialViewController.swift in Sources */,
 				E14E871F208F982F006CB608 /* Texter.swift in Sources */,
 				E14BAFEC205825A8003F064F /* Tutorial.swift in Sources */,
 				E1B371101FBF4B0A00877BA2 /* StepThree.swift in Sources */,

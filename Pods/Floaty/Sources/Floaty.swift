@@ -70,7 +70,7 @@ open class Floaty: UIView {
     /**
         Button color.
     */
-    @IBInspectable open var buttonColor: UIColor = UIColor(red: 142/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1)
+    @IBInspectable open var buttonColor: UIColor = UIColor(red: 149/255.0, green: 119/255.0, blue: 203/255.0, alpha: 1)
 
     /**
         Button image.

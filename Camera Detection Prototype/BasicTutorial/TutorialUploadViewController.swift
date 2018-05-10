@@ -29,6 +29,14 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    
+    @IBAction func chooseImageButton(_ sender: Any) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
     @IBOutlet weak var durationSlider: UISlider!
     @IBOutlet weak var durationValue: UILabel!
     
@@ -50,8 +58,7 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var tutorialNameTextField: UITextField!
     
-
-    @IBOutlet weak var mainTutorialImage: UIImageView!
+    @IBOutlet weak var coverImageView: UIImageView!
     
 
     override func viewDidLoad() {
@@ -99,5 +106,15 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
     }
   
     
+}
+
+extension TutorialUploadViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else { return }
+        coverImageView.image = image
+        dismiss(animated: true, completion: nil)
+        
+    }
 }
 

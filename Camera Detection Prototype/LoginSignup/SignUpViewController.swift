@@ -40,9 +40,7 @@ class SignUpViewController: UIViewController {
     @IBAction func dismissSignup(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-    var selectedImage: UIImage?
-    
+        
     @IBAction func uploadProfileImage(_ sender: Any) {
         
         let imagePickerController = UIImagePickerController()

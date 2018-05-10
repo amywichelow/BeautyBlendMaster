@@ -35,6 +35,14 @@ class AddTutorialStep: UIViewController {
     
     @IBOutlet weak var stepTableView: UITableView!
     
+    @IBAction func chooseImageButton(_ sender: Any) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    @IBOutlet weak var stepImageView: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,6 +159,16 @@ extension AddTutorialStep: UITableViewDataSource {
         return cell!
     }
     
+}
+
+extension AddTutorialStep: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else { return }
+        stepImageView.image = image
+        dismiss(animated: true, completion: nil)
+        
+    }
 }
 
 
