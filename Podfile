@@ -17,6 +17,8 @@ target 'Camera Detection Prototype' do
     # Pods for testing
   end
 
+pod 'lottie-ios'
+
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
