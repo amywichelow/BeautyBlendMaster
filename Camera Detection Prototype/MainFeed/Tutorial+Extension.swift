@@ -9,6 +9,7 @@ extension Tutorial {
             "duration": duration,
             "difficulty": difficulty,
             "user": CustomUser.shared.username!,
+//            "coverImage": coverImage,
             "usser_uid": Auth.auth().currentUser!.uid
         ]
     }

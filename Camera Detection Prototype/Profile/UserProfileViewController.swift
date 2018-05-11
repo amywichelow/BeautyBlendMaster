@@ -48,7 +48,6 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             profileTableView.dataSource = self
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tutorialUpload.count
     }

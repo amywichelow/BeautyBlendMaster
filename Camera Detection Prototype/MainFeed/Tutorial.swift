@@ -16,6 +16,7 @@ class Tutorial {
     let tutorialName: String
     let difficulty: Int
     let duration: Int
+//    let coverImage: UIImage
     
     let steps = [TutorialStep]()
     
@@ -27,6 +28,7 @@ class Tutorial {
             tutorialName = snapshotData ["tutorialName"] as! String
             difficulty = snapshotData ["difficulty"] as! Int
             duration = snapshotData ["duration"] as! Int
+//            coverImage = snapshotData ["coverImage"] as! UIImage
             
             print(snapshot.childSnapshot(forPath: "steps"))
             
@@ -40,7 +42,7 @@ class Tutorial {
         self.tutorialName = tutorialName
         self.duration = duration
         self.difficulty = difficulty
-        
+//        self.coverImage = coverImage
         
     }
     

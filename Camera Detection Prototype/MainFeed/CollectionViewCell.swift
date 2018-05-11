@@ -12,11 +12,7 @@ class CustomCell: UICollectionViewCell {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var difficulty: UIImageView!
-    
-    
-    @IBAction func goButton(_ sender: Any) {
-        
-    }
+
     
     @IBOutlet weak var mainTutorialImage: UIImageView!
     
@@ -27,7 +23,7 @@ class CustomCell: UICollectionViewCell {
     }
  
     func animate() {
-        UIView.animate(withDuration: 2.0) {
+        UIView.animate(withDuration: 1.5) {
             self.tutorialName.alpha = 1.0
         }
     }

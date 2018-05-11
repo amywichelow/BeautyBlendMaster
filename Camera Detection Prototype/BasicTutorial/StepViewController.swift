@@ -19,10 +19,27 @@ class StepViewContoller: UIViewController {
         stepLabel.text = "Step \(tutorialSteps.count + 1)"
     }
     
+    @IBOutlet weak var tutorialStepDescription: UITextView!
+    
+    
     var tutorial: Tutorial!
     var tutorialSteps = [TutorialStep]()
+    let tutorialRef = Database.database().reference().child("tutorials").child("steps").child("tutorialStepDescription")
+
     
     override func viewDidLoad() {
+        
+        tutorialRef.observeSingleEvent(of: .value, with: { snapshot in
+            
+            for tutorialSteps in snapshot.children {
+                if let data = tutorialSteps as? DataSnapshot {
+                    if let tutorial = Tutorial(snapshot: data) {
+                        self.tutorialSteps.append(tutorialSteps as! TutorialStep)
+                    }
+                }
+            }
+        })
+
         
         stepLabel.text = "Step 1"
         
@@ -32,5 +49,7 @@ class StepViewContoller: UIViewController {
             print(set.tutorialStepDescription)
         }
     }
+    
+    
     
 }

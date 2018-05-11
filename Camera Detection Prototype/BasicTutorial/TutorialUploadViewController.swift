@@ -14,9 +14,7 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
-//HOW DO I STOP IT FROM SAYING 5.0 AND SAY 5 INSTEAD
-    
+        
     @IBAction func durationSliderAction(_ sender: UISlider!) {
 
         self.durationSlider.setValue((round(sender.value / 5) * 5), animated: false)
@@ -24,8 +22,8 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
         
         durationValue.text = ("\(sender.value)")
         
-//        let currentValue = Int(durationSlider.value)
-//        durationValue.text = "\(currentValue)"
+        let currentValue = Int(durationSlider.value)
+        durationValue.text = "\(currentValue)"
         
     }
     
