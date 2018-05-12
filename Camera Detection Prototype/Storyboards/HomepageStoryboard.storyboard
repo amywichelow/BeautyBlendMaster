@@ -667,6 +667,7 @@
                                 </state>
                                 <connections>
                                     <action selector="nextStepButton:" destination="FET-cU-yUq" eventType="touchUpInside" id="edn-Ji-rZ1"/>
+                                    <action selector="previousStepButton:" destination="n20-tx-J8r" eventType="touchUpInside" id="cwI-xS-TNb"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ibg-QK-93D" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
@@ -694,6 +695,7 @@
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="previousStepOutlet" destination="Pt1-td-VDW" id="HPa-cZ-tQ0"/>
                         <outlet property="stepLabel" destination="ICD-N6-HFZ" id="USX-77-ZWT"/>
                         <outlet property="tutorialStepDescription" destination="wC4-LF-j0U" id="0se-Yx-4YK"/>
                     </connections>

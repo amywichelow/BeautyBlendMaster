@@ -15,6 +15,11 @@ class StepViewContoller: UIViewController {
     
     @IBOutlet weak var stepLabel: UILabel!
     
+    @IBOutlet weak var previousStepOutlet: UIButton!
+    
+    @IBAction func previousStepButton(_ sender: Any) {
+    }
+    
     @IBAction func nextStepButton(_ sender: Any) {
         stepLabel.text = "Step \(tutorialSteps.count + 1)"
     }
@@ -36,8 +41,6 @@ class StepViewContoller: UIViewController {
                     if let tutorial = TutorialStep(snapshot: data) {
                         self.tutorialSteps.append(tutorial)
                         self.tutorialStepDescription.text = tutorial.tutorialStepDescription
-                        
-                        
                     }
                 }
             }
@@ -45,12 +48,23 @@ class StepViewContoller: UIViewController {
 
         
         stepLabel.text = "Step 1"
-        
         print(tutorial.tutorialName)
+        
         title = tutorial.tutorialName
         for set in tutorial.steps {
             print(set.tutorialStepDescription)
         }
+        
+        if stepLabel.text == "Step 1" {
+            
+            self.previousStepOutlet.isHidden = true
+            
+        } else {
+            
+            self.previousStepOutlet.isHidden = false
+            
+        }
+        
     }
     
     
