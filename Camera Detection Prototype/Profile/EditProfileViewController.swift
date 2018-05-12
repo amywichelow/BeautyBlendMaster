@@ -39,10 +39,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        updateUsersProfile()
+      //  updateUsersProfile()
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController")
-        self.present(vc!, animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
 
     }
     
@@ -51,57 +50,57 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         databaseRef = Database.database().reference()
         storageRef = Storage.storage().reference()
         
-        loadProfileData()
+       // loadProfileData()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TutorialUploadViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
     }
     
-    func updateUsersProfile(){
-        //check to see if the user is logged in
-        if let userID = Auth.auth().currentUser?.uid{
-            //create an access point for the Firebase storage
-            let storageItem = storageRef.child(userID)
-            //get the image uploaded from photo library
-            guard let image = profileImageView.image else {return}
-            if let newImage = UIImagePNGRepresentation(image){
-                //upload to firebase storage
-                storageItem.putData(newImage, metadata: nil, completion: { (metadata, error) in
-                    if error != nil{
-                        print(error!)
-                        return
-                    }
-                    storageItem.downloadURL(completion: { (url, error) in
-                        if error != nil{
-                            print(error!)
-                            return
-                        }
-                        if let profilePhotoURL = url?.absoluteString{
-                            guard let newUserName  = self.usernameText.text else {return}
-
-                            let newValuesForProfile =
-                                ["photo": profilePhotoURL,
-                                 "username": newUserName]
-
-                            //update the firebase database for that user
-                                    self.databaseRef.child("profile").child(userID).updateChildValues(newValuesForProfile, withCompletionBlock: { (error, ref) in
-                                if error != nil{
-                                    print(error!)
-                                    return
-                                }
-                                print("Profile Successfully Update")
-                                        
-                              
-                            })
-                            
-                        }
-                    })
-                })
-                
-            }
-        }
-    }
+//    func updateUsersProfile(){
+//        //check to see if the user is logged in
+//        if let userID = Auth.auth().currentUser?.uid{
+//            //create an access point for the Firebase storage
+//            let storageItem = storageRef.child(userID)
+//            //get the image uploaded from photo library
+//            guard let image = profileImageView.image else {return}
+//            if let newImage = UIImagePNGRepresentation(image){
+//                //upload to firebase storage
+//                storageItem.putData(newImage, metadata: nil, completion: { (metadata, error) in
+//                    if error != nil{
+//                        print(error!)
+//                        return
+//                    }
+//                    storageItem.downloadURL(completion: { (url, error) in
+//                        if error != nil{
+//                            print(error!)
+//                            return
+//                        }
+//                        if let profilePhotoURL = url?.absoluteString{
+//                            guard let newUserName  = self.usernameText.text else {return}
+//
+//                            let newValuesForProfile =
+//                                ["photo": profilePhotoURL,
+//                                 "username": newUserName]
+//
+//                            //update the firebase database for that user
+//                                    self.databaseRef.child("profile").child(userID).updateChildValues(newValuesForProfile, withCompletionBlock: { (error, ref) in
+//                                if error != nil{
+//                                    print(error!)
+//                                    return
+//                                }
+//                                print("Profile Successfully Update")
+//
+//
+//                            })
+//
+//                        }
+//                    })
+//                })
+//
+//            }
+//        }
+//    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -121,27 +120,27 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     
-    func loadProfileData(){
-        //if the user is logged in get the profile data
-        if let userID = Auth.auth().currentUser?.uid{
-            databaseRef.child("users").child(userID).observe(.value, with: { (snapshot) in
-                
-                //create a dictionary of users profile data
-                let values = snapshot.value as? NSDictionary
-                
-                //if there is a url image stored in photo
-                if let profileImageURL = values?["photo"] as? String{
-                    //using sd_setImage load photo
-                    self.profileImageView.sd_setImage(with: URL(string: profileImageURL), placeholderImage: UIImage(named: "KendallTrial"))
-                }
-                
-                self.usernameText.text = values?["username"] as? String
-                
-                
-                
-            })
-            
-        }//end of if
-    }//end of loadProfileData
+//    func loadProfileData(){
+//        //if the user is logged in get the profile data
+//        if let userID = Auth.auth().currentUser?.uid{
+//            databaseRef.child("users").child(userID).observe(.value, with: { (snapshot) in
+//
+//                //create a dictionary of users profile data
+//                let values = snapshot.value as? NSDictionary
+//
+//                //if there is a url image stored in photo
+//                if let profileImageURL = values?["photo"] as? String{
+//                    //using sd_setImage load photo
+//                    self.profileImageView.sd_setImage(with: URL(string: profileImageURL), placeholderImage: UIImage(named: "KendallTrial"))
+//                }
+//
+//                self.usernameText.text = values?["username"] as? String
+//
+//
+//
+//            })
+//
+//        }
+//    }
     
 }

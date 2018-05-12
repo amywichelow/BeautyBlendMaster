@@ -47,10 +47,23 @@ class LoginViewController: UIViewController {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
+            
+            if let firebaseError = error {
+                print(firebaseError.localizedDescription)
+                
+                let alert = UIAlertController(title: "Error", message: "Incorrect Email Address or Password", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                
+                return
+            }
+            
             if let user = user {
                 
                 let ref = Database.database().reference(withPath: "users/\(user.uid)")
                 ref.observeSingleEvent(of: .value, with: { snapshot in
+                    
                     let snapValue = snapshot.value as! [String: Any]
                     CustomUser.shared.username = snapValue["username"] as! String
                 })
@@ -60,11 +73,7 @@ class LoginViewController: UIViewController {
 
                 
             }     else {
-                let alert = UIAlertController(title: "Error", message: "Incorrect Email Address or Password", preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
-                
+
                 
             }
 

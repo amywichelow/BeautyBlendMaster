@@ -40,6 +40,7 @@
 		E1B371121FBF4B1500877BA2 /* StepFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B371111FBF4B1500877BA2 /* StepFour.swift */; };
 		E1B371141FBF4B1C00877BA2 /* StepFive.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B371131FBF4B1C00877BA2 /* StepFive.swift */; };
 		E1B371161FBF4B2700877BA2 /* StepSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B371151FBF4B2700877BA2 /* StepSix.swift */; };
+		E1B44D7220A7304500E7F05A /* ShowTutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B44D7120A7304500E7F05A /* ShowTutorialCell.swift */; };
 		E1E1F79E2033076B0099D10A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1F79D2033076B0099D10A /* LoginViewController.swift */; };
 		E1E1F7A020332F350099D10A /* AppContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1F79F20332F350099D10A /* AppContainerViewController.swift */; };
 		E1E1F7A220332F8D0099D10A /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1F7A120332F8D0099D10A /* AppManager.swift */; };
@@ -96,7 +97,7 @@
 		E12D7AEC20445F2A00E6B7F2 /* UIViewStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIViewStyles.swift; path = "Camera Detection Prototype/IBDesignables/UIViewStyles.swift"; sourceTree = SOURCE_ROOT; };
 		E12D7AEE20459F0600E6B7F2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		E135BD1F20A60833003104D9 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
-		E135BD2120A64CF3003104D9 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		E135BD2120A64CF3003104D9 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loading.json; path = "../../Pods/lottie-ios/loading.json"; sourceTree = "<group>"; };
 		E14BAFEB205825A8003F064F /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial.swift; path = "Camera Detection Prototype/MainFeed/Tutorial.swift"; sourceTree = SOURCE_ROOT; };
 		E14BAFED205826E8003F064F /* AddTutorialStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTutorialStep.swift; sourceTree = "<group>"; };
 		E14E871D208F982F006CB608 /* Texter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texter.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 		E1B371111FBF4B1500877BA2 /* StepFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFour.swift; sourceTree = "<group>"; };
 		E1B371131FBF4B1C00877BA2 /* StepFive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFive.swift; sourceTree = "<group>"; };
 		E1B371151FBF4B2700877BA2 /* StepSix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSix.swift; sourceTree = "<group>"; };
+		E1B44D7120A7304500E7F05A /* ShowTutorialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTutorialCell.swift; sourceTree = "<group>"; };
 		E1E1F79D2033076B0099D10A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E1E1F79F20332F350099D10A /* AppContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerViewController.swift; sourceTree = "<group>"; };
 		E1E1F7A120332F8D0099D10A /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				E1A8541F20863F4A00599AA2 /* UserProfileViewController.swift */,
+				E1B44D7120A7304500E7F05A /* ShowTutorialCell.swift */,
 				E1E2F67320A206D30044F316 /* EditProfileViewController.swift */,
 			);
 			path = Profile;
@@ -716,6 +719,7 @@
 				E14E871F208F982F006CB608 /* Texter.swift in Sources */,
 				E14BAFEC205825A8003F064F /* Tutorial.swift in Sources */,
 				E1B371101FBF4B0A00877BA2 /* StepThree.swift in Sources */,
+				E1B44D7220A7304500E7F05A /* ShowTutorialCell.swift in Sources */,
 				E1F4D5081FB34F170063DE5F /* AppDelegate.swift in Sources */,
 				E15AF6942097791F00739809 /* Users.swift in Sources */,
 				E1B371141FBF4B1C00877BA2 /* StepFive.swift in Sources */,

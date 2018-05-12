@@ -8,10 +8,11 @@ import Firebase
 import FirebaseAuth
 import Floaty
 
-class HomepageViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, FloatyDelegate {
-    
+
+class HomepageViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, FloatyDelegate {
+
     var floaty = Floaty()
-    
+
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
         view.endEditing(true)
@@ -21,6 +22,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
     }
     
     var tutorials = [Tutorial]()
+    var items = ["hello"]
     let tutorialRef = Database.database().reference().child("tutorials")
     
     var filtered:[String] = []
@@ -33,19 +35,19 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.searchController.searchResultsUpdater = self
-//        self.searchController.delegate = self
-//        self.searchController.searchBar.delegate = self
-//
-//        self.searchController.hidesNavigationBarDuringPresentation = false
-//        self.searchController.dimsBackgroundDuringPresentation = true
-//        self.searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "Search tutorials"
-//        searchController.searchBar.sizeToFit()
-//
-//        searchController.searchBar.becomeFirstResponder()
-//
-//        self.navigationItem.titleView = searchController.searchBar
+        self.searchController.searchResultsUpdater = self
+        self.searchController.delegate = self
+        self.searchController.searchBar.delegate = self
+
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.dimsBackgroundDuringPresentation = true
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search tutorials"
+        searchController.searchBar.sizeToFit()
+
+        searchController.searchBar.becomeFirstResponder()
+
+        self.navigationItem.titleView = searchController.searchBar
         
         layoutFAB()
 
@@ -63,11 +65,10 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
             }
             self.collectionView?.reloadData()
         })
-
     
-    }
+}
     
-        func layoutFAB() {
+    func layoutFAB() {
             let item = FloatyItem()
             item.handler = { item in
             
@@ -108,54 +109,54 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
     }
 
     
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searchActive = false
-//        self.dismiss(animated: true, completion: nil)
-//    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     
-//    func updateSearchResults(for searchController: UISearchController) {
-//        let searchString = searchController.searchBar.text
-//
-//        filtered = tutorials.filter({ (item) -> Bool in
-//            let countryText: NSString = item as NSString
-//
-//            return (countryText.range(of: searchString!, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
-//        })
-//
-//        collectionView?.reloadData()
-//
-//    }
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchString = searchController.searchBar.text
+        
+        filtered = items.filter({ (item) -> Bool in
+            let countryText: NSString = item as NSString
+
+            return (countryText.range(of: searchString!, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
+        })
+
+        collectionView?.reloadData()
+
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-//        if searchActive {
-//            return filtered.count
-//        }
-//        else
-//        {
+        if searchActive {
+            return filtered.count
+        }
+        else
+        {
             return tutorials.count
         }
-//    }
+    }
     
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        searchActive = true
-//        collectionView?.reloadData()
-//    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+        collectionView?.reloadData()
+    }
     
     
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        searchActive = false
-//        collectionView!.reloadData()
-//    }
-//
-//    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-//        if !searchActive {
-//            searchActive = true
-//            collectionView?.reloadData()
-//        }
-//
-//        searchController.searchBar.resignFirstResponder()
-//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        collectionView!.reloadData()
+    }
+
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        if !searchActive {
+            searchActive = true
+            collectionView?.reloadData()
+        }
+
+        searchController.searchBar.resignFirstResponder()
+    }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCell
@@ -199,5 +200,5 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
                     insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
-    
+
 }

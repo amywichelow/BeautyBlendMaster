@@ -25,6 +25,8 @@ class AddTutorialStep: UIViewController {
 
     var tutorial: Tutorial!
     
+    let userTutorial = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials").childByAutoId()
+    
     let newTutorialRef = Database.database().reference().child("tutorials").childByAutoId()
     
     var tutorialSteps = [TutorialStep]()
@@ -113,6 +115,21 @@ class AddTutorialStep: UIViewController {
                 })
             }
         }
+        
+        userTutorial.updateChildValues(tutorial.toDict()) { error, ref in
+            
+            var count = 0
+            
+            for tutorial in self.tutorialSteps {
+                ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
+                    count += 1
+                    if count == self.tutorialSteps.count {
+                        completion(true)
+                    }
+                })
+            }
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

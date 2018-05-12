@@ -8,6 +8,10 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileTableView: UITableView!
     
+    @IBAction func editProfileButton(_ sender: Any) {
+        
+    }
+    
     var appContainer: AppContainerViewController!
     
     @IBAction func logoutButton(_ sender: Any) {
