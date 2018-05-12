@@ -437,7 +437,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygp-WQ-r2S">
-                                <rect key="frame" x="22" y="649" width="179" height="65"/>
+                                <rect key="frame" x="22" y="649" width="178" height="65"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                 <state key="normal" image="addStepFinalAsset 23">
@@ -448,7 +448,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bY-2n-Nca">
-                                <rect key="frame" x="209" y="649" width="181" height="65"/>
+                                <rect key="frame" x="208" y="649" width="182" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="finishUploadFinalAsset 22"/>
                                 <connections>
@@ -875,6 +875,10 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92549019610000005" green="0.89411764709999997" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="durationLabel" destination="0vw-ga-fas" id="8B0-no-Lft"/>
+                                            <outlet property="tutorialNameLabel" destination="lIh-tk-Wbu" id="P76-mW-s4u"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
