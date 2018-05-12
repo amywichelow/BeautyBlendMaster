@@ -655,7 +655,6 @@
                                 <connections>
                                     <action selector="nextStepButton:" destination="FET-cU-yUq" eventType="touchUpInside" id="ioJ-Ax-XAR"/>
                                     <action selector="nextStepButton:" destination="n20-tx-J8r" eventType="touchUpInside" id="xa2-zZ-NhL"/>
-                                    <segue destination="eky-te-3H6" kind="show" id="pCS-P7-uW9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pt1-td-VDW">
@@ -707,7 +706,7 @@
         <!--Share Tutorial View Controller-->
         <scene sceneID="2Bx-t8-sEG">
             <objects>
-                <viewController id="eky-te-3H6" customClass="ShareTutorialViewController" customModule="Camera_Detection_Prototype" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShareViewController" id="eky-te-3H6" customClass="ShareTutorialViewController" customModule="Camera_Detection_Prototype" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ro1-EV-fl5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
