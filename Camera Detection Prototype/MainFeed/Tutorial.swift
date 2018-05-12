@@ -38,7 +38,9 @@ class Tutorial {
         
     }
     
-    init(tutorialName: String, duration: Int, difficulty: Int) {
+    init(
+        //coverImage: UIImage,
+        tutorialName: String, duration: Int, difficulty: Int) {
         self.tutorialName = tutorialName
         self.duration = duration
         self.difficulty = difficulty

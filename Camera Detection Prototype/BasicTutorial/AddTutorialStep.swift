@@ -31,6 +31,8 @@ class AddTutorialStep: UIViewController {
     
     var tutorialSteps = [TutorialStep]()
     
+    let storageRef = Storage.storage().reference(forURL: "gs://beautyblend-26cff.appspot.com").child("CoverImage").child(Auth.auth().currentUser!.uid)
+    
     @IBOutlet weak var stepLabel: UILabel!
     
     @IBOutlet weak var tutorialStepDescription: UITextView!
@@ -129,6 +131,19 @@ class AddTutorialStep: UIViewController {
                 })
             }
         }
+// HOW TO UPLOAD COVER IMAGE SO IT APPEARS ON HOMEPAGE CELL
+        
+//        if let coverImage = tutorial.toDict(), let imageData = UIImageJPEGRepresentation(coverImage, 0.1) {
+//            storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
+//                if error != nil {
+//                    return
+//                }
+//
+//                let profileImageURl = metadata?.downloadURL()?.absoluteString
+//                self.ref.updateChildValues(["profileImageURL": profileImageURl!])
+//
+//            })
+//        }
         
     }
     

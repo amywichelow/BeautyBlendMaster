@@ -24,17 +24,20 @@ class StepViewContoller: UIViewController {
     
     var tutorial: Tutorial!
     var tutorialSteps = [TutorialStep]()
-    let tutorialRef = Database.database().reference().child("tutorials").child("steps").child("tutorialStepDescription")
-
     
     override func viewDidLoad() {
+        
+        let tutorialRef = Database.database().reference().child("tutorials").child(tutorial.uuid!).child("steps")
         
         tutorialRef.observeSingleEvent(of: .value, with: { snapshot in
             
             for tutorialSteps in snapshot.children {
                 if let data = tutorialSteps as? DataSnapshot {
-                    if let tutorial = Tutorial(snapshot: data) {
-                        self.tutorialSteps.append(tutorialSteps as! TutorialStep)
+                    if let tutorial = TutorialStep(snapshot: data) {
+                        self.tutorialSteps.append(tutorial)
+                        self.tutorialStepDescription.text = tutorial.tutorialStepDescription
+                        
+                        
                     }
                 }
             }
