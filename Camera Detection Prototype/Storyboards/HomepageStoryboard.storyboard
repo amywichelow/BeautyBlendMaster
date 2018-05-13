@@ -898,11 +898,11 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vZt-aY-JgS" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
-                                <rect key="frame" x="143" y="93" width="129" height="40"/>
+                                <rect key="frame" x="123" y="93" width="168" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9BB-Kv-URg" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="129" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="168" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.90588235289999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
@@ -912,7 +912,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3i-33-mQO">
-                                        <rect key="frame" x="0.0" y="0.0" width="129" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="168" height="40"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="18"/>
                                         <color key="textColor" red="0.62352941176470589" green="0.52156862745098043" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
