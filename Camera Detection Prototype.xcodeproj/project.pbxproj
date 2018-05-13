@@ -19,7 +19,7 @@
 		E12D7AED20445F2A00E6B7F2 /* UIViewStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D7AEC20445F2A00E6B7F2 /* UIViewStyles.swift */; };
 		E12D7AEF20459F0600E6B7F2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D7AEE20459F0600E6B7F2 /* CollectionViewCell.swift */; };
 		E135BD2020A60833003104D9 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E135BD1F20A60833003104D9 /* InfoViewController.swift */; };
-		E135BD2220A64CF4003104D9 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = E135BD2120A64CF3003104D9 /* loading.json */; };
+		E145539D20A7B03300C2DD75 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = E145539C20A7AF8700C2DD75 /* loading.json */; };
 		E14BAFEC205825A8003F064F /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BAFEB205825A8003F064F /* Tutorial.swift */; };
 		E14BAFEE205826E8003F064F /* AddTutorialStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BAFED205826E8003F064F /* AddTutorialStep.swift */; };
 		E14E871F208F982F006CB608 /* Texter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E871D208F982F006CB608 /* Texter.swift */; };
@@ -41,6 +41,9 @@
 		E1B371141FBF4B1C00877BA2 /* StepFive.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B371131FBF4B1C00877BA2 /* StepFive.swift */; };
 		E1B371161FBF4B2700877BA2 /* StepSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B371151FBF4B2700877BA2 /* StepSix.swift */; };
 		E1B44D7220A7304500E7F05A /* ShowTutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B44D7120A7304500E7F05A /* ShowTutorialCell.swift */; };
+		E1C458CC20A7B2F0004F335A /* uploadComplete.json in Resources */ = {isa = PBXBuildFile; fileRef = E1C458CB20A7B2F0004F335A /* uploadComplete.json */; };
+		E1C458CE20A7B3D4004F335A /* playAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = E1C458CD20A7B3D4004F335A /* playAnimation.json */; };
+		E1C458D020A7B4E8004F335A /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = E1C458CF20A7B4E8004F335A /* loadingAnimation.json */; };
 		E1E1F79E2033076B0099D10A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1F79D2033076B0099D10A /* LoginViewController.swift */; };
 		E1E1F7A020332F350099D10A /* AppContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1F79F20332F350099D10A /* AppContainerViewController.swift */; };
 		E1E1F7A220332F8D0099D10A /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1F7A120332F8D0099D10A /* AppManager.swift */; };
@@ -97,7 +100,7 @@
 		E12D7AEC20445F2A00E6B7F2 /* UIViewStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIViewStyles.swift; path = "Camera Detection Prototype/IBDesignables/UIViewStyles.swift"; sourceTree = SOURCE_ROOT; };
 		E12D7AEE20459F0600E6B7F2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		E135BD1F20A60833003104D9 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
-		E135BD2120A64CF3003104D9 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loading.json; path = "../../Pods/lottie-ios/loading.json"; sourceTree = "<group>"; };
+		E145539C20A7AF8700C2DD75 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		E14BAFEB205825A8003F064F /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tutorial.swift; path = "Camera Detection Prototype/MainFeed/Tutorial.swift"; sourceTree = SOURCE_ROOT; };
 		E14BAFED205826E8003F064F /* AddTutorialStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTutorialStep.swift; sourceTree = "<group>"; };
 		E14E871D208F982F006CB608 /* Texter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texter.swift; sourceTree = "<group>"; };
@@ -123,6 +126,9 @@
 		E1B371131FBF4B1C00877BA2 /* StepFive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFive.swift; sourceTree = "<group>"; };
 		E1B371151FBF4B2700877BA2 /* StepSix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSix.swift; sourceTree = "<group>"; };
 		E1B44D7120A7304500E7F05A /* ShowTutorialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTutorialCell.swift; sourceTree = "<group>"; };
+		E1C458CB20A7B2F0004F335A /* uploadComplete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = uploadComplete.json; sourceTree = "<group>"; };
+		E1C458CD20A7B3D4004F335A /* playAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = playAnimation.json; sourceTree = "<group>"; };
+		E1C458CF20A7B4E8004F335A /* loadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingAnimation.json; sourceTree = "<group>"; };
 		E1E1F79D2033076B0099D10A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E1E1F79F20332F350099D10A /* AppContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerViewController.swift; sourceTree = "<group>"; };
 		E1E1F7A120332F8D0099D10A /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -278,7 +284,6 @@
 		E12D7AEB20445D7F00E6B7F2 /* IBDesignables */ = {
 			isa = PBXGroup;
 			children = (
-				E135BD2120A64CF3003104D9 /* loading.json */,
 				E12D7AEC20445F2A00E6B7F2 /* UIViewStyles.swift */,
 			);
 			path = IBDesignables;
@@ -333,6 +338,10 @@
 			children = (
 				E1A425C72098DD07004EACBE /* Fonts */,
 				E12D7AE920445C3300E6B7F2 /* Delegate */,
+				E145539C20A7AF8700C2DD75 /* loading.json */,
+				E1C458CF20A7B4E8004F335A /* loadingAnimation.json */,
+				E1C458CD20A7B3D4004F335A /* playAnimation.json */,
+				E1C458CB20A7B2F0004F335A /* uploadComplete.json */,
 				E12D7AE820445C3100E6B7F2 /* LoginSignup */,
 				E12D7AE720445C2E00E6B7F2 /* MainFeed */,
 				E1A8541E20863F3200599AA2 /* Profile */,
@@ -488,12 +497,15 @@
 				E1E2F67120A1E33F0044F316 /* Gotham Bold Regular.ttf in Resources */,
 				E1E2F67020A1E33B0044F316 /* Gotham Rounded Book.ttf in Resources */,
 				E1115AD32046F40700DCCC30 /* HomepageStoryboard.storyboard in Resources */,
-				E135BD2220A64CF4003104D9 /* loading.json in Resources */,
+				E1C458CE20A7B3D4004F335A /* playAnimation.json in Resources */,
+				E145539D20A7B03300C2DD75 /* loading.json in Resources */,
 				E1F4D5121FB34F170063DE5F /* LaunchScreen.storyboard in Resources */,
 				E11CBD9520612AF6004FFE80 /* Sweet Pea_2.ttf in Resources */,
 				E11CBD9A20616EBB004FFE80 /* Assets.xcassets in Resources */,
 				E16247662046FD080085F0DF /* CustomCell.xib in Resources */,
 				E1A425C92098DF82004EACBE /* GoogleService-Info.plist in Resources */,
+				E1C458CC20A7B2F0004F335A /* uploadComplete.json in Resources */,
+				E1C458D020A7B4E8004F335A /* loadingAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +557,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -560,6 +573,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",

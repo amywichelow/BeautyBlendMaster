@@ -31,6 +31,8 @@ pod 'Floaty', '~> 3.0.0'
 
 pod 'NVActivityIndicatorView'
 
+pod 'ViewAnimator'
+
 pod 'SDWebImage', '~> 4.0'
 
 

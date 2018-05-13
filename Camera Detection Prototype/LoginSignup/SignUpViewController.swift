@@ -6,6 +6,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import Lottie
 
 class SignUpViewController: UIViewController {
         
@@ -62,12 +63,11 @@ class SignUpViewController: UIViewController {
         
         guard passwordTextField.text! == confirmPasswordTextField.text! else {
             print("Passwords dont match")
-            
             return
         }
         
         if emailTextField.text == nil {
-            let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Error", message: "Please enter an email and password", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
@@ -88,15 +88,13 @@ class SignUpViewController: UIViewController {
                             mediaUploader.uploadMedia(images: [image]) { urls in
                                 
                                 ref.updateChildValues(["profileImage": urls.first!], withCompletionBlock: { error, ref in
+                                    
                                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
                                     self.present(vc!, animated: true, completion: nil)
-
                                 })
                             }
                         }
                     }
-                    
-                
                 } else {
                     
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -105,13 +103,10 @@ class SignUpViewController: UIViewController {
                     alertController.addAction(defaultAction)
                     
                     self.present(alertController, animated: true, completion: nil)
-                
-                }
             }
         }
-        
-
     }
+}
     
     @IBAction func confirm(_ sender: Any) {
         if confirmPasswordTextField.text == passwordTextField.text {

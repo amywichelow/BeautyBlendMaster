@@ -2,11 +2,12 @@
 //  Beauty Blend
 //  Created by Amy Wichelow on 26/02/2018.
 //  Copyright © 2018 Amy Wichelow. All rights reserved.
-
 import UIKit
 import Firebase
 import FirebaseAuth
 import Floaty
+import Lottie
+import ViewAnimator
 
 
 class HomepageViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, FloatyDelegate {
@@ -18,11 +19,10 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         view.endEditing(true)
     }
     
-    @IBAction func searchBar(_ sender: Any) {
-    }
-    
     var tutorials = [Tutorial]()
-    var items = ["hello"]
+    
+    let items = [""]
+
     let tutorialRef = Database.database().reference().child("tutorials")
     
     var filtered:[String] = []
@@ -54,6 +54,15 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         collectionView?.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         
+//        let animationView = LOTAnimationView(name: "playAnimation")
+//        animationView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+//        animationView.center = self.view.center
+//        animationView.contentMode = .scaleAspectFill
+//
+//        self.view.addSubview(animationView)
+//        animationView.play()
+//        animationView.loopAnimation = true
+
         tutorialRef.observeSingleEvent(of: .value, with: { snapshot in
 
             for tutorials in snapshot.children {
@@ -64,9 +73,12 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
                 }
             }
             self.collectionView?.reloadData()
+       
+        
         })
     
 }
+    
     
     func layoutFAB() {
             let item = FloatyItem()
@@ -75,10 +87,31 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         }
         
         floaty.addItem("Upload", icon: UIImage(named: "uploadIconAsset 32")) { item in
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TutorialUploadViewController")
-            self.present(vc!, animated: true, completion: nil)
+            
+            let animationView = LOTAnimationView(name: "loadingAnimation")
+            animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            animationView.center = self.view.center
+            animationView.contentMode = .scaleAspectFill
+            
+            self.view.addSubview(animationView)
+            animationView.play()
+            animationView.loopAnimation = true
+            
+            self.performSegue(withIdentifier: "uploadViewController", sender: nil)
+
         }
+        
         floaty.addItem("Profile", icon: UIImage(named: "profileIconAsset 33")) { item in
+            
+            let animationView = LOTAnimationView(name: "loadingAnimation")
+            animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            animationView.center = self.view.center
+            animationView.contentMode = .scaleAspectFill
+            
+            self.view.addSubview(animationView)
+            animationView.play()
+            animationView.loopAnimation = true
+            
             self.performSegue(withIdentifier: "profileViewController", sender: nil)
             
         }
@@ -90,6 +123,15 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
             } catch (let error) {
                 print((error as NSError).code)
             }
+            
+            let animationView = LOTAnimationView(name: "loadingAnimation")
+            animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            animationView.center = self.view.center
+            animationView.contentMode = .scaleAspectFill
+            
+            self.view.addSubview(animationView)
+            animationView.play()
+            animationView.loopAnimation = true
             
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
             self.present(vc!, animated: true, completion: nil)
@@ -184,6 +226,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        collectionView.deselectItem(at: indexPath, animated: true)
+        
         let tutorial = tutorials[indexPath.row]
         performSegue(withIdentifier: "showTutorial", sender: tutorial)
     }

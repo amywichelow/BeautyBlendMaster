@@ -5,12 +5,10 @@
 
 import UIKit
 import Firebase
-
-import NVActivityIndicatorView
-
+import Lottie
+import ViewAnimator
 
 class LoginViewController: UIViewController {
-
 
    
     override func viewDidLoad() {
@@ -21,7 +19,6 @@ class LoginViewController: UIViewController {
         
     }
     
-    //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -41,6 +38,23 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    //HOW TO ONLY SEND PASSWORD RESET IF THE EMAIL EXISTS IN DATABASE?
+    @IBAction func forgotPasswordButton(_ sender: Any) {
+        
+        let email = self.emailTextField.text
+        Auth.auth().sendPasswordReset(withEmail: email!) { error in
+            
+            if let error = error {
+                print(error)
+            } else {
+                print("Reset password email sent.")
+            }
+        
+            
+        }
+        
+    }
     
     @IBAction func login(_ sender: Any) {
         
@@ -66,14 +80,22 @@ class LoginViewController: UIViewController {
                     
                     let snapValue = snapshot.value as! [String: Any]
                     CustomUser.shared.username = snapValue["username"] as! String
-                })
                 
+                let animationView = LOTAnimationView(name: "loadingAnimation")
+                animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+                animationView.center = self.view.center
+                animationView.contentMode = .scaleAspectFill
+                
+                self.view.addSubview(animationView)
+                animationView.play()
+                animationView.loopAnimation = true
+
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
                 self.present(vc!, animated: true, completion: nil)
-
+            
+                })
                 
-            }     else {
-
+                }  else {
                 
             }
 

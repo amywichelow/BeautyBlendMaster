@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import Lottie
 
 class AddTutorialStep: UIViewController {
     
@@ -30,9 +31,7 @@ class AddTutorialStep: UIViewController {
     let newTutorialRef = Database.database().reference().child("tutorials").childByAutoId()
     
     var tutorialSteps = [TutorialStep]()
-    
-    let storageRef = Storage.storage().reference(forURL: "gs://beautyblend-26cff.appspot.com").child("CoverImage").child(Auth.auth().currentUser!.uid)
-    
+        
     @IBOutlet weak var stepLabel: UILabel!
     
     @IBOutlet weak var tutorialStepDescription: UITextView!
@@ -60,6 +59,7 @@ class AddTutorialStep: UIViewController {
     
     //HOW TO CHECK A PICTURE HAS BEEN ADDED BEFORE ADDING ANOTHER STEP?
     
+    @IBOutlet weak var addStepOutlet: UIButton!
     @IBAction func addStepButton(_ sender: Any) {
         
         if tutorialStepDescription.text!.isEmpty {
@@ -88,10 +88,21 @@ class AddTutorialStep: UIViewController {
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
             
-            present(alertController, animated: true, completion: nil) } else {
+            present(alertController, animated: true, completion: nil)
+        
+        } else {
             
         upload { success in
             print("All steps uploaded")
+            
+            let animationView = LOTAnimationView(name: "loadingAnimation")
+            animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            animationView.center = self.view.center
+            animationView.contentMode = .scaleAspectFill
+            
+            self.view.addSubview(animationView)
+            animationView.play()
+            animationView.loopAnimation = true
             
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
             self.present(vc!, animated: true, completion: nil)
@@ -131,21 +142,20 @@ class AddTutorialStep: UIViewController {
                 })
             }
         }
+    }
+    
 // HOW TO UPLOAD COVER IMAGE SO IT APPEARS ON HOMEPAGE CELL
         
-//        if let coverImage = tutorial.toDict(), let imageData = UIImageJPEGRepresentation(coverImage, 0.1) {
-//            storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
-//                if error != nil {
-//                    return
-//                }
+//        if let coverImage = tutorial.coverImage {
+//            let mediaUploader = MediaUploader()
+//            mediaUploader.uploadMedia(images: [coverImage]) { urls in
 //
-//                let profileImageURl = metadata?.downloadURL()?.absoluteString
-//                self.ref.updateChildValues(["profileImageURL": profileImageURl!])
+//                ref.updateChildValues(["coverImage": urls.first!], withCompletionBlock: { error, ref in
 //
-//            })
+//                })
+//            }
 //        }
-        
-    }
+    
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -167,7 +177,9 @@ extension AddTutorialStep: UITextFieldDelegate, UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
         if textView.text == "" {
-            print("enable save button")
+        
+            self.addStepOutlet.isEnabled = true
+            
             return
         }
         

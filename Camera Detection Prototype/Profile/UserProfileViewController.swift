@@ -21,13 +21,15 @@ class UserProfileViewController: UIViewController {
     @IBAction func logoutButton(_ sender: Any) {
         do {
             try Auth.auth().signOut()
-            print(Auth.auth().currentUser)
+            print(Auth.auth().currentUser?.uid as Any)
         } catch (let error) {
             print((error as NSError).code)
         }
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
-        self.present(vc!, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
+        
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
+//        self.present(vc!, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -50,10 +52,10 @@ class UserProfileViewController: UIViewController {
         userRef.observeSingleEvent(of: .value, with: { snapshot in
             if let user = Users(snapshot: snapshot) {
                 self.userUsername.text = user.username
-                print(user.userImageUrl)
+                print(user.userImageUrl as Any)
                 
-                let storageRef = Storage.storage().reference(withPath: user.userImageUrl!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
-                    print(data)
+                _ = Storage.storage().reference(withPath: user.userImageUrl!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
+                    print(data as Any)
                     let image = UIImage(data: data!)
                     self.profileImage.image = image
                 })
@@ -71,7 +73,7 @@ extension UserProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 73
+        return 120
         
     }
 }

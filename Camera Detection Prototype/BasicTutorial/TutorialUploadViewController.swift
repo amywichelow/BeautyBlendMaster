@@ -1,6 +1,7 @@
 import UIKit
 import FirebaseStorage
 import Firebase
+import Lottie
 
 class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
     
@@ -18,7 +19,7 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
     @IBAction func durationSliderAction(_ sender: UISlider!) {
 
         self.durationSlider.setValue((round(sender.value / 5) * 5), animated: false)
-        print("\(sender.value)")
+//        print("\(sender.value)")
         
         durationValue.text = ("\(sender.value)")
         
@@ -100,6 +101,16 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let animationView = LOTAnimationView(name: "loadingAnimation")
+        animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        animationView.center = self.view.center
+        animationView.contentMode = .scaleAspectFill
+        
+        self.view.addSubview(animationView)
+        animationView.play()
+        animationView.loopAnimation = true
+        
         let vc = segue.destination as! AddTutorialStep
         vc.tutorial = tutorial
     }

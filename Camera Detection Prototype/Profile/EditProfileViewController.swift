@@ -19,6 +19,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     var databaseRef: DatabaseReference!
     var storageRef: StorageReference!
     
+    @IBOutlet weak var newPassword: UITextField!
+    @IBOutlet weak var newEmail: UITextField!
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var profileImageView: UIImageView!
     
@@ -38,10 +40,44 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         present(picker, animated: true, completion: nil)
     }
     
+    @IBAction func deleteUserAccountButton(_ sender: Any) {
+        
+        let user = Auth.auth().currentUser
+        
+        let alert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Yes", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+        
+        user?.delete { error in
+            
+            if error != nil {
+                let alert = UIAlertController(title: "Error", message: "Something went wrong and your account could not be deleted", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                
+            } else {
+
+                self.dismiss(animated: true, completion: nil)
+
+                
+            }
+        }
+        
+    }
+    
+    
     @IBAction func saveButton(_ sender: Any) {
-      //  updateUsersProfile()
+        
+        updateUserInfo()
         
         self.navigationController?.popToRootViewController(animated: true)
+        
+        let alert = UIAlertController(title: "Success", message: "Profile has been updated.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
 
     }
     
@@ -57,50 +93,81 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
     }
     
-//    func updateUsersProfile(){
-//        //check to see if the user is logged in
-//        if let userID = Auth.auth().currentUser?.uid{
-//            //create an access point for the Firebase storage
-//            let storageItem = storageRef.child(userID)
-//            //get the image uploaded from photo library
-//            guard let image = profileImageView.image else {return}
-//            if let newImage = UIImagePNGRepresentation(image){
-//                //upload to firebase storage
-//                storageItem.putData(newImage, metadata: nil, completion: { (metadata, error) in
-//                    if error != nil{
-//                        print(error!)
-//                        return
-//                    }
-//                    storageItem.downloadURL(completion: { (url, error) in
-//                        if error != nil{
-//                            print(error!)
-//                            return
-//                        }
-//                        if let profilePhotoURL = url?.absoluteString{
-//                            guard let newUserName  = self.usernameText.text else {return}
+//    Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
 //
-//                            let newValuesForProfile =
-//                                ["photo": profilePhotoURL,
-//                                 "username": newUserName]
+//    if error == nil {
+//    print("You have successfully signed up")
 //
-//                            //update the firebase database for that user
-//                                    self.databaseRef.child("profile").child(userID).updateChildValues(newValuesForProfile, withCompletionBlock: { (error, ref) in
-//                                if error != nil{
-//                                    print(error!)
-//                                    return
-//                                }
-//                                print("Profile Successfully Update")
+//    let ref = Database.database().reference(withPath: "users/\(user!.uid)")
+//    ref.updateChildValues(["username": self.usernameTextField.text!]) { error, ref in
 //
+//    if let image = self.profileImageView.image {
+//    let mediaUploader = MediaUploader()
+//    mediaUploader.uploadMedia(images: [image]) { urls in
 //
-//                            })
-//
-//                        }
-//                    })
-//                })
-//
-//            }
-//        }
-//    }
+//    ref.updateChildValues(["profileImage": urls.first!], withCompletionBlock: { error, ref in
+    
+    
+    func updateUserInfo() {
+        
+        let user = Auth.auth().currentUser
+        let ref = Database.database().reference(withPath: "users/\(user!.uid)")
+        
+        ref.updateChildValues(["username": self.usernameText.text!]) { error, ref in
+        
+            if (self.usernameText.text?.isEmpty)! {
+                
+            } else {
+                
+                let alert = UIAlertController(title: "Success", message: "Username has been updated.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                
+                self.navigationController?.popToRootViewController(animated: true)
+
+                
+            }
+        
+        }
+        
+        user?.updateEmail(to: newEmail.text!) { error in
+            
+            if (self.newEmail.text?.isEmpty)! {
+                
+            } else {
+                
+                let alert = UIAlertController(title: "Success", message: "Email has been updated.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                
+                self.navigationController?.popToRootViewController(animated: true)
+
+                
+            }
+            
+        }
+        
+        user?.updatePassword(to: newPassword.text!) { error in
+            
+            if (self.newPassword.text?.isEmpty)! {
+                
+            } else {
+                
+                    let alert = UIAlertController(title: "Success", message: "Password has been updated.", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+    
+                self.navigationController?.popToRootViewController(animated: true)
+
+                
+            }
+        
+        }
+}
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -118,29 +185,5 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
-    
-//    func loadProfileData(){
-//        //if the user is logged in get the profile data
-//        if let userID = Auth.auth().currentUser?.uid{
-//            databaseRef.child("users").child(userID).observe(.value, with: { (snapshot) in
-//
-//                //create a dictionary of users profile data
-//                let values = snapshot.value as? NSDictionary
-//
-//                //if there is a url image stored in photo
-//                if let profileImageURL = values?["photo"] as? String{
-//                    //using sd_setImage load photo
-//                    self.profileImageView.sd_setImage(with: URL(string: profileImageURL), placeholderImage: UIImage(named: "KendallTrial"))
-//                }
-//
-//                self.usernameText.text = values?["username"] as? String
-//
-//
-//
-//            })
-//
-//        }
-//    }
     
 }
