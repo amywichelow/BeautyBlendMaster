@@ -1485,7 +1485,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                         <rect key="frame" x="243" y="41" width="87" height="73"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPJ-wg-ZUq">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPic" translatesAutoresizingMaskIntoConstraints="NO" id="PPJ-wg-ZUq">
                                                 <rect key="frame" x="0.0" y="0.0" width="87" height="73"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -1787,6 +1787,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
         <image name="aboutMePic" width="414" height="253"/>
         <image name="addStepFinalAsset 23" width="328" height="123"/>
         <image name="addStepsFinalAsset 21" width="522" height="123"/>
+        <image name="defaultPic" width="1550" height="1550"/>
         <image name="deleteAccountButtonAsset 39" width="522" height="123"/>
         <image name="finishTutorialButtonAsset 36" width="522" height="123"/>
         <image name="finishUploadFinalAsset 22" width="328" height="123"/>

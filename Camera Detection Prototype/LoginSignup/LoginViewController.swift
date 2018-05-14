@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    //HOW TO ONLY SEND PASSWORD RESET IF THE EMAIL EXISTS IN DATABASE?
+    //FORGOT PASSWORD
     @IBAction func forgotPasswordButton(_ sender: Any) {
         
         let email = self.emailTextField.text

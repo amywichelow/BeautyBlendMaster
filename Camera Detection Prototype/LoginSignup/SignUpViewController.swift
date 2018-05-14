@@ -83,6 +83,7 @@ class SignUpViewController: UIViewController {
                     ref.updateChildValues(["username": self.usernameTextField.text!]) { error, ref in
 
                         if let image = self.profileImageView.image {
+                            
                             let mediaUploader = MediaUploader()
                                 mediaUploader.uploadMedia(images: [image]) { urls in
                                 
