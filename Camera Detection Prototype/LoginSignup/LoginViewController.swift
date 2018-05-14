@@ -6,17 +6,14 @@
 import UIKit
 import Firebase
 import Lottie
-import ViewAnimator
 
 class LoginViewController: UIViewController {
 
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
     }
     
     @objc func dismissKeyboard() {
@@ -33,7 +30,6 @@ class LoginViewController: UIViewController {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController")
         self.present(vc!, animated: true, completion: nil)
-        
     }
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -44,16 +40,24 @@ class LoginViewController: UIViewController {
         
         let email = self.emailTextField.text
         Auth.auth().sendPasswordReset(withEmail: email!) { error in
-            
-            if let error = error {
-                print(error)
+            if let firebaseError = error {
+                
+                let alert = UIAlertController(title: "Error", message: "This email address doesn't exist", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                
+                print(firebaseError.localizedDescription)
+                
             } else {
-                print("Reset password email sent.")
+                print("Reset password email sent")
+                
+                let alert = UIAlertController(title: "Success", message: "Reset password email sent", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
             }
-        
-            
         }
-        
     }
     
     @IBAction func login(_ sender: Any) {
@@ -80,29 +84,16 @@ class LoginViewController: UIViewController {
                     
                     let snapValue = snapshot.value as! [String: Any]
                     CustomUser.shared.username = snapValue["username"] as! String
-                
-                let animationView = LOTAnimationView(name: "loadingAnimation")
-                animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-                animationView.center = self.view.center
-                animationView.contentMode = .scaleAspectFill
-                
-                self.view.addSubview(animationView)
-                animationView.play()
-                animationView.loopAnimation = true
-
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
-                self.present(vc!, animated: true, completion: nil)
             
                 })
                 
-                }  else {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
+                self.present(vc!, animated: true, completion: nil)
                 
+                }  else {
             }
-
         }
-        
     }
-    
 }
 
 

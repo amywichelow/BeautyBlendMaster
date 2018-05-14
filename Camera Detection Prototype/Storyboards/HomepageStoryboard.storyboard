@@ -50,7 +50,8 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="a48-ZN-cfM">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" title="About" id="dGy-FH-ktP">
+                        <barButtonItem key="rightBarButtonItem" title="..." id="dGy-FH-ktP">
+                            <color key="tintColor" red="0.70196078429999997" green="0.61568627450000002" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="FCn-Wr-buw" kind="show" id="FbT-O6-1GH"/>
                             </connections>
@@ -192,13 +193,13 @@ Create and upload step by step tutorials for other users to follow and learn fro
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4W-ZW-IjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2934.7826086956525" y="-3.2608695652173916"/>
+            <point key="canvasLocation" x="2920" y="765"/>
         </scene>
         <!--TutorialUpload-->
         <scene sceneID="Clp-Dm-UvJ">
             <objects>
                 <viewController storyboardIdentifier="TutorialUploadViewController" title="TutorialUpload" hidesBottomBarWhenPushed="YES" id="FET-cU-yUq" customClass="TutorialUploadViewController" customModule="Camera_Detection_Prototype" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="cDk-fS-S49" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="cDk-fS-S49" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -280,7 +281,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                         <connections>
                                             <outlet property="delegate" destination="FET-cU-yUq" id="k2N-2V-zCs"/>
                                         </connections>
@@ -429,7 +430,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2de-sr-8j5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3687" y="-751"/>
+            <point key="canvasLocation" x="2991" y="-2"/>
         </scene>
         <!--Add Steps-->
         <scene sceneID="rxh-bL-myr">
@@ -541,7 +542,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                         <color key="backgroundColor" red="0.96093189716339111" green="0.94867336750030518" blue="0.97254633903503418" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outlet property="delegate" destination="OXQ-Ie-4HN" id="ndp-ve-Loo"/>
                                         </connections>
@@ -606,7 +607,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0J9-b4-8Ew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3688.4057971014495" y="-2.4456521739130435"/>
+            <point key="canvasLocation" x="3762" y="-2"/>
         </scene>
         <!--Step View Contoller-->
         <scene sceneID="3uh-nd-dmH">
@@ -635,10 +636,11 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wC4-LF-j0U">
-                                        <rect key="frame" x="0.0" y="0.0" width="362" height="128"/>
+                                        <rect key="frame" x="8" y="8" width="346" height="112"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.92549019607843142" green="0.89411764705882357" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.21400390624999999" green="0.21400390624999999" blue="0.21400390624999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -855,8 +857,8 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DurationLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vw-ga-fas">
-                                                                    <rect key="frame" x="96" y="38" width="119" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vw-ga-fas">
+                                                                    <rect key="frame" x="95" y="38" width="25" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -866,6 +868,13 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                                                     <rect key="frame" x="14" y="8" width="71" height="82"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXY-uW-tSq">
+                                                                    <rect key="frame" x="123" y="41" width="47" height="12"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="12"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.96470588235294119" green="0.94901960784313721" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <userDefinedRuntimeAttributes>
@@ -935,12 +944,12 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                     <segue destination="6g8-km-b6n" kind="show" id="hy3-F8-LlK"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUY-DS-8vr">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUY-DS-8vr">
                                 <rect key="frame" x="132" y="152" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="80"/>
+                                        <integer key="value" value="75"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
@@ -966,7 +975,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PVw-2h-ciE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2934.7826086956525" y="764.67391304347836"/>
+            <point key="canvasLocation" x="2177" y="765"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="MmA-i7-b8M">
@@ -1027,11 +1036,11 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mZc-kV-NVN">
-                                        <rect key="frame" x="97" y="27" width="148" height="148"/>
+                                        <rect key="frame" x="97" y="27" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="80"/>
+                                                <integer key="value" value="75"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
@@ -1158,7 +1167,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
         <scene sceneID="p6q-0C-gVx">
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="bfb-Wc-mt4" customClass="LoginViewController" customModule="Camera_Detection_Prototype" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="25T-nP-Dv5">
+                    <view key="view" contentMode="scaleToFill" id="25T-nP-Dv5" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1214,12 +1223,12 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                         <rect key="frame" x="13" y="43" width="317" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textField opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="kyle@me.com" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OmE-VF-xj6">
+                                            <textField opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="kyle@me.co.uk" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OmE-VF-xj6">
                                                 <rect key="frame" x="8" y="0.0" width="301" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.55363884230000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1252,7 +1261,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.55363884230000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1272,7 +1281,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6O-m2-Wl1">
-                                <rect key="frame" x="35" y="465" width="120" height="24"/>
+                                <rect key="frame" x="40" y="466" width="120" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="13"/>
                                 <state key="normal" title="Forgot Password?"/>
@@ -1297,7 +1306,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
         <scene sceneID="DfB-dh-8b4">
             <objects>
                 <viewController storyboardIdentifier="SignUpViewController" id="vTi-KJ-EfB" customClass="SignUpViewController" customModule="Camera_Detection_Prototype" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WOL-LU-cli">
+                    <view key="view" contentMode="scaleToFill" id="WOL-LU-cli" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1333,7 +1342,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.55363884230000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="username"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="username"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1385,7 +1394,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.55363884230000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1418,7 +1427,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.55363884230000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1444,7 +1453,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.55363884230000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                                 <connections>
                                                     <action selector="confirm:" destination="vTi-KJ-EfB" eventType="editingChanged" id="spd-5w-5R3"/>
                                                     <outlet property="delegate" destination="vTi-KJ-EfB" id="Th4-am-OMs"/>
@@ -1771,7 +1780,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1tP-x0-teM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2214" y="-716"/>
+            <point key="canvasLocation" x="2177" y="-764"/>
         </scene>
     </scenes>
     <resources>

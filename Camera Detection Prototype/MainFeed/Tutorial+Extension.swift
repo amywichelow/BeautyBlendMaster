@@ -5,7 +5,6 @@ extension Tutorial {
     
     func toDict() -> [String: Any] {
         return [
-//            "coverImage": coverImage,
             "tutorialName": tutorialName,
             "duration": duration,
             "difficulty": difficulty,

@@ -25,7 +25,6 @@ class TutorialStep {
         
     }
     
-
     init(tutorialStepDescription: String) {
         
         self.tutorialStepDescription = tutorialStepDescription

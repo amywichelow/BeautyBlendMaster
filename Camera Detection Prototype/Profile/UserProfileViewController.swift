@@ -27,28 +27,13 @@ class UserProfileViewController: UIViewController {
         }
         
         dismiss(animated: true, completion: nil)
-        
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
-//        self.present(vc!, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
         
-        ref.observe(.value, with: { snapshot in
-            self.tutorial.removeAll()
-            for tutorial in snapshot.children {
-                if let data = tutorial as? DataSnapshot {
-                    if let tutorial = Tutorial(snapshot: data) {
-                        self.tutorial.append(tutorial)
-                    }
-                }
-            }
-            self.profileTableView.reloadData()
-        })
-        
         let uid = Auth.auth().currentUser!.uid
         let userRef = Database.database().reference(withPath: "users/\(uid)")
-
+        
         userRef.observeSingleEvent(of: .value, with: { snapshot in
             if let user = Users(snapshot: snapshot) {
                 self.userUsername.text = user.username
@@ -63,10 +48,21 @@ class UserProfileViewController: UIViewController {
             print(snapshot)
         })
         
-        profileTableView.delegate = self
-            profileTableView.dataSource = self
-    }
-    
+        ref.observe(.value, with: { snapshot in
+            self.tutorial.removeAll()
+            for tutorial in snapshot.children {
+                if let data = tutorial as? DataSnapshot {
+                    if let tutorial = Tutorial(snapshot: data) {
+                        self.tutorial.append(tutorial)
+                    }
+                }
+            }
+            self.profileTableView.reloadData()
+        })
+        
+            self.profileTableView.delegate = self
+            self.profileTableView.dataSource = self
+        }
 }
 
 extension UserProfileViewController: UITableViewDelegate {

@@ -24,16 +24,10 @@ pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 
-pod 'FBSDKCoreKit'
-pod 'FBSDKShareKit'
-pod 'FBSDKLoginKit'
+
 pod 'Floaty', '~> 3.0.0'
 
-pod 'NVActivityIndicatorView'
-
-pod 'ViewAnimator'
-
-pod 'SDWebImage', '~> 4.0'
+pod 'IQKeyboardManagerSwift'
 
 
 

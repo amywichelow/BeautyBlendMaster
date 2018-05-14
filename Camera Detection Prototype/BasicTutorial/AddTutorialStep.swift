@@ -31,6 +31,9 @@ class AddTutorialStep: UIViewController {
     let newTutorialRef = Database.database().reference().child("tutorials").childByAutoId()
     
     var tutorialSteps = [TutorialStep]()
+    
+    let storageRef = Storage.storage().reference(forURL: "gs://beautyblend-26cff.appspot.com").child("CoverImage").child(Auth.auth().currentUser!.uid)
+
         
     @IBOutlet weak var stepLabel: UILabel!
     
@@ -76,6 +79,8 @@ class AddTutorialStep: UIViewController {
         
         stepTableView.reloadData()
             
+            print("Step \(tutorialSteps.count + 1)")
+                        
         }
         
     }
@@ -95,23 +100,11 @@ class AddTutorialStep: UIViewController {
         upload { success in
             print("All steps uploaded")
             
-            let animationView = LOTAnimationView(name: "loadingAnimation")
-            animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-            animationView.center = self.view.center
-            animationView.contentMode = .scaleAspectFill
-            
-            self.view.addSubview(animationView)
-            animationView.play()
-            animationView.loopAnimation = true
-            
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
             self.present(vc!, animated: true, completion: nil)
-            
             }
         }
     }
-    
-    
     
     func upload(completion: @escaping (_ success: Bool) -> Void) {
 
@@ -130,9 +123,9 @@ class AddTutorialStep: UIViewController {
         }
         
         userTutorial.updateChildValues(tutorial.toDict()) { error, ref in
-            
+
             var count = 0
-            
+
             for tutorial in self.tutorialSteps {
                 ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
                     count += 1
@@ -156,6 +149,12 @@ class AddTutorialStep: UIViewController {
 //            }
 //        }
     
+    let limitLength = 250
+    func tutorialStepDescription(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = tutorialStepDescription.text else { return true }
+        let newLength = text.characters.count + string.characters.count - range.length
+        return newLength <= limitLength
+    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -183,7 +182,6 @@ extension AddTutorialStep: UITextFieldDelegate, UITextViewDelegate {
             return
         }
         
-        print("disable save button")
     }
 
 }
@@ -202,7 +200,6 @@ extension AddTutorialStep: UITableViewDataSource {
         
         return cell!
     }
-    
 }
 
 extension AddTutorialStep: UIImagePickerControllerDelegate,UINavigationControllerDelegate {

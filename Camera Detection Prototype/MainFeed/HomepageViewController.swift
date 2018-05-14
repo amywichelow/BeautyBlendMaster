@@ -6,13 +6,11 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import Floaty
-import Lottie
-import ViewAnimator
-
 
 class HomepageViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, FloatyDelegate {
 
     var floaty = Floaty()
+    
 
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
@@ -53,15 +51,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
 
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         collectionView?.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
-        
-//        let animationView = LOTAnimationView(name: "playAnimation")
-//        animationView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-//        animationView.center = self.view.center
-//        animationView.contentMode = .scaleAspectFill
-//
-//        self.view.addSubview(animationView)
-//        animationView.play()
-//        animationView.loopAnimation = true
+
 
         tutorialRef.observeSingleEvent(of: .value, with: { snapshot in
 
@@ -73,10 +63,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
                 }
             }
             self.collectionView?.reloadData()
-       
-        
         })
-    
 }
     
     
@@ -87,62 +74,27 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         }
         
         floaty.addItem("Upload", icon: UIImage(named: "uploadIconAsset 32")) { item in
-            
-            let animationView = LOTAnimationView(name: "loadingAnimation")
-            animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-            animationView.center = self.view.center
-            animationView.contentMode = .scaleAspectFill
-            
-            self.view.addSubview(animationView)
-            animationView.play()
-            animationView.loopAnimation = true
-            
             self.performSegue(withIdentifier: "uploadViewController", sender: nil)
-
         }
         
         floaty.addItem("Profile", icon: UIImage(named: "profileIconAsset 33")) { item in
-            
-            let animationView = LOTAnimationView(name: "loadingAnimation")
-            animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-            animationView.center = self.view.center
-            animationView.contentMode = .scaleAspectFill
-            
-            self.view.addSubview(animationView)
-            animationView.play()
-            animationView.loopAnimation = true
-            
             self.performSegue(withIdentifier: "profileViewController", sender: nil)
-            
         }
+        
         floaty.addItem("Logout", icon: UIImage(named: "logoutIconAsset 31")) { item in
-            
             do {
                 try Auth.auth().signOut()
                 print(Auth.auth().currentUser)
             } catch (let error) {
                 print((error as NSError).code)
             }
-            
-            let animationView = LOTAnimationView(name: "loadingAnimation")
-            animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-            animationView.center = self.view.center
-            animationView.contentMode = .scaleAspectFill
-            
-            self.view.addSubview(animationView)
-            animationView.play()
-            animationView.loopAnimation = true
-            
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
+                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
             self.present(vc!, animated: true, completion: nil)
-            
         }
         
         floaty.paddingX = self.view.frame.width/2 - floaty.frame.width/2
         floaty.fabDelegate = self
-        
         self.view.addSubview(floaty)
-        
     }
     
     
@@ -208,7 +160,6 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         cell.tutorialName?.text = tutorial.tutorialName
         cell.username.text = tutorial.user
         cell.duration.text = "\(tutorial.duration)"
-        //cell.difficulty.image = "\(tutorial.duration)"
         cell.animate()
         
         return cell

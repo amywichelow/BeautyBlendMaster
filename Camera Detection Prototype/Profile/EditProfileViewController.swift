@@ -1,6 +1,5 @@
 import UIKit
 import Firebase
-import SDWebImage
 
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
@@ -25,6 +24,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBAction func editProfileImage(_ sender: Any) {
+        
         //create instance of Image picker controller
         let picker = UIImagePickerController()
         //set delegate
@@ -60,8 +60,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             } else {
 
                 self.dismiss(animated: true, completion: nil)
-
-                
             }
         }
         
@@ -78,40 +76,66 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
-
+       
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        databaseRef = Database.database().reference()
-        storageRef = Storage.storage().reference()
         
-       // loadProfileData()
+        let uid = Auth.auth().currentUser!.uid
+        let userRef = Database.database().reference(withPath: "users/\(uid)")
         
+        userRef.observeSingleEvent(of: .value, with: { snapshot in
+            if let user = Users(snapshot: snapshot) {
+                print(user.userImageUrl as Any)
+                
+                _ = Storage.storage().reference(withPath: user.userImageUrl!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
+                    print(data as Any)
+                    let image = UIImage(data: data!)
+                    self.profileImageView.image = image
+                })
+            }
+            print(snapshot)
+        })
+    
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TutorialUploadViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
     }
     
-//    Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-//
-//    if error == nil {
-//    print("You have successfully signed up")
-//
-//    let ref = Database.database().reference(withPath: "users/\(user!.uid)")
-//    ref.updateChildValues(["username": self.usernameTextField.text!]) { error, ref in
-//
-//    if let image = self.profileImageView.image {
-//    let mediaUploader = MediaUploader()
-//    mediaUploader.uploadMedia(images: [image]) { urls in
-//
-//    ref.updateChildValues(["profileImage": urls.first!], withCompletionBlock: { error, ref in
+    
+    func usernameText(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = usernameText.text else { return true }
+        let limitLength = 20
+        let newLength = text.characters.count + string.characters.count - range.length
+        return newLength <= limitLength
+    }
     
     
     func updateUserInfo() {
         
         let user = Auth.auth().currentUser
         let ref = Database.database().reference(withPath: "users/\(user!.uid)")
+        let image = self.profileImageView.image
+        let mediaUploader = MediaUploader()
+        
+        mediaUploader.uploadMedia(images: [image!]) { urls in
+                
+        ref.updateChildValues(["profileImage": urls.first!]) { error, ref in
+                    
+                    if (self.profileImageView.image == nil) {
+                        
+                    } else {
+                    
+                    let alert = UIAlertController(title: "Success", message: "Username has been updated.", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }
+        }
         
         ref.updateChildValues(["username": self.usernameText.text!]) { error, ref in
         
@@ -125,13 +149,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 self.present(alert, animated: true, completion: nil)
                 
                 self.navigationController?.popToRootViewController(animated: true)
-
                 
             }
-        
         }
         
-        user?.updateEmail(to: newEmail.text!) { error in
+        user?.updateEmail(to: self.newEmail.text!) { error in
             
             if (self.newEmail.text?.isEmpty)! {
                 
@@ -143,13 +165,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 self.present(alert, animated: true, completion: nil)
                 
                 self.navigationController?.popToRootViewController(animated: true)
-
                 
             }
-            
         }
         
-        user?.updatePassword(to: newPassword.text!) { error in
+        user?.updatePassword(to: self.newPassword.text!) { error in
             
             if (self.newPassword.text?.isEmpty)! {
                 
@@ -161,16 +181,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                     self.present(alert, animated: true, completion: nil)
     
                 self.navigationController?.popToRootViewController(animated: true)
-
-                
-            }
-        
         }
+    }
 }
     
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         //create holder variable for chosen image
         var chosenImage = UIImage()
         //save image into variable
@@ -181,9 +196,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         //dismiss
         dismiss(animated: true, completion: nil)
     }
-    //what happens when the user hits cancel?
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
 }

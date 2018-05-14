@@ -6,7 +6,6 @@
 import UIKit
 import Firebase
 import FirebaseAuth
-import Lottie
 
 class SignUpViewController: UIViewController {
         
@@ -85,12 +84,13 @@ class SignUpViewController: UIViewController {
 
                         if let image = self.profileImageView.image {
                             let mediaUploader = MediaUploader()
-                            mediaUploader.uploadMedia(images: [image]) { urls in
+                                mediaUploader.uploadMedia(images: [image]) { urls in
                                 
                                 ref.updateChildValues(["profileImage": urls.first!], withCompletionBlock: { error, ref in
                                     
                                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
                                     self.present(vc!, animated: true, completion: nil)
+                                    
                                 })
                             }
                         }

@@ -45,7 +45,6 @@
 		E1E1F7A220332F8D0099D10A /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1F7A120332F8D0099D10A /* AppManager.swift */; };
 		E1E2F66D20A1B1F70044F316 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E2F66C20A1B1F70044F316 /* String+Extension.swift */; };
 		E1E2F66F20A1B30C0044F316 /* MediaUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E2F66E20A1B30C0044F316 /* MediaUploader.swift */; };
-		E1E2F67020A1E33B0044F316 /* Gotham Rounded Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A425CA20992BDD004EACBE /* Gotham Rounded Book.ttf */; };
 		E1E2F67120A1E33F0044F316 /* Gotham Bold Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A425C52098DCDA004EACBE /* Gotham Bold Regular.ttf */; };
 		E1E2F67220A1E3440044F316 /* Gotham Rounded light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A425C62098DCE1004EACBE /* Gotham Rounded light.ttf */; };
 		E1E2F67420A206D30044F316 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E2F67320A206D30044F316 /* EditProfileViewController.swift */; };
@@ -113,7 +112,6 @@
 		E1A425C52098DCDA004EACBE /* Gotham Bold Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Bold Regular.ttf"; sourceTree = "<group>"; };
 		E1A425C62098DCE1004EACBE /* Gotham Rounded light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Rounded light.ttf"; sourceTree = "<group>"; };
 		E1A425C82098DF82004EACBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "IBDesignables/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E1A425CA20992BDD004EACBE /* Gotham Rounded Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham Rounded Book.ttf"; path = "../../../../Downloads/Connections-master/Extension/Gotham Rounded Book.ttf"; sourceTree = "<group>"; };
 		E1A8541F20863F4A00599AA2 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		E1A8A304203B0D1A00F60B21 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E1B3710D1FBF259900877BA2 /* StepTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTwo.swift; sourceTree = "<group>"; };
@@ -125,6 +123,7 @@
 		E1C458CB20A7B2F0004F335A /* uploadComplete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = uploadComplete.json; sourceTree = "<group>"; };
 		E1C458CD20A7B3D4004F335A /* playAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = playAnimation.json; sourceTree = "<group>"; };
 		E1C458CF20A7B4E8004F335A /* loadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingAnimation.json; sourceTree = "<group>"; };
+		E1CD75AB20A9E314008BCFC2 /* Gotham Rounded Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Rounded Book.otf"; sourceTree = "<group>"; };
 		E1E1F79D2033076B0099D10A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E1E1F79F20332F350099D10A /* AppContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerViewController.swift; sourceTree = "<group>"; };
 		E1E1F7A120332F8D0099D10A /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -286,7 +285,7 @@
 			children = (
 				E1A425C52098DCDA004EACBE /* Gotham Bold Regular.ttf */,
 				E1A425C62098DCE1004EACBE /* Gotham Rounded light.ttf */,
-				E1A425CA20992BDD004EACBE /* Gotham Rounded Book.ttf */,
+				E1CD75AB20A9E314008BCFC2 /* Gotham Rounded Book.otf */,
 				E17D215F205D701B002E467B /* Sweet Pea_2.ttf */,
 			);
 			name = Fonts;
@@ -487,7 +486,6 @@
 			files = (
 				E1E2F67220A1E3440044F316 /* Gotham Rounded light.ttf in Resources */,
 				E1E2F67120A1E33F0044F316 /* Gotham Bold Regular.ttf in Resources */,
-				E1E2F67020A1E33B0044F316 /* Gotham Rounded Book.ttf in Resources */,
 				E1115AD32046F40700DCCC30 /* HomepageStoryboard.storyboard in Resources */,
 				E1C458CE20A7B3D4004F335A /* playAnimation.json in Resources */,
 				E145539D20A7B03300C2DD75 /* loading.json in Resources */,
@@ -540,32 +538,20 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Camera Detection Prototype/Pods-Camera Detection Prototype-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",

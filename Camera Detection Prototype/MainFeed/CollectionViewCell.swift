@@ -26,9 +26,6 @@ class CustomCell: UICollectionViewCell {
     func animate() {
         UIView.animate(withDuration: 1.5) {
             self.tutorialName.alpha = 1.0
-            
-            
-            
         }
     }
     
