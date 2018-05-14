@@ -4,17 +4,6 @@ import Firebase
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
-        view.endEditing(true)
-    }
-    
-    //text field goes away when done is pressed
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
     var databaseRef: DatabaseReference!
     var storageRef: StorageReference!
     
@@ -97,10 +86,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             }
             print(snapshot)
         })
-    
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TutorialUploadViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
     }
     
     

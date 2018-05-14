@@ -11,13 +11,6 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
 
     var floaty = Floaty()
     
-        
-
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
-        view.endEditing(true)
-    }
-    
     var tutorials = [Tutorial]()
     
     let items = [""]
