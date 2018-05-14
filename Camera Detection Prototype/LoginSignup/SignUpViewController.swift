@@ -50,28 +50,60 @@ class SignUpViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var errorValidation: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet var confirmPasswordTextField: UITextField!
     
+    let passwordGreen = UIColor(hexString: "#4CD36F")
+    let passwordRed = UIColor(hexString: "#D5504B")
     
-    
-    @IBAction func signUpButton(_ sender: Any) {
+    @IBAction func signUpButton(_ sender: UIButton) {
+        
+        sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        
+        UIView.animate(withDuration: 1.5,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.25),
+                       initialSpringVelocity: CGFloat(8.0),
+                       options: UIViewAnimationOptions.allowUserInteraction,
+                       animations: {
+                        sender.transform = CGAffineTransform.identity
+        },
+                       completion: { Void in()  }
+        )
         
         guard passwordTextField.text! == confirmPasswordTextField.text! else {
             print("Passwords dont match")
+            
+            self.errorValidation.textColor = passwordRed
+            self.errorValidation.text = "Passwords dont match"
+            
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.duration = 0.07
+            animation.repeatCount = 4
+            animation.autoreverses = true
+            animation.fromValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x - 10, y: self.errorValidation.center.y))
+            animation.toValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x + 10, y: self.errorValidation.center.y))
+            self.errorValidation.layer.add(animation, forKey: "position")
+            
             return
         }
         
         if emailTextField.text == nil {
-            let alertController = UIAlertController(title: "Error", message: "Please enter an email and password", preferredStyle: .alert)
             
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
+            self.errorValidation.textColor = passwordRed
+            self.errorValidation.text = "Please enter an email address"
             
-            present(alertController, animated: true, completion: nil)
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.duration = 0.07
+            animation.repeatCount = 4
+            animation.autoreverses = true
+            animation.fromValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x - 10, y: self.errorValidation.center.y))
+            animation.toValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x + 10, y: self.errorValidation.center.y))
+            self.errorValidation.layer.add(animation, forKey: "position")
             
         } else {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
@@ -98,19 +130,22 @@ class SignUpViewController: UIViewController {
                     }
                 } else {
                     
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                    self.errorValidation.textColor = self.passwordRed
+                    self.errorValidation.text = "Please check all fields have been completed"
                     
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
+                    let animation = CABasicAnimation(keyPath: "position")
+                    animation.duration = 0.07
+                    animation.repeatCount = 4
+                    animation.autoreverses = true
+                    animation.fromValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x - 10, y: self.errorValidation.center.y))
+                    animation.toValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x + 10, y: self.errorValidation.center.y))
+                    self.errorValidation.layer.add(animation, forKey: "position")
             }
         }
     }
 }
     
-    let passwordGreen = UIColor(hexString: "#4CD36F")
-    let passwordRed = UIColor(hexString: "#D5504B")
+
 
     
     @IBAction func confirm(_ sender: Any) {
@@ -138,22 +173,22 @@ extension SignUpViewController: UIImagePickerControllerDelegate,UINavigationCont
     }
 }
 
-extension UIColor {
-    convenience init(hexString: String) {
-        let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int = UInt32()
-        Scanner(string: hex).scanHexInt32(&int)
-        let a, r, g, b: UInt32
-        switch hex.count {
-        case 3: // RGB (12-bit)
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (255, 0, 0, 0)
-        }
-        self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
-    }
-}
+//extension UIColor {
+//    convenience init(hexString: String) {
+//        let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+//        var int = UInt32()
+//        Scanner(string: hex).scanHexInt32(&int)
+//        let a, r, g, b: UInt32
+//        switch hex.count {
+//        case 3: // RGB (12-bit)
+//            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+//        case 6: // RGB (24-bit)
+//            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+//        case 8: // ARGB (32-bit)
+//            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+//        default:
+//            (a, r, g, b) = (255, 0, 0, 0)
+//        }
+//        self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
+//    }
+//}

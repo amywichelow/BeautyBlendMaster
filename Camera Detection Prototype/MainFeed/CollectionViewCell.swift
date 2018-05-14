@@ -11,8 +11,8 @@ class CustomCell: UICollectionViewCell {
     @IBOutlet weak var tutorialName: UILabel!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var duration: UILabel!
-    @IBOutlet weak var difficulty: UIImageView!
-
+    @IBOutlet weak var difficulty: UILabel!
+    @IBOutlet weak var difficultyImage: UIImageView!
     
     @IBOutlet weak var mainTutorialImage: UIImageView!
     

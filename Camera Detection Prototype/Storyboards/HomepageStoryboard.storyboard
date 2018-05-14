@@ -13,6 +13,9 @@
         <array key="Gotham Bold Regular.ttf">
             <string>GothamBold</string>
         </array>
+        <array key="Gotham Rounded Book.otf">
+            <string>Gotham-Book</string>
+        </array>
         <array key="Gotham Rounded Book.ttf">
             <string>GothamRounded-Book</string>
         </array>
@@ -1223,7 +1226,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                         <rect key="frame" x="13" y="43" width="317" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textField opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="kyle@me.co.uk" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OmE-VF-xj6">
+                                            <textField opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="amyw@email.com" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OmE-VF-xj6">
                                                 <rect key="frame" x="8" y="0.0" width="301" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.55363884230000004" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1289,12 +1292,20 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                     <action selector="forgotPasswordButton:" destination="bfb-Wc-mt4" eventType="touchUpInside" id="fgk-Ph-UEY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQR-Jl-asa">
+                                <rect key="frame" x="35" y="539" width="343" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="HxY-IM-KFN"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="OmE-VF-xj6" id="d2q-QU-weM"/>
+                        <outlet property="errorValidation" destination="JQR-Jl-asa" id="S2R-j8-aMD"/>
                         <outlet property="passwordTextField" destination="QA1-s1-NgX" id="QSZ-vo-zBQ"/>
                     </connections>
                 </viewController>
@@ -1330,7 +1341,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7wa-U8-ieD" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
-                                <rect key="frame" x="36" y="111" width="343" height="456"/>
+                                <rect key="frame" x="36" y="102" width="343" height="456"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YJg-tx-lsE" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
@@ -1530,6 +1541,13 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                 <color key="textColor" red="0.58431372550000005" green="0.45882352939999999" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3c-ci-uz3">
+                                <rect key="frame" x="36" y="573" width="343" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Wq9-fP-SRv"/>
@@ -1539,6 +1557,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="BaF-tC-VsM" id="asr-fj-kYs"/>
                         <outlet property="emailTextField" destination="IfE-fx-dWI" id="ufw-xD-ao4"/>
+                        <outlet property="errorValidation" destination="L3c-ci-uz3" id="1ev-85-QUv"/>
                         <outlet property="passwordTextField" destination="260-Gm-ahw" id="fZ4-2j-IqP"/>
                         <outlet property="profileImageView" destination="PPJ-wg-ZUq" id="vXw-oo-47Q"/>
                         <outlet property="usernameTextField" destination="B4w-6A-mbF" id="W9p-2t-ani"/>

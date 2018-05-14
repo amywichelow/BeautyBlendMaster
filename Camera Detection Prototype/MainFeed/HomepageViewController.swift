@@ -11,6 +11,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
 
     var floaty = Floaty()
     
+        
 
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
@@ -51,7 +52,6 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
 
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         collectionView?.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
-
 
         tutorialRef.observeSingleEvent(of: .value, with: { snapshot in
 
@@ -160,7 +160,26 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         cell.tutorialName?.text = tutorial.tutorialName
         cell.username.text = tutorial.user
         cell.duration.text = "\(tutorial.duration)"
+        cell.difficulty.text = "\(tutorial.difficulty)"
         cell.animate()
+        
+        print("\(tutorial.difficulty)")
+        
+        if cell.difficulty.text == "\(1)" {
+            cell.difficultyImage.image = UIImage(named: "difficulty1")
+        }
+        if cell.difficulty.text == "\(2)" {
+            cell.difficultyImage.image = UIImage(named: "difficulty2")
+        }
+        if cell.difficulty.text == "\(3)" {
+            cell.difficultyImage.image = UIImage(named: "difficulty3")
+        }
+        if cell.difficulty.text == "\(4)" {
+            cell.difficultyImage.image = UIImage(named: "difficulty4")
+        }
+        if cell.difficulty.text == "\(5)" {
+            cell.difficultyImage.image = UIImage(named: "difficulty5")
+        }
         
         return cell
     }
