@@ -13,17 +13,6 @@ import Lottie
 
 class AddTutorialStep: UIViewController {
     
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
-        view.endEditing(true)
-    }
-    
-    //text field goes away when done is pressed
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-
     var tutorial: Tutorial!
     
     let userTutorial = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials").childByAutoId()
@@ -55,9 +44,6 @@ class AddTutorialStep: UIViewController {
         
         stepLabel.text = "Step 1"
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddTutorialStep.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
     }
     
     //HOW TO CHECK A PICTURE HAS BEEN ADDED BEFORE ADDING ANOTHER STEP?
@@ -79,7 +65,7 @@ class AddTutorialStep: UIViewController {
         
         stepTableView.reloadData()
             
-            print("Step \(tutorialSteps.count + 1)")
+            print("Step \(tutorialSteps.count)")
                         
         }
         
@@ -108,7 +94,7 @@ class AddTutorialStep: UIViewController {
     
     func upload(completion: @escaping (_ success: Bool) -> Void) {
 
-        newTutorialRef.setValue(tutorial.toDict()) { error, ref in
+        newTutorialRef.updateChildValues(tutorial.toDict()) { error, ref in
             
             var count = 0
 
