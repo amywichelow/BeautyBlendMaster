@@ -14,11 +14,8 @@ import Lottie
 class AddTutorialStep: UIViewController {
     
     var tutorial: Tutorial!
-    
-    let userTutorial = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials").childByAutoId()
-    
     let newTutorialRef = Database.database().reference().child("tutorials").childByAutoId()
-    
+    let userTutorial = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials").childByAutoId()
     var tutorialSteps = [TutorialStep]()
     
     let storageRef = Storage.storage().reference(forURL: "gs://beautyblend-26cff.appspot.com").child("CoverImage").child(Auth.auth().currentUser!.uid)
@@ -94,7 +91,7 @@ class AddTutorialStep: UIViewController {
     
     func upload(completion: @escaping (_ success: Bool) -> Void) {
 
-        newTutorialRef.updateChildValues(tutorial.toDict()) { error, ref in
+        newTutorialRef.setValue(tutorial.toDict()) { error, ref in
             
             var count = 0
 

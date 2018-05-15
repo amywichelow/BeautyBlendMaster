@@ -33,7 +33,6 @@ class Tutorial {
         } else {
             return nil
         }
-        
     }
     
     init(tutorialName: String, duration: Int, difficulty: Int) {
@@ -42,5 +41,4 @@ class Tutorial {
         self.difficulty = difficulty
         
     }
-    
 }

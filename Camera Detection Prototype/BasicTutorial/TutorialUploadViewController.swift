@@ -86,19 +86,17 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
 
         let vc = segue.destination as! AddTutorialStep
         vc.tutorial = tutorial
-
     }
-
 
 }
 
-//extension TutorialUploadViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//
-//        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else { return }
-//        coverImageView.image = image
-//        dismiss(animated: true, completion: nil)
-//
-//    }
-//}
+extension TutorialUploadViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+
+        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else { return }
+        coverImageView.image = image
+        dismiss(animated: true, completion: nil)
+
+    }
+}
 

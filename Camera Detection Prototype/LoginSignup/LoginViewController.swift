@@ -26,7 +26,6 @@ class LoginViewController: UIViewController {
     //FORGOT PASSWORD
     @IBAction func forgotPasswordButton(_ sender: UIButton) {
         
-        
         sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         
         UIView.animate(withDuration: 1.5,
@@ -35,10 +34,8 @@ class LoginViewController: UIViewController {
                        initialSpringVelocity: CGFloat(8.0),
                        options: UIViewAnimationOptions.allowUserInteraction,
                        animations: {
-                        sender.transform = CGAffineTransform.identity
-        },
-                       completion: { Void in()  }
-        )
+                        sender.transform = CGAffineTransform.identity},
+                       completion: { Void in()  })
         
         let email = self.emailTextField.text
         Auth.auth().sendPasswordReset(withEmail: email!) { error in
@@ -83,51 +80,49 @@ class LoginViewController: UIViewController {
                        initialSpringVelocity: CGFloat(8.0),
                        options: UIViewAnimationOptions.allowUserInteraction,
                        animations: {
-                        sender.transform = CGAffineTransform.identity
-        },
-                       completion: { Void in()  }
-        )
+                        sender.transform = CGAffineTransform.identity },
+                       completion: { Void in()  })
         
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         
-        Auth.auth().signIn(withEmail: email, password: password) { user, error in
+            Auth.auth().signIn(withEmail: email, password: password) { user, error in
             
-            if let firebaseError = error {
-                print(firebaseError.localizedDescription)
-                
-                self.errorValidation.textColor = self.passwordRed
-                self.errorValidation.text = "Incorrect email address or password"
-                
-                let animation = CABasicAnimation(keyPath: "position")
-                animation.duration = 0.07
-                animation.repeatCount = 4
-                animation.autoreverses = true
-                animation.fromValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x - 10, y: self.errorValidation.center.y))
-                animation.toValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x + 10, y: self.errorValidation.center.y))
-                
-                self.errorValidation.layer.add(animation, forKey: "position")
-                
-                return
-            }
-            
-            if let user = user {
-                
-                let ref = Database.database().reference(withPath: "users/\(user.uid)")
-                ref.observeSingleEvent(of: .value, with: { snapshot in
+                if let firebaseError = error {
+                    print(firebaseError.localizedDescription)
                     
-                    let snapValue = snapshot.value as! [String: Any]
-                    CustomUser.shared.username = snapValue["username"] as! String
+                    self.errorValidation.textColor = self.passwordRed
+                    self.errorValidation.text = "Incorrect email address or password"
+                    
+                    let animation = CABasicAnimation(keyPath: "position")
+                    animation.duration = 0.07
+                    animation.repeatCount = 4
+                    animation.autoreverses = true
+                    animation.fromValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x - 10, y: self.errorValidation.center.y))
+                    animation.toValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x + 10, y: self.errorValidation.center.y))
+                    
+                    self.errorValidation.layer.add(animation, forKey: "position")
+                    
+                    return
+                }
             
-                })
-                
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
-                self.present(vc!, animated: true, completion: nil)
-                
-                }  else {
+                if let user = user {
+                    
+                    let ref = Database.database().reference(withPath: "users/\(user.uid)")
+                        ref.observeSingleEvent(of: .value, with: { snapshot in
+                        
+                            let snapValue = snapshot.value as! [String: Any]
+                            CustomUser.shared.username = snapValue["username"] as! String
+                    
+                    })
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
+                    self.present(vc!, animated: true, completion: nil)
+                    
+                    }  else {
+                }
             }
         }
     }
-}
 
 extension UIColor {
     convenience init(hexString: String) {

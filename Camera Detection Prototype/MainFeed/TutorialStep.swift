@@ -22,7 +22,6 @@ class TutorialStep {
         } else {
             return nil
         }
-        
     }
     
     init(tutorialStepDescription: String) {
