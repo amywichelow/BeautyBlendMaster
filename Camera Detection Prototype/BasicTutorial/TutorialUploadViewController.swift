@@ -16,12 +16,10 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
 
     }
 
-
-
     @IBAction func chooseImageButton(_ sender: Any) {
-//        let imagePickerController = UIImagePickerController()
-//        imagePickerController.delegate = self
-//        present(imagePickerController, animated: true, completion: nil)
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
     }
 
     @IBOutlet weak var durationSlider: UISlider!
@@ -46,9 +44,8 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tutorialNameTextField: UITextField!
 
-    @IBOutlet weak var coverImageView: UIImageView!
-
-
+    @IBOutlet weak var mainImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,8 +55,7 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func cancelButton(_ sender: Any) {
 
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
-        self.present(vc!, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
 
     }
 
@@ -69,21 +65,17 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
 
         guard let tutorialName = tutorialNameTextField.text, !tutorialName.isEmpty  else {
             let alertController = UIAlertController(title: "Error", message: "Please ensure all fields are complete", preferredStyle: .alert)
-
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
-
             present(alertController, animated: true, completion: nil)
-
-            tutorial = Tutorial(tutorialName: self.tutorialNameTextField.text!, duration: Int(self.durationValue.text!)!, difficulty: Int(self.difficultyValue.text!)!)
-
             return
-
         }
+
+        tutorial = Tutorial(mainImage: self.mainImageView.image!, tutorialName: self.tutorialNameTextField.text!, duration: Int(self.durationValue.text!)!, difficulty: Int(self.difficultyValue.text!)!)
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
         let vc = segue.destination as! AddTutorialStep
         vc.tutorial = tutorial
     }
@@ -94,7 +86,7 @@ extension TutorialUploadViewController: UIImagePickerControllerDelegate,UINaviga
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
 
         guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else { return }
-        coverImageView.image = image
+        mainImageView.image = image
         dismiss(animated: true, completion: nil)
 
     }

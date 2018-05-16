@@ -16,6 +16,8 @@ class Tutorial {
     let tutorialName: String
     let difficulty: Int
     let duration: Int
+    var mainImageId: String?
+    var mainImage: UIImage?
     
     let steps = [TutorialStep]()
     
@@ -27,6 +29,7 @@ class Tutorial {
             tutorialName = snapshotData ["tutorialName"] as! String
             difficulty = snapshotData ["difficulty"] as! Int
             duration = snapshotData ["duration"] as! Int
+            mainImageId = snapshotData ["mainImageId"] as? String
             
             print(snapshot.childSnapshot(forPath: "steps"))
             
@@ -35,10 +38,10 @@ class Tutorial {
         }
     }
     
-    init(tutorialName: String, duration: Int, difficulty: Int) {
+    init(mainImage: UIImage, tutorialName: String, duration: Int, difficulty: Int) {
         self.tutorialName = tutorialName
         self.duration = duration
         self.difficulty = difficulty
-        
+        self.mainImage = mainImage
     }
 }

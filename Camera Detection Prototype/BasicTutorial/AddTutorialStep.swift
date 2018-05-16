@@ -17,8 +17,7 @@ class AddTutorialStep: UIViewController {
     let newTutorialRef = Database.database().reference().child("tutorials").childByAutoId()
     let userTutorial = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials").childByAutoId()
     var tutorialSteps = [TutorialStep]()
-    
-    let storageRef = Storage.storage().reference(forURL: "gs://beautyblend-26cff.appspot.com").child("CoverImage").child(Auth.auth().currentUser!.uid)
+
 
         
     @IBOutlet weak var stepLabel: UILabel!
@@ -90,34 +89,78 @@ class AddTutorialStep: UIViewController {
     }
     
     func upload(completion: @escaping (_ success: Bool) -> Void) {
-
-        newTutorialRef.setValue(tutorial.toDict()) { error, ref in
+        
+        guard let image = self.tutorial.mainImage else { return }
+        let mediaUploader = MediaUploader()
+        
+        mediaUploader.uploadMedia(images: [image]) { urls in
             
-            var count = 0
-
-            for tutorial in self.tutorialSteps {
-                ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
-                    count += 1
-                    if count == self.tutorialSteps.count {
-                        completion(true)
-                    }
+            if let mainImageId = urls.first {
+                self.tutorial.mainImageId = mainImageId
+                
+                self.newTutorialRef.setValue(self.tutorial.toDict(), withCompletionBlock: { errer, ref in
+                    
                 })
+            
+                
             }
+            
         }
         
-        userTutorial.updateChildValues(tutorial.toDict()) { error, ref in
-
-            var count = 0
-
-            for tutorial in self.tutorialSteps {
-                ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
-                    count += 1
-                    if count == self.tutorialSteps.count {
-                        completion(true)
-                    }
-                })
-            }
-        }
+        
+        
+        
+        
+        
+//        if let image = self.tutorial.mainImage {
+//
+//            let ref = Database.database().reference(withPath: "tutorials").childByAutoId()
+//
+//                mediaUploader.uploadMedia(images: [image]) { urls in
+//
+//                ref.updateChildValues(["mainImage": urls.first!], withCompletionBlock: { error, ref in
+//                })
+//            }
+//        }
+//
+//        if let image = self.tutorial.mainImage {
+//
+//            let userRef = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials").childByAutoId()
+//            let mediaUploader = MediaUploader()
+//                mediaUploader.uploadMedia(images: [image]) { urls in
+//
+//                userRef.updateChildValues(["mainImage": urls.first!], withCompletionBlock: { error, ref in
+//                })
+//            }
+//        }
+//
+//        newTutorialRef.setValue(tutorial.toDict()) { error, ref in
+//
+//            var count = 0
+//
+//            for tutorial in self.tutorialSteps {
+//                ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
+//                    count += 1
+//                    if count == self.tutorialSteps.count {
+//                        completion(true)
+//                    }
+//                })
+//            }
+//        }
+//
+//        userTutorial.updateChildValues(tutorial.toDict()) { error, ref in
+//
+//            var count = 0
+//
+//            for tutorial in self.tutorialSteps {
+//                ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
+//                    count += 1
+//                    if count == self.tutorialSteps.count {
+//                        completion(true)
+//                    }
+//                })
+//            }
+//        }
     }
     
 // HOW TO UPLOAD COVER IMAGE SO IT APPEARS ON HOMEPAGE CELL

@@ -91,7 +91,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     func usernameText(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = usernameText.text else { return true }
-        let limitLength = 20
+        
+        let limitLength = 15
         let newLength = text.characters.count + string.characters.count - range.length
         return newLength <= limitLength
     }
@@ -125,6 +126,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         ref.updateChildValues(["username": self.usernameText.text!]) { error, ref in
         
             if (self.usernameText.text?.isEmpty)! {
+                
+                let alert = UIAlertController(title: "Error", message: "Please choose a username.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
                 
             } else {
                 

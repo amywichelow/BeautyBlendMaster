@@ -32,7 +32,7 @@
                             <rect key="frame" x="1" y="1" width="165" height="300"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="autumnFinalStepAsset 1" translatesAutoresizingMaskIntoConstraints="NO" id="I7Y-Ve-F7y">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I7Y-Ve-F7y">
                                     <rect key="frame" x="-1" y="0.0" width="166" height="224"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
@@ -112,7 +112,4 @@
             <point key="canvasLocation" x="-98.5" y="-224"/>
         </view>
     </objects>
-    <resources>
-        <image name="autumnFinalStepAsset 1" width="3024" height="4032"/>
-    </resources>
 </document>

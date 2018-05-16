@@ -398,7 +398,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmi-UW-5Sj">
-                                <rect key="frame" x="51" y="625" width="312" height="74"/>
+                                <rect key="frame" x="51" y="620" width="312" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                 <state key="normal" image="addStepsFinalAsset 21">
@@ -427,6 +427,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                         <outlet property="difficultyValue" destination="DyA-SI-o8d" id="CJg-m0-iEh"/>
                         <outlet property="durationSlider" destination="LMb-7G-5Nl" id="MBh-JZ-SeN"/>
                         <outlet property="durationValue" destination="1Q9-2j-tDw" id="Tzj-DP-y1K"/>
+                        <outlet property="mainImageView" destination="y77-RC-xVX" id="ZwG-sP-IJ9"/>
                         <outlet property="tutorialNameTextField" destination="vbt-Np-mpd" id="jVC-Ju-150"/>
                     </connections>
                 </viewController>
@@ -443,7 +444,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygp-WQ-r2S">
-                                <rect key="frame" x="22" y="649" width="179" height="65"/>
+                                <rect key="frame" x="22" y="634" width="179" height="65"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                 <state key="normal" image="addStepFinalAsset 23">
@@ -454,7 +455,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bY-2n-Nca">
-                                <rect key="frame" x="209" y="649" width="181" height="65"/>
+                                <rect key="frame" x="209" y="634" width="181" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="finishUploadFinalAsset 22"/>
                                 <connections>
@@ -620,8 +621,14 @@ Create and upload step by step tutorials for other users to follow and learn fro
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7CR-Dx-Gqv" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
-                                <rect key="frame" x="26" y="133" width="362" height="338"/>
+                                <rect key="frame" x="26" y="133" width="362" height="348"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KO5-Dv-rFw">
+                                        <rect key="frame" x="0.0" y="0.0" width="362" height="348"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.92549019607843142" green="0.89411764705882357" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -629,24 +636,22 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KO5-Dv-rFw">
-                                <rect key="frame" x="26" y="133" width="362" height="337"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fPV-C6-ciR" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
-                                <rect key="frame" x="26" y="480" width="362" height="128"/>
+                                <rect key="frame" x="26" y="489" width="362" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wC4-LF-j0U">
-                                        <rect key="frame" x="8" y="8" width="346" height="112"/>
+                                        <rect key="frame" x="18" y="8" width="325" height="103"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.92549019607843142" green="0.89411764705882357" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.21400390624999999" green="0.21400390624999999" blue="0.21400390624999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="n20-tx-J8r" id="sb5-m9-arH"/>
+                                        </connections>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96470588235294119" green="0.94901960784313721" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.92549019607843142" green="0.89411764705882357" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="10"/>
@@ -705,6 +710,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                         <outlet property="previousStepOutlet" destination="Pt1-td-VDW" id="HPa-cZ-tQ0"/>
                         <outlet property="stepLabel" destination="ICD-N6-HFZ" id="USX-77-ZWT"/>
                         <outlet property="tutorialStepDescription" destination="wC4-LF-j0U" id="0se-Yx-4YK"/>
+                        <segue destination="eky-te-3H6" kind="show" id="dZM-Lc-4Hb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Odb-KH-SIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -841,7 +847,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.92549019607843142" green="0.89411764705882357" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="120" id="Clb-9A-b7g" customClass="ShowTutorialCell" customModule="Camera_Detection_Prototype" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="120" id="Clb-9A-b7g" customClass="ShowTutorialCell" customModule="Camera_Detection_Prototype" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Clb-9A-b7g" id="G03-h6-mt4">
@@ -860,7 +866,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vw-ga-fas">
-                                                                    <rect key="frame" x="95" y="38" width="25" height="17"/>
+                                                                    <rect key="frame" x="97" y="38" width="18" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -871,12 +877,23 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXY-uW-tSq">
-                                                                    <rect key="frame" x="123" y="41" width="47" height="12"/>
+                                                                    <rect key="frame" x="116" y="42" width="47" height="12"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="12"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMp-2j-0zT">
+                                                                    <rect key="frame" x="96" y="63" width="108" height="18"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLG-p1-rmy">
+                                                                    <rect key="frame" x="96" y="63" width="108" height="18"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                                                </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.96470588235294119" green="0.94901960784313721" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <userDefinedRuntimeAttributes>
@@ -977,7 +994,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PVw-2h-ciE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2177" y="765"/>
+            <point key="canvasLocation" x="2175.36231884058" y="764.67391304347836"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="MmA-i7-b8M">

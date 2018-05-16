@@ -12,12 +12,10 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
     var floaty = Floaty()
     
     var tutorials = [Tutorial]()
-    
-    let items = [""]
 
     let tutorialRef = Database.database().reference().child("tutorials")
     
-    var filtered:[String] = []
+    var filtered = [Tutorial]()
     var searchActive : Bool = false
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -104,12 +102,14 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
     func updateSearchResults(for searchController: UISearchController) {
         let searchString = searchController.searchBar.text
         
-        filtered = items.filter({ (item) -> Bool in
-            let countryText: NSString = item as NSString
+        filtered.removeAll()
+        
+        filtered = tutorials.filter({ tutorial -> Bool in
+            
+            return tutorial.tutorialName.lowercased() == searchString!.lowercased()
 
-            return (countryText.range(of: searchString!, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
         })
-
+        
         collectionView?.reloadData()
 
     }
@@ -154,6 +154,13 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         cell.username.text = tutorial.user
         cell.duration.text = "\(tutorial.duration)"
         cell.difficulty.text = "\(tutorial.difficulty)"
+        
+        
+        Storage.storage().reference(withPath: tutorial.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
+            tutorial.mainImage = UIImage(data: data!)
+            cell.mainTutorialImage.image = tutorial.mainImage
+        })
+       
         cell.animate()
         
         print("\(tutorial.difficulty)")
@@ -173,7 +180,6 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         if cell.difficulty.text == "\(5)" {
             cell.difficultyImage.image = UIImage(named: "difficulty5")
         }
-        
         return cell
     }
     
@@ -188,12 +194,9 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
     
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        collectionView.deselectItem(at: indexPath, animated: true)
-        
         let tutorial = tutorials[indexPath.row]
         performSegue(withIdentifier: "showTutorial", sender: tutorial)
     }
-    
     
     func collectionView(_ collectionView: UICollectionView,
                     layout collectionViewLayout: UICollectionViewLayout,
