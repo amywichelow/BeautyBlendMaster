@@ -80,7 +80,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
                 print((error as NSError).code)
             }
                  let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
-            self.present(vc!, animated: true, completion: nil)
+                    self.present(vc!, animated: true, completion: nil)
         }
         
         floaty.paddingX = self.view.frame.width/2 - floaty.frame.width/2
@@ -154,7 +154,6 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         cell.username.text = tutorial.user
         cell.duration.text = "\(tutorial.duration)"
         cell.difficulty.text = "\(tutorial.difficulty)"
-        
         
         Storage.storage().reference(withPath: tutorial.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
             tutorial.mainImage = UIImage(data: data!)

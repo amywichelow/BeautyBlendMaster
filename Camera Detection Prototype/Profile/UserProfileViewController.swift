@@ -11,7 +11,6 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var userUsername: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileTableView: UITableView!
-    
     @IBAction func editProfileButton(_ sender: Any) {
         
     }
@@ -82,6 +81,12 @@ extension UserProfileViewController: UITableViewDataSource {
         
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let destination = StepViewContoller()
+        navigationController?.pushViewController(destination, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = profileTableView.dequeueReusableCell(withIdentifier: "cell") as! ShowTutorialCell
@@ -89,6 +94,28 @@ extension UserProfileViewController: UITableViewDataSource {
         let user = tutorial[indexPath.row]
         cell.tutorialNameLabel.text = user.tutorialName
         cell.durationLabel.text = "\(user.duration)"
+        cell.difficultyLabel.text = "\(user.difficulty)"
+        
+        Storage.storage().reference(withPath: user.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
+            user.mainImage = UIImage(data: data!)
+            cell.mainTutorialImage.image = user.mainImage
+        })
+        
+        if cell.difficultyLabel.text == "\(1)" {
+            cell.difficultyImage.image = UIImage(named: "difficulty1")
+        }
+        if cell.difficultyLabel.text == "\(2)" {
+            cell.difficultyImage.image = UIImage(named: "difficulty2")
+        }
+        if cell.difficultyLabel.text == "\(3)" {
+            cell.difficultyImage.image = UIImage(named: "difficulty3")
+        }
+        if cell.difficultyLabel.text == "\(4)" {
+            cell.difficultyImage.image = UIImage(named: "difficulty4")
+        }
+        if cell.difficultyLabel.text == "\(5)" {
+            cell.difficultyImage.image = UIImage(named: "difficulty5")
+        }
        
         return cell
         

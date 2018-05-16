@@ -63,7 +63,7 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func nextStepButton(_ sender: Any) {
 
-        guard let tutorialName = tutorialNameTextField.text, !tutorialName.isEmpty  else {
+        guard let tutorialName = tutorialNameTextField.text, !tutorialName.isEmpty, let mainImage = mainImageView.image, !(mainImageView != nil)  else {
             let alertController = UIAlertController(title: "Error", message: "Please ensure all fields are complete", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)

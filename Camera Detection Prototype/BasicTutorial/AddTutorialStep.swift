@@ -81,15 +81,18 @@ class AddTutorialStep: UIViewController {
             
         upload { success in
             print("All steps uploaded")
+            }
             
+        uploadImage { success in
+            print("main image uploaded")
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
             self.present(vc!, animated: true, completion: nil)
             }
         }
     }
     
-    func upload(completion: @escaping (_ success: Bool) -> Void) {
-        
+    func uploadImage(completion: @escaping (_ success: Bool) -> Void) {
+
         guard let image = self.tutorial.mainImage else { return }
         let mediaUploader = MediaUploader()
         
@@ -99,82 +102,46 @@ class AddTutorialStep: UIViewController {
                 self.tutorial.mainImageId = mainImageId
                 
                 self.newTutorialRef.setValue(self.tutorial.toDict(), withCompletionBlock: { errer, ref in
-                    
+                    self.userTutorial.setValue(self.tutorial.toDict(), withCompletionBlock: { error, ref in
+                        
+                    })
                 })
-            
-                
             }
-            
         }
         
-        
-        
-        
-        
-        
-//        if let image = self.tutorial.mainImage {
-//
-//            let ref = Database.database().reference(withPath: "tutorials").childByAutoId()
-//
-//                mediaUploader.uploadMedia(images: [image]) { urls in
-//
-//                ref.updateChildValues(["mainImage": urls.first!], withCompletionBlock: { error, ref in
-//                })
-//            }
-//        }
-//
-//        if let image = self.tutorial.mainImage {
-//
-//            let userRef = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials").childByAutoId()
-//            let mediaUploader = MediaUploader()
-//                mediaUploader.uploadMedia(images: [image]) { urls in
-//
-//                userRef.updateChildValues(["mainImage": urls.first!], withCompletionBlock: { error, ref in
-//                })
-//            }
-//        }
-//
-//        newTutorialRef.setValue(tutorial.toDict()) { error, ref in
-//
-//            var count = 0
-//
-//            for tutorial in self.tutorialSteps {
-//                ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
-//                    count += 1
-//                    if count == self.tutorialSteps.count {
-//                        completion(true)
-//                    }
-//                })
-//            }
-//        }
-//
-//        userTutorial.updateChildValues(tutorial.toDict()) { error, ref in
-//
-//            var count = 0
-//
-//            for tutorial in self.tutorialSteps {
-//                ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
-//                    count += 1
-//                    if count == self.tutorialSteps.count {
-//                        completion(true)
-//                    }
-//                })
-//            }
-//        }
     }
     
-// HOW TO UPLOAD COVER IMAGE SO IT APPEARS ON HOMEPAGE CELL
+    func upload(completion: @escaping (_ success: Bool) -> Void) {
         
-//        if let coverImage = tutorial.coverImage {
-//            let mediaUploader = MediaUploader()
-//            mediaUploader.uploadMedia(images: [coverImage]) { urls in
-//
-//                ref.updateChildValues(["coverImage": urls.first!], withCompletionBlock: { error, ref in
-//
-//                })
-//            }
-//        }
-    
+                newTutorialRef.setValue(tutorial.toDict()) { error, ref in
+
+                    var count = 0
+
+                    for tutorial in self.tutorialSteps {
+                        ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
+                            count += 1
+                            if count == self.tutorialSteps.count {
+                                completion(true)
+                            }
+                        })
+                    }
+                }
+
+                userTutorial.updateChildValues(tutorial.toDict()) { error, ref in
+
+                    var count = 0
+
+                    for tutorial in self.tutorialSteps {
+                        ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
+                            count += 1
+                            if count == self.tutorialSteps.count {
+                                completion(true)
+                            }
+                        })
+                    }
+                }
+        }
+
     let limitLength = 250
     func tutorialStepDescription(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = tutorialStepDescription.text else { return true }

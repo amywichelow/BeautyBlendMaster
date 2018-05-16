@@ -29,29 +29,39 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         present(picker, animated: true, completion: nil)
     }
     
+//    var user = firebase.auth().currentUser;
+//
+//    user.delete().then(function() {
+//    // User deleted.
+//    }).catch(function(error) {
+//    // An error happened.
+//    });
+//
+    
     @IBAction func deleteUserAccountButton(_ sender: Any) {
         
-        let user = Auth.auth().currentUser
-        
         let alert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Yes", style: .default, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-        
-        user?.delete { error in
-            
-            if error != nil {
-                let alert = UIAlertController(title: "Error", message: "Something went wrong and your account could not be deleted", preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
                 
-            } else {
+                var user = Auth.auth().currentUser
+                user?.delete(completion: { error in
+                    
+                })
+            }))
+//                    { error in
+//                if error != nil {
+//                    print(error as Any)
+//                } else {
+//
+//                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
+//                    self.present(vc!, animated: true, completion: nil)                }
+//            }
+//        }))
 
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
-        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+
+    
     }
     
     
@@ -59,12 +69,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         updateUserInfo()
         
-        self.navigationController?.popToRootViewController(animated: true)
-        
         let alert = UIAlertController(title: "Success", message: "Profile has been updated.", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+        
+        self.navigationController?.popToRootViewController(animated: true)
+
        
     }
     
