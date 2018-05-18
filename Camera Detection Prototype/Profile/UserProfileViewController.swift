@@ -5,7 +5,7 @@ import FirebaseStorage
 class UserProfileViewController: UIViewController {
     
     let ref = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials")
-    let tutorialRef = Database.database().reference().child("tutorials").childByAutoId()
+    let tutorialRef = Database.database().reference().child("tutorials")
     
     var tutorial = [Tutorial]()
     
@@ -73,23 +73,18 @@ extension UserProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle:   UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        guard let uid = Auth.auth().currentUser?.uid else {
-            return
-        }
+        let tutorials = tutorial[indexPath.row]
+
+        
         if editingStyle == .delete {
-            let alertController = UIAlertController(title: "Warning", message: "Are you sure you want to delete this tutorial?", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Warning", message: "Are you sure you want to delete this tutorial from your profile?", preferredStyle: .alert)
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+                self.ref.child(tutorials.uuid!).removeValue()
+                self.tutorialRef.child(tutorials.uuid!).removeValue()
                 self.tutorial.remove(at: indexPath.row)
                 self.profileTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         })
-        
-        Database.database().reference().child("users").child(uid).child("tutorials").childByAutoId().removeValue { (error, ref) in
-            if error != nil {
-                print("failed to delete tutorial", error)
-                return
-            }
-            
-        }
+
             alertController.addAction(deleteAction)
 
             let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
@@ -126,7 +121,7 @@ extension UserProfileViewController: UITableViewDataSource {
         
         let user = tutorial[indexPath.row]
         cell.tutorialNameLabel.text = user.tutorialName
-        cell.durationLabel.text = "\(user.duration)"
+        cell.durationLabel.text = "\(user.duration) minutes"
         cell.difficultyLabel.text = "\(user.difficulty)"
         
         Storage.storage().reference(withPath: user.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in

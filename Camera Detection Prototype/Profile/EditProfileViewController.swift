@@ -64,36 +64,17 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.present(alertController, animated: true, completion: nil)
     
     }
-//        let alert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-//
-//                let user = Auth.auth().currentUser
-//                user?.delete(completion: { error in
-//
-//                })
-//            }))
-////                    { error in
-////                if error != nil {
-////                    print(error as Any)
-////                } else {
-////
-////                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
-////                    self.present(vc!, animated: true, completion: nil)                }
-////            }
-////        }))
-//
-//        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-//        self.present(alert, animated: true)
     
     
+    @IBOutlet weak var saveButton: UIButton!
     @IBAction func saveButton(_ sender: Any) {
         
         updateUserInfo()
         
-//        let alert = UIAlertController(title: "Success", message: "Profile has been updated.", preferredStyle: .alert)
-//        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-//        alert.addAction(action)
-//        self.present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Success", message: "Profile has been updated.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
         
         self.navigationController?.popToRootViewController(animated: true)
 
@@ -109,9 +90,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             if let user = Users(snapshot: snapshot) {
                 self.usernameText.text = user.username
             }
-        })
-        
-        userRef.observeSingleEvent(of: .value, with: { snapshot in
             if let user = Users(snapshot: snapshot) {
                 print(user.userImageUrl as Any)
                 
@@ -121,7 +99,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                     self.profileImageView.image = image
                 })
             }
-            print(snapshot)
         })
     }
     
@@ -145,59 +122,87 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         mediaUploader.uploadMedia(images: [image!]) { urls in
                 
         ref.updateChildValues(["profileImage": urls.first!]) { error, ref in
-                
+            
+            return
+            
             }
         }
         
-        ref.updateChildValues(["username": self.usernameText.text!]) { error, ref in
-            
-            
-            if (self.usernameText.text?.isEmpty)! {
+            let fieldTextLength = usernameText.text!.characters.count
+            let username = Database.database().reference().child("usernames")
+
+            if  fieldTextLength < 6 || fieldTextLength  > 18 {
                 
-                
-            } else {
-                
-                let alert = UIAlertController(title: "Success", message: "Username has been updated.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Sorry", message: "This username is not long enough", preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
                 
-                self.navigationController?.popToRootViewController(animated: true)
+            } else {
                 
+                username.observeSingleEvent(of: .value) { (snapshot) in
+                    if snapshot.exists(){
+                        print("username already exists")
+                        
+                        let alert = UIAlertController(title: "Sorry", message: "This username already exists", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alert.addAction(action)
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    } else {
+                        
+                        ref.updateChildValues(["username": self.usernameText.text!]) { error, ref in
+                            
+                            return
+                        }
                     }
-            }
+                }
+                
+        }
+
+        
         
         user?.updateEmail(to: self.newEmail.text!) { error in
             
             if (self.newEmail.text?.isEmpty)! {
                 
-            } else {
+            }
+            
+            if let firebaseError = error {
                 
-                let alert = UIAlertController(title: "Success", message: "Email has been updated.", preferredStyle: .alert)
+                print(firebaseError.localizedDescription)
+                let alert = UIAlertController(title: "Error", message: firebaseError.localizedDescription, preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
                 
-                self.navigationController?.popToRootViewController(animated: true)
+                return
+                
+            } else {
+                
+                
+                return
                 
             }
         }
         
         user?.updatePassword(to: self.newPassword.text!) { error in
             
-            if (self.newPassword.text?.isEmpty)! {
+            if (self.newEmail.text?.isEmpty)! {
                 
-            } else {
-                
-                    let alert = UIAlertController(title: "Success", message: "Password has been updated.", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    alert.addAction(action)
-                    self.present(alert, animated: true, completion: nil)
-    
-                self.navigationController?.popToRootViewController(animated: true)
+            }
+            
+                return
         }
+    
     }
-}
+        
+    func isValidPasswordString(pwdStr:String) -> Bool {
+        
+        let pwdRegEx = "(?:(?:(?=.*?[0-9])(?=.*?[-!@#$%&*ˆ+=_])|(?:(?=.*?[0-9])|(?=.*?[A-Z])|(?=.*?[-!@#$%&*ˆ+=_])))|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[-!@#$%&*ˆ+=_]))[A-Za-z0-9-!@#$%&*ˆ+=_]{6,15}"
+        let pwdTest = NSPredicate(format:"SELF MATCHES %@", pwdRegEx)
+        return pwdTest.evaluate(with: pwdStr)
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //create holder variable for chosen image

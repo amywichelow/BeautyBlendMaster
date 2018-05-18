@@ -76,42 +76,60 @@ class AddTutorialStep: UIViewController {
             alertController.addAction(defaultAction)
             
             present(alertController, animated: true, completion: nil)
+            
+            return
         
         } else {
-            
+        
         upload { success in
             print("All steps uploaded")
-            
-            self.uploadImage { success in
-            print("main image uploaded")
+            }
+//        uploadImage { success in
+//            print("main image uploaded")
+//
+//            }
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
             self.present(vc!, animated: true, completion: nil)
-                }
-            }
         }
     }
     
-    func uploadImage(completion: @escaping (_ success: Bool) -> Void) {
-
-        guard let image = self.tutorial.mainImage else { return }
-        let mediaUploader = MediaUploader()
-        
-        mediaUploader.uploadMedia(images: [image]) { urls in
-            
-            if let mainImageId = urls.first {
-                self.tutorial.mainImageId = mainImageId
-                
-                self.newTutorialRef.setValue(self.tutorial.toDict(), withCompletionBlock: { errer, ref in
-                    self.userTutorial.setValue(self.tutorial.toDict(), withCompletionBlock: { error, ref in
-                        
-                    })
-                })
-            }
-        }
-        
-    }
+//    func uploadImage(completion: @escaping (_ success: Bool) -> Void) {
+//
+//        guard let image = self.tutorial.mainImage else { return }
+//        let mediaUploader = MediaUploader()
+//
+//        mediaUploader.uploadMedia(images: [image]) { urls in
+//
+//            if let mainImageId = urls.first {
+//                self.tutorial.mainImageId = mainImageId
+//
+//                self.newTutorialRef.setValue(self.tutorial.toDict(), withCompletionBlock: { errer, ref in
+//                    self.userTutorial.setValue(self.tutorial.toDict(), withCompletionBlock: { error, ref in
+//
+//                    })
+//                })
+//            }
+//        }
+//
+//    }
     
     func upload(completion: @escaping (_ success: Bool) -> Void) {
+        
+                guard let image = self.tutorial.mainImage else { return }
+                let mediaUploader = MediaUploader()
+        
+                mediaUploader.uploadMedia(images: [image]) { urls in
+                    
+                    if let mainImageId = urls.first {
+                        self.tutorial.mainImageId = mainImageId
+                        
+                        self.newTutorialRef.setValue(self.tutorial.toDict(), withCompletionBlock: { errer, ref in
+                            self.userTutorial.setValue(self.tutorial.toDict(), withCompletionBlock: { error, ref in
+                                
+                            })
+                        })
+                    }
+                }
         
                 newTutorialRef.setValue(tutorial.toDict()) { error, ref in
 
@@ -140,6 +158,8 @@ class AddTutorialStep: UIViewController {
                         })
                     }
                 }
+        
+
         }
 
     let limitLength = 250

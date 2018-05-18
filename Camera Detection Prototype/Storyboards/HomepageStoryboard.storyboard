@@ -866,16 +866,9 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vw-ga-fas">
-                                                                    <rect key="frame" x="94" y="40" width="21" height="17"/>
+                                                                    <rect key="frame" x="94" y="40" width="166" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXY-uW-tSq">
-                                                                    <rect key="frame" x="115" y="44" width="47" height="12"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="12"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -1161,6 +1154,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                         <outlet property="newEmail" destination="Zq9-G0-GhE" id="7T1-yk-lwB"/>
                         <outlet property="newPassword" destination="78k-dX-wSd" id="xBP-xv-BJk"/>
                         <outlet property="profileImageView" destination="mZc-kV-NVN" id="o3B-pe-Hfi"/>
+                        <outlet property="saveButton" destination="OFf-Cx-fCn" id="tWR-6X-h7V"/>
                         <outlet property="usernameText" destination="3Oh-fa-Paf" id="3Yu-Mi-7cY"/>
                     </connections>
                 </viewController>
@@ -1850,7 +1844,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
         <image name="signupFinalAsset 19" width="522" height="123"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1Hl-DD-sJV"/>
+        <segue reference="VLk-Cy-Wca"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.58431372550000005" green="0.45882352939999999" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

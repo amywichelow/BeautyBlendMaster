@@ -9,6 +9,8 @@ import FirebaseAuth
 
 class SignUpViewController: UIViewController {
     
+    var tutorial = [Tutorial]()
+
     override func viewDidLoad() {
 
     }
@@ -96,18 +98,48 @@ class SignUpViewController: UIViewController {
         } else {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 
-                if error == nil {
-                    print("You have successfully signed up")
+                if let firebaseError = error {
                     
+                    print(firebaseError.localizedDescription)
+                    self.errorValidation.textColor = self.passwordRed
+                    self.errorValidation.text = firebaseError.localizedDescription
+                    
+                    return
+                
+                }  else {
+                    
+                    let fieldTextLength = self.usernameTextField.text!.characters.count
                     let ref = Database.database().reference(withPath: "users/\(user!.uid)")
-                    ref.updateChildValues(["username": self.usernameTextField.text!]) { error, ref in
+                    let username = Database.database().reference().child("usernames")
+                    
+                    if  fieldTextLength < 6 || fieldTextLength  > 18 {
+                        
+                        self.errorValidation.textColor = self.passwordRed
+                        self.errorValidation.text = "Username must be a minimum of 6 characters"
+                    
+                    }
+                    
+                    username.observeSingleEvent(of: .value) { (snapshot) in
+                        if snapshot.exists(){
+                            print("username already exists")
 
+                            self.errorValidation.textColor = self.passwordRed
+                            self.errorValidation.text = "Username already exists"
+                            
+                            return
+                    
+                        } else {
+                    
+                    username.updateChildValues(["username": self.usernameTextField.text!]) { error, ref in }
+                    ref.updateChildValues(["username": self.usernameTextField.text!]) { error, ref in
                         if let image = self.profileImageView.image {
                             
                             let mediaUploader = MediaUploader()
                                 mediaUploader.uploadMedia(images: [image]) { urls in
                                 
                                 ref.updateChildValues(["profileImage": urls.first!], withCompletionBlock: { error, ref in
+                                   
+                                    print("You have successfully signed up")
                                     
                                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
                                     self.present(vc!, animated: true, completion: nil)
@@ -116,23 +148,12 @@ class SignUpViewController: UIViewController {
                             }
                         }
                     }
-                } else {
-                    
-                    self.errorValidation.textColor = self.passwordRed
-                    self.errorValidation.text = "Please check all fields have been completed"
-                    
-                    let animation = CABasicAnimation(keyPath: "position")
-                    animation.duration = 0.07
-                    animation.repeatCount = 4
-                    animation.autoreverses = true
-                    animation.fromValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x - 10, y: self.errorValidation.center.y))
-                    animation.toValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x + 10, y: self.errorValidation.center.y))
-                    self.errorValidation.layer.add(animation, forKey: "position")
+                        }
+                    }
             }
         }
     }
 }
-    
 
 
     
@@ -143,6 +164,9 @@ class SignUpViewController: UIViewController {
             confirmPasswordTextField.textColor = passwordRed
         }
     }
+    
+    
+    
 }
 
 extension SignUpViewController:UITextFieldDelegate {
@@ -159,4 +183,5 @@ extension SignUpViewController: UIImagePickerControllerDelegate,UINavigationCont
         dismiss(animated: true, completion: nil)
         
     }
+    
 }

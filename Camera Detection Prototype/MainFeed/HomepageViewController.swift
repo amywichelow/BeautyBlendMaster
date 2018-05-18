@@ -159,7 +159,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         cell.isSelected = false
         cell.tutorialName?.text = tutorial.tutorialName
         cell.username.text = tutorial.user
-        cell.duration.text = "\(tutorial.duration) Minutes"
+        cell.duration.text = "\(tutorial.duration) minutes"
         cell.difficulty.text = "\(tutorial.difficulty)"
         
         Storage.storage().reference(withPath: tutorial.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
