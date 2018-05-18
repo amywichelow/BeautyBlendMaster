@@ -5,6 +5,7 @@ import FirebaseStorage
 class UserProfileViewController: UIViewController {
     
     let ref = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials")
+    let tutorialRef = Database.database().reference().child("tutorials").childByAutoId()
     
     var tutorial = [Tutorial]()
     
@@ -29,7 +30,7 @@ class UserProfileViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        
+                
         let uid = Auth.auth().currentUser!.uid
         let userRef = Database.database().reference(withPath: "users/\(uid)")
         
@@ -65,6 +66,38 @@ class UserProfileViewController: UIViewController {
 }
 
 extension UserProfileViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle:   UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        if editingStyle == .delete {
+            let alertController = UIAlertController(title: "Warning", message: "Are you sure you want to delete this tutorial?", preferredStyle: .alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+                self.tutorial.remove(at: indexPath.row)
+                self.profileTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        })
+        
+        Database.database().reference().child("users").child(uid).child("tutorials").childByAutoId().removeValue { (error, ref) in
+            if error != nil {
+                print("failed to delete tutorial", error)
+                return
+            }
+            
+        }
+            alertController.addAction(deleteAction)
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            alertController.addAction(cancelAction)
+
+            present(alertController, animated: true, completion: nil)
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -119,6 +152,20 @@ extension UserProfileViewController: UITableViewDataSource {
        
         return cell
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showTutorial"{
+            let vc = segue.destination as! StepViewContoller
+            vc.tutorial = sender as! Tutorial
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tutorials = tutorial[indexPath.row]
+        performSegue(withIdentifier: "showTutorial", sender: tutorials)
     }
 
 }

@@ -81,12 +81,12 @@ class AddTutorialStep: UIViewController {
             
         upload { success in
             print("All steps uploaded")
-            }
             
-        uploadImage { success in
+            self.uploadImage { success in
             print("main image uploaded")
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
             self.present(vc!, animated: true, completion: nil)
+                }
             }
         }
     }

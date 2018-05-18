@@ -55,15 +55,15 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func cancelButton(_ sender: Any) {
 
-        dismiss(animated: true, completion: nil)
-
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
+        self.present(vc!, animated: true, completion: nil)
     }
 
     //HOW DO I GET IT TO CHECK ALL FIELDS AT THE SAME TIME?
 
     @IBAction func nextStepButton(_ sender: Any) {
 
-        guard let tutorialName = tutorialNameTextField.text, !tutorialName.isEmpty, let mainImage = mainImageView.image, !(mainImageView != nil)  else {
+        guard let tutorialName = tutorialNameTextField.text, !tutorialName.isEmpty, let _ = mainImageView.image, !(mainImageView == nil)  else {
             let alertController = UIAlertController(title: "Error", message: "Please ensure all fields are complete", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)

@@ -36,6 +36,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         searchController.searchBar.sizeToFit()
 
         searchController.searchBar.becomeFirstResponder()
+//        navigationItem.searchController = searchController
 
         self.navigationItem.titleView = searchController.searchBar
         
@@ -105,14 +106,20 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         filtered.removeAll()
         
         filtered = tutorials.filter({ tutorial -> Bool in
-            
-            return tutorial.tutorialName.lowercased() == searchString!.lowercased()
 
+            return tutorial.tutorialName.lowercased() != searchString!.lowercased()
+            
         })
-        
+
         collectionView?.reloadData()
 
     }
+    
+//    filtered = items.filter({ (item) -> Bool in
+//    let countryText: NSString = item as NSString
+//
+//    return (countryText.range(of: searchString!, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
+//    })
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -152,7 +159,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         cell.isSelected = false
         cell.tutorialName?.text = tutorial.tutorialName
         cell.username.text = tutorial.user
-        cell.duration.text = "\(tutorial.duration)"
+        cell.duration.text = "\(tutorial.duration) Minutes"
         cell.difficulty.text = "\(tutorial.difficulty)"
         
         Storage.storage().reference(withPath: tutorial.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
