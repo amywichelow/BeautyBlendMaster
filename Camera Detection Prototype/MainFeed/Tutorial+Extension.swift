@@ -11,7 +11,7 @@ extension Tutorial {
             "difficulty": difficulty,
             "user": CustomUser.shared.username!,
             "usser_uid": Auth.auth().currentUser!.uid,
-            "date": ServerValue.timestamp()
+            "timestamp": ServerValue.timestamp()
         ]
         
         if let mainImageId = mainImageId {

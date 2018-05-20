@@ -70,6 +70,17 @@ class AddTutorialStep: UIViewController {
     
     @IBAction func finishUploadButton(_ sender: Any) {
         
+        if tutorialSteps.count == 0 {
+            
+            let alertController = UIAlertController(title: "Error", message: "Please ensure you have added at least one step to this tutorial", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+            
+        }
+        
         if tutorialStepDescription.text! != "" {
             let alertController = UIAlertController(title: "Error", message: "Please ensure you have added all steps before uploading tutorial", preferredStyle: .alert)
             
@@ -191,7 +202,7 @@ extension AddTutorialStep: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return tutorialSteps.count
-        
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

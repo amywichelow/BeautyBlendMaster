@@ -71,13 +71,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         updateUserInfo()
         
+        self.navigationController?.popToRootViewController(animated: true)
+            
         let alert = UIAlertController(title: "Success", message: "Profile has been updated.", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
         
-        self.navigationController?.popToRootViewController(animated: true)
-
     }
     
     override func viewDidLoad() {
@@ -116,6 +116,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         let user = Auth.auth().currentUser
         let ref = Database.database().reference(withPath: "users/\(user!.uid)")
+        let username = Database.database().reference(withPath: "usernames")
         let image = self.profileImageView.image
         let mediaUploader = MediaUploader()
         
@@ -127,41 +128,38 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             
             }
         }
+// HOW TO OBSERVE WHETHER USERNAME ALREADY EXISTS IN DATABASE ASWELL AS DO OTHER IF STATEMENTS
+//            username.child("\(user!.uid)").observeSingleEvent(of: .value) { (snapshot) in
+//            if snapshot.exists(){
+//                print("username already exists")
+//
+//                let alert = UIAlertController(title: "Sorry", message: "This username already exists", preferredStyle: .alert)
+//                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+//                alert.addAction(action)
+//                self.present(alert, animated: true, completion: nil)
+//
+//            }
         
-            let fieldTextLength = usernameText.text!.characters.count
-            let username = Database.database().reference().child("usernames")
-
-            if  fieldTextLength < 6 || fieldTextLength  > 18 {
+                let fieldTextLength = self.usernameText.text!.characters.count
                 
-                let alert = UIAlertController(title: "Sorry", message: "This username is not long enough", preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
-                
-            } else {
-                
-                username.observeSingleEvent(of: .value) { (snapshot) in
-                    if snapshot.exists(){
-                        print("username already exists")
-                        
-                        let alert = UIAlertController(title: "Sorry", message: "This username already exists", preferredStyle: .alert)
-                        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        alert.addAction(action)
-                        self.present(alert, animated: true, completion: nil)
-                        
-                    } else {
-                        
-                        ref.updateChildValues(["username": self.usernameText.text!]) { error, ref in
-                            
-                            return
-                        }
-                    }
+                if  fieldTextLength < 6 || fieldTextLength  > 18 {
+                    
+                    let alert = UIAlertController(title: "Sorry", message: "Username must be 6 or more characters long", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                } else {
+                    
+                    username.updateChildValues(["\(user!.uid)": self.usernameText.text!]) { error, ref in }
+                    ref.updateChildValues(["username": self.usernameText.text!]) { error, ref in }
+                    
                 }
-                
-        }
 
         
+
         
+
         user?.updateEmail(to: self.newEmail.text!) { error in
             
             if (self.newEmail.text?.isEmpty)! {

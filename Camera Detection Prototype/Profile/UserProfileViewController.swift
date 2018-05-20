@@ -4,8 +4,11 @@ import FirebaseStorage
 
 class UserProfileViewController: UIViewController {
     
+    
     let ref = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials")
     let tutorialRef = Database.database().reference().child("tutorials")
+    let uid = Auth.auth().currentUser!.uid
+
     
     var tutorial = [Tutorial]()
     
@@ -26,12 +29,12 @@ class UserProfileViewController: UIViewController {
             print((error as NSError).code)
         }
         
-        dismiss(animated: true, completion: nil)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
+        self.present(vc!, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
                 
-        let uid = Auth.auth().currentUser!.uid
         let userRef = Database.database().reference(withPath: "users/\(uid)")
         
         userRef.observeSingleEvent(of: .value, with: { snapshot in
@@ -79,8 +82,8 @@ extension UserProfileViewController: UITableViewDelegate {
         if editingStyle == .delete {
             let alertController = UIAlertController(title: "Warning", message: "Are you sure you want to delete this tutorial from your profile?", preferredStyle: .alert)
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
-                self.ref.child(tutorials.uuid!).removeValue()
                 self.tutorialRef.child(tutorials.uuid!).removeValue()
+                self.ref.child(tutorials.uuid!).removeValue()
                 self.tutorial.remove(at: indexPath.row)
                 self.profileTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         })

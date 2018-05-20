@@ -106,32 +106,39 @@ class SignUpViewController: UIViewController {
                     
                     return
                 
-                }  else {
+                }
+                
+                let fieldTextLength = self.usernameTextField.text!.characters.count
+                
+                if  fieldTextLength < 6 || fieldTextLength  > 18 {
                     
-                    let fieldTextLength = self.usernameTextField.text!.characters.count
+                    let alert = UIAlertController(title: "Sorry", message: "Username must be 6 or more characters long", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                } else {
+                    
                     let ref = Database.database().reference(withPath: "users/\(user!.uid)")
-                    let username = Database.database().reference().child("usernames")
-                    
-                    if  fieldTextLength < 6 || fieldTextLength  > 18 {
-                        
-                        self.errorValidation.textColor = self.passwordRed
-                        self.errorValidation.text = "Username must be a minimum of 6 characters"
-                    
-                    }
-                    
-                    username.observeSingleEvent(of: .value) { (snapshot) in
-                        if snapshot.exists(){
-                            print("username already exists")
+                    let username = Database.database().reference(withPath: "usernames").child("\(user!.uid)")
 
-                            self.errorValidation.textColor = self.passwordRed
-                            self.errorValidation.text = "Username already exists"
-                            
-                            return
+// HOW TO OBSERVE WHETHER USERNAME ALREADY EXISTS IN DATABASE ASWELL AS DO OTHER IF STATEMENTS
+//                    username.child("\(user!.uid)").observeSingleEvent(of: .value) { (snapshot) in
+//                        if snapshot.exists(){
+//                            print("username already exists")
+//
+//                            self.errorValidation.textColor = self.passwordRed
+//                            self.errorValidation.text = "Username already exists"
+//
+//                            return
+//
+//                        }
+//                    }
                     
-                        } else {
+                    username.setValue(self.usernameTextField.text!) { error, ref in }
                     
-                    username.updateChildValues(["username": self.usernameTextField.text!]) { error, ref in }
-                    ref.updateChildValues(["username": self.usernameTextField.text!]) { error, ref in
+                    ref.setValue(["username": self.usernameTextField.text!]) { error, ref in }
+                        
                         if let image = self.profileImageView.image {
                             
                             let mediaUploader = MediaUploader()
@@ -148,11 +155,8 @@ class SignUpViewController: UIViewController {
                             }
                         }
                     }
-                        }
-                    }
+                }
             }
-        }
-    }
 }
 
 
