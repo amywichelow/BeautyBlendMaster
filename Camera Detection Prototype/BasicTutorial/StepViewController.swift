@@ -19,22 +19,29 @@ class StepViewContoller: UIViewController {
     
     @IBAction func previousStepButton(_ sender: Any) {
         
-        
     }
     
     @IBAction func nextStepButton(_ sender: Any) {
         
-    //    stepLabel.text = "Step \(tutorialSteps.count + 1)"
-    
-    //if step label = tutorial step count + 1  then take user to share result screen
-    
-        
-        
+        if stepLabel.text == "Step \(tutorialSteps.count + 1)" as String? {
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShareViewController")
+            self.present(vc!, animated: true, completion: nil)
+            
+        } else {
+            
+            stepLabel.text = "Step \(tutorialSteps.count)"
+            
+        }
+            
     }
+    
+    
+    @IBOutlet weak var stepImageView: UIImageView!
     
     @IBOutlet weak var tutorialStepDescription: UITextView!
     
-    
+    var tutorialStep: TutorialStep!
     var tutorial: Tutorial!
     var tutorialSteps = [TutorialStep]()
     
@@ -49,16 +56,15 @@ class StepViewContoller: UIViewController {
         }
         
         if stepLabel.text == "Step 1" {
-            
-            self.previousStepOutlet.isHidden = true
-            
+            self.previousStepOutlet.isHidden = true } else {
+            self.previousStepOutlet.isHidden = false
         }
         
-        else {
-
-            self.previousStepOutlet.isHidden = false
-
-        }
+        
+        Storage.storage().reference(withPath: tutorial.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
+            self.tutorial.mainImage = UIImage(data: data!)
+            self.stepImageView.image = self.tutorial.mainImage
+        })
         
         let tutorialRef = Database.database().reference().child("tutorials").child(tutorial.uuid!).child("steps")
         

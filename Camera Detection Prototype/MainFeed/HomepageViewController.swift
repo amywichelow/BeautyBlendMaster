@@ -44,8 +44,8 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
 
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         collectionView?.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
-
-        tutorialRef.observeSingleEvent(of: .value, with: { snapshot in
+        
+        tutorialRef.queryOrdered(byChild: "date") .observeSingleEvent(of: .value, with: { snapshot in
 
             for tutorials in snapshot.children {
                 if let data = tutorials as? DataSnapshot {
@@ -55,9 +55,10 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
                 }
             }
             self.collectionView?.reloadData()
+
         })
+
 }
-    
     
     func layoutFAB() {
             let item = FloatyItem()
@@ -153,8 +154,11 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCell
         let tutorial = tutorials[indexPath.row]
+    
         
         cell.isSelected = false
         cell.tutorialName?.text = tutorial.tutorialName

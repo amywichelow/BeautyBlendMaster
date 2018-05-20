@@ -54,7 +54,7 @@
                     <navigationItem key="navigationItem" id="a48-ZN-cfM">
                         <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" image="quesionAsset 54" id="dGy-FH-ktP">
-                            <color key="tintColor" red="0.70196078429999997" green="0.61568627450000002" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.58431372549019611" green="0.46666666666666667" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="FCn-Wr-buw" kind="show" id="FbT-O6-1GH"/>
                             </connections>
@@ -415,7 +415,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                     </view>
                     <navigationItem key="navigationItem" title="Tutorial Upload" id="N5v-g7-ecO">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="ocB-8R-D3V">
-                            <color key="tintColor" red="0.58431372550000005" green="0.45882352939999999" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.58431372549019611" green="0.47450980392156861" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancelButton:" destination="FET-cU-yUq" id="Tkg-uY-KLP"/>
                             </connections>
@@ -666,7 +666,6 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextStepButton:" destination="FET-cU-yUq" eventType="touchUpInside" id="ioJ-Ax-XAR"/>
                                     <action selector="nextStepButton:" destination="n20-tx-J8r" eventType="touchUpInside" id="xa2-zZ-NhL"/>
                                 </connections>
                             </button>
@@ -708,9 +707,9 @@ Create and upload step by step tutorials for other users to follow and learn fro
                     <toolbarItems/>
                     <connections>
                         <outlet property="previousStepOutlet" destination="Pt1-td-VDW" id="HPa-cZ-tQ0"/>
+                        <outlet property="stepImageView" destination="KO5-Dv-rFw" id="TyP-3Q-nwq"/>
                         <outlet property="stepLabel" destination="ICD-N6-HFZ" id="USX-77-ZWT"/>
                         <outlet property="tutorialStepDescription" destination="wC4-LF-j0U" id="0se-Yx-4YK"/>
-                        <segue destination="eky-te-3H6" kind="show" id="dZM-Lc-4Hb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Odb-KH-SIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1844,7 +1843,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
         <image name="signupFinalAsset 19" width="522" height="123"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VLk-Cy-Wca"/>
+        <segue reference="1Hl-DD-sJV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.58431372550000005" green="0.45882352939999999" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

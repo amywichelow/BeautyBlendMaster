@@ -10,7 +10,8 @@ extension Tutorial {
             "duration": duration,
             "difficulty": difficulty,
             "user": CustomUser.shared.username!,
-            "usser_uid": Auth.auth().currentUser!.uid
+            "usser_uid": Auth.auth().currentUser!.uid,
+            "date": ServerValue.timestamp()
         ]
         
         if let mainImageId = mainImageId {

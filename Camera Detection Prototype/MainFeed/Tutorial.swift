@@ -30,7 +30,7 @@ class Tutorial {
             difficulty = snapshotData ["difficulty"] as! Int
             duration = snapshotData ["duration"] as! Int
             mainImageId = snapshotData ["mainImageId"] as? String
-            
+
             print(snapshot.childSnapshot(forPath: "steps"))
             
         } else {

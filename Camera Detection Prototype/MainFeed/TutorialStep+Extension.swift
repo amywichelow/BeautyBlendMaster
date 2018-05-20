@@ -4,11 +4,19 @@ import Firebase
 extension TutorialStep {
     
     func toDict() -> [String: Any] {
-        return [
+        
+        var dict: [String: Any] =  [
             
             "tutorialStepDescription": tutorialStepDescription,
           
         ]
+        
+        if let stepImageId = stepImageId {
+            dict["stepImageId"] = stepImageId
+        }
+        
+        return dict
+
     }
     
 }
