@@ -113,7 +113,14 @@ class SignUpViewController: UIViewController {
         } else {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
 
-                if fieldTextLength < 6 || fieldTextLength  > 18 {
+                if let firebaseError = error {
+                    
+                    print(firebaseError.localizedDescription)
+                    self.errorValidation.textColor = self.passwordRed
+                    self.errorValidation.text = firebaseError.localizedDescription
+                    
+                    return
+                } else if fieldTextLength < 6 || fieldTextLength  > 18 {
                     
                     let alert = UIAlertController(title: "Sorry", message: "Username must be 6 or more characters long", preferredStyle: .alert)
                     let action = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -124,23 +131,17 @@ class SignUpViewController: UIViewController {
                 
                 let ref = Database.database().reference(withPath: "users/\(user!.uid)")
                 let username = Database.database().reference(withPath: "usernames")
-                username.observeSingleEvent(of: .value) { (snapshot) in
-                    if snapshot.exists(){
-                        print("username already exists")
-                        
-                        self.errorValidation.textColor = self.passwordRed
-                        self.errorValidation.text = "Username already exists"
-                        
-                    if let firebaseError = error {
-                        
-                        print(firebaseError.localizedDescription)
-                        self.errorValidation.textColor = self.passwordRed
-                        self.errorValidation.text = firebaseError.localizedDescription
-                        
-                        return
-                    }
-                }
-            }
+//                username.observeSingleEvent(of: .value) { (snapshot) in
+//                    if snapshot.exists(){
+//                        print("username already exists")
+//
+//                        self.errorValidation.textColor = self.passwordRed
+//                        self.errorValidation.text = "Username already exists"
+//
+//                        return
+//
+//                }
+//            }
                         username.setValue(self.usernameTextField.text!) { error, ref in }
                             
                         ref.setValue(["username": self.usernameTextField.text!]) { error, ref in }

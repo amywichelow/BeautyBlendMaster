@@ -18,7 +18,8 @@ class AddTutorialStep: UIViewController {
     let newTutorialRef = Database.database().reference().child("tutorials").childByAutoId()
     let userTutorial = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials").childByAutoId()
     var tutorialSteps = [TutorialStep]()
-        
+    
+
     @IBOutlet weak var stepLabel: UILabel!
     
     @IBOutlet weak var tutorialStepDescription: UITextView!
@@ -44,7 +45,7 @@ class AddTutorialStep: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBOutlet weak var stepImageView: UIImageView!
+    @IBOutlet weak var stepImageOutlet: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,7 @@ class AddTutorialStep: UIViewController {
     @IBOutlet weak var addStepOutlet: UIButton!
     @IBAction func addStepButton(_ sender: Any) {
         
-        guard let tutorialDescription = tutorialStepDescription.text, !tutorialDescription.isEmpty, let _ = stepImageView.image, !(stepImageView == nil)  else {
+        guard let tutorialDescription = tutorialStepDescription.text, !tutorialDescription.isEmpty, let _ = stepImageOutlet.image, !(stepImageOutlet == nil)  else {
             let alertController = UIAlertController(title: "Error", message: "Please ensure you have entered a description for this step", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -67,18 +68,18 @@ class AddTutorialStep: UIViewController {
             return
         }
         
-        tutorialSteps.append(TutorialStep(tutorialStepDescription: self.tutorialStepDescription.text!, stepImage: self.stepImageView.image!, position: self.tutorialSteps.count))
+        tutorialSteps.append(TutorialStep(tutorialStepDescription: self.tutorialStepDescription.text!, stepImage: self.stepImageOutlet.image!, position: self.tutorialSteps.count))
+        tutorialStep = TutorialStep(tutorialStepDescription: self.tutorialStepDescription.text!, stepImage: self.stepImageOutlet.image!, position: self.tutorialSteps.count)
         
         tutorialStepDescription.text = nil
-        stepImageView.image = nil
+        stepImageOutlet.image = nil
         
         stepLabel.text = "Step \(tutorialSteps.count + 1)"
         
         stepTableView.reloadData()
         
         print("Step \(tutorialSteps.count)")
-        print("Step Image added")
-        
+
     }
     
     @IBAction func finishUploadButton(_ sender: Any) {
@@ -107,44 +108,54 @@ class AddTutorialStep: UIViewController {
             
             uploadImage { success in
                 print("images uploaded")
-                
+            
                 self.upload { success in
                     print("all steps uploaded")
-                    
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
-                    self.present(vc!, animated: true, completion: nil)
+
                 }
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
+                self.present(vc!, animated: true, completion: nil)
             }
         }
 }
     
     func uploadImage(completion: @escaping (_ success: Bool) -> Void) {
-
-        guard let image = self.tutorial.mainImage else { return }
-        let mediaUploader = MediaUploader()
         
-        mediaUploader.uploadMedia(images: [image]) { urls in
-            
-            if let mainImageId = urls.first {
-                
-                
-                self.tutorial.mainImageId = mainImageId
-                
+        guard let stepImage = self.tutorialStep.stepImage else { return }
+        guard let image = self.tutorial.mainImage else { return }
+
+
+        let mediaUploader = MediaUploader()
+
+        mediaUploader.uploadMedia(images: [image, stepImage]) { urls in
+
+            if let imageid = urls.first {
+
+                self.tutorial.mainImageId = imageid
+
                 self.newTutorialRef.setValue(self.tutorial.toDict(), withCompletionBlock: { error, ref in })
                 self.userTutorial.setValue(self.tutorial.toDict(), withCompletionBlock: { error, ref in })
-
-            }
-            
-            if let stepImageId = urls.first {
-                
-                self.tutorialStep.stepImageId = stepImageId
                 
                 completion(true)
-
+                
             }
             
-            
+            if let imageid = urls.first {
+                
+                self.tutorialStep.stepImageId = imageid
+                
+                self.newTutorialRef.child("steps").childByAutoId().setValue(self.tutorialStep.toDict(), withCompletionBlock: { error, ref in })
+                self.userTutorial.child("steps").childByAutoId().setValue(self.tutorialStep.toDict(), withCompletionBlock: { error, ref in })
+                
+                completion(true)
+                
+                print("tutorial imageId\(self.tutorialStep.stepImageId)")
+                
+            }
+
         }
+
     }
     
     func upload(completion: @escaping (_ success: Bool) -> Void) {
@@ -193,6 +204,12 @@ class AddTutorialStep: UIViewController {
             tableView.endUpdates()
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 88
+        
+    }
 }
 
 extension AddTutorialStep: UITextFieldDelegate, UITextViewDelegate {
@@ -214,12 +231,16 @@ extension AddTutorialStep: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        let cell = stepTableView.dequeueReusableCell(withIdentifier: "Cell") as! ShowStepCell
         
         let step = tutorialSteps[indexPath.row]
-        cell?.textLabel?.text = step.tutorialStepDescription
         
-        return cell!
+        cell.textDescriptionView.text = step.tutorialStepDescription
+        cell.stepImageView.image = step.stepImage
+
+//        cell?.textLabel?.text = step.tutorialStepDescription
+        
+        return cell
     }
 }
 
@@ -227,7 +248,7 @@ extension AddTutorialStep: UIImagePickerControllerDelegate,UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else { return }
-        stepImageView.image = image
+        stepImageOutlet.image = image
         dismiss(animated: true, completion: nil)
     }
 }

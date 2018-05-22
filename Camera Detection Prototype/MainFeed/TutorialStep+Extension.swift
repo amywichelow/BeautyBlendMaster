@@ -8,13 +8,14 @@ extension TutorialStep {
         var dict: [String: Any] =  [
             
             "tutorialStepDescription": tutorialStepDescription,
-            "position": position
-          
+            "position": position,
+            "stepImageId": stepImageId
+            
         ]
         
-        if let stepImageId = stepImageId {
-            dict["stepImageId"] = stepImageId
-        }
+//        if let stepImageId = stepImageId {
+//            dict["stepImageId"] = stepImageId
+//        }
         
         return dict
 

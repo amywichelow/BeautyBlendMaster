@@ -28,6 +28,7 @@
 		E16247662046FD080085F0DF /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16247652046FD080085F0DF /* CustomCell.xib */; };
 		E178B0F020545AC20047CA9A /* TutorialUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178B0EF20545AC20047CA9A /* TutorialUploadViewController.swift */; };
 		E181064C2056DD9D009B7B57 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181064B2056DD9D009B7B57 /* UploadViewController.swift */; };
+		E183446720B432F0006D8F5B /* ShowStepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183446620B432F0006D8F5B /* ShowStepCell.swift */; };
 		E1A425C92098DF82004EACBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1A425C82098DF82004EACBE /* GoogleService-Info.plist */; };
 		E1A8542020863F4A00599AA2 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8541F20863F4A00599AA2 /* UserProfileViewController.swift */; };
 		E1A8A305203B0D1A00F60B21 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8A304203B0D1A00F60B21 /* SignUpViewController.swift */; };
@@ -109,6 +110,7 @@
 		E178B0EF20545AC20047CA9A /* TutorialUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialUploadViewController.swift; sourceTree = "<group>"; };
 		E17D215F205D701B002E467B /* Sweet Pea_2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sweet Pea_2.ttf"; path = "Camera Detection Prototype/New Group/Sweet Pea_2.ttf"; sourceTree = SOURCE_ROOT; };
 		E181064B2056DD9D009B7B57 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		E183446620B432F0006D8F5B /* ShowStepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStepCell.swift; sourceTree = "<group>"; };
 		E1A425C52098DCDA004EACBE /* Gotham Bold Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Bold Regular.ttf"; sourceTree = "<group>"; };
 		E1A425C62098DCE1004EACBE /* Gotham Rounded light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Rounded light.ttf"; sourceTree = "<group>"; };
 		E1A425C82098DF82004EACBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "IBDesignables/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			children = (
 				E14E871D208F982F006CB608 /* Texter.swift */,
 				E178B0EF20545AC20047CA9A /* TutorialUploadViewController.swift */,
+				E183446620B432F0006D8F5B /* ShowStepCell.swift */,
 				E14BAFED205826E8003F064F /* AddTutorialStep.swift */,
 				E11CBD90206020CE004FFE80 /* StepViewController.swift */,
 				E159221320A4ADF5000ED013 /* ShareTutorialViewController.swift */,
@@ -715,6 +718,7 @@
 				E1F4D5081FB34F170063DE5F /* AppDelegate.swift in Sources */,
 				E15AF6942097791F00739809 /* Users.swift in Sources */,
 				E1B371141FBF4B1C00877BA2 /* StepFive.swift in Sources */,
+				E183446720B432F0006D8F5B /* ShowStepCell.swift in Sources */,
 				E11CBD932061198E004FFE80 /* TutorialStep.swift in Sources */,
 				E135BD2020A60833003104D9 /* InfoViewController.swift in Sources */,
 				E14BAFEE205826E8003F064F /* AddTutorialStep.swift in Sources */,

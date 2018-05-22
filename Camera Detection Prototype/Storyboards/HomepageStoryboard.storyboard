@@ -482,19 +482,59 @@ Create and upload step by step tutorials for other users to follow and learn fro
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BYX-rv-CDg">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BYX-rv-CDg">
                                 <rect key="frame" x="36" y="400" width="343" height="223"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92190361022949219" green="0.89335083961486816" blue="0.94510149955749512" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="5" reuseIdentifier="Cell" id="HcE-zp-1Kb">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="5" reuseIdentifier="Cell" rowHeight="88" id="HcE-zp-1Kb" customClass="ShowStepCell" customModule="Camera_Detection_Prototype" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HcE-zp-1Kb" id="rIF-er-XX2">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="87.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9a-Fv-WEE" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
+                                                    <rect key="frame" x="14" y="15" width="52" height="56"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVm-fK-ZbN" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="52" height="56"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Is-7p-rFL">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="52" height="56"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.96470588239999999" green="0.94901960780000005" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdt-Eu-fPw">
+                                                    <rect key="frame" x="82" y="15" width="218" height="56"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96093189716339111" green="0.94867336750030518" blue="0.97254633903503418" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <outlet property="stepImageView" destination="4Is-7p-rFL" id="5lJ-8O-dBL"/>
+                                            <outlet property="textDescriptionView" destination="Pdt-Eu-fPw" id="E6t-ET-ZY0"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -602,7 +642,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                     </view>
                     <connections>
                         <outlet property="addStepOutlet" destination="Ygp-WQ-r2S" id="SQb-OU-RFg"/>
-                        <outlet property="stepImageView" destination="bCO-D3-zMF" id="6ld-Yh-nKN"/>
+                        <outlet property="stepImageOutlet" destination="bCO-D3-zMF" id="6ld-Yh-nKN"/>
                         <outlet property="stepLabel" destination="e1W-4q-Mim" id="1fg-7n-fDA"/>
                         <outlet property="stepTableView" destination="BYX-rv-CDg" id="SxS-HR-lh7"/>
                         <outlet property="tutorialStepDescription" destination="1p9-EL-tBX" id="jVd-Vs-hcj"/>
@@ -610,7 +650,7 @@ Create and upload step by step tutorials for other users to follow and learn fro
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0J9-b4-8Ew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3762" y="-2"/>
+            <point key="canvasLocation" x="3760.8695652173915" y="-2.4456521739130435"/>
         </scene>
         <!--Step View Contoller-->
         <scene sceneID="3uh-nd-dmH">

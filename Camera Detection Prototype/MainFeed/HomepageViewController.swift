@@ -131,7 +131,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         searchActive = false
         self.navigationController?.popToRootViewController(animated: true)
     }
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
         collectionView!.reloadData()
@@ -140,17 +140,17 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
     func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
-    
+
     func isFiltering() -> Bool {
         return searchController.isActive && !searchBarIsEmpty()
     }
-    
+
     func filterContentForSearchText(_ searchText: String) {
-        
+
         filtered = tutorials.filter({ Tutorial -> Bool in
             return Tutorial.tutorialName.lowercased().contains(searchText.lowercased())
         })
-        
+
         collectionView!.reloadData()
     }
     
@@ -189,6 +189,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         cell.difficulty.text = "\(tutorialRef.difficulty)"
         
         Storage.storage().reference(withPath: tutorialRef.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
+            print(data as Any)
             tutorial.mainImage = UIImage(data: data!)
             cell.mainTutorialImage.image = tutorialRef.mainImage
         })
@@ -244,11 +245,11 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
 }
 
 extension HomepageViewController: UISearchResultsUpdating {
-    
+
     func updateSearchResults(for searchController: UISearchController) {
-                
+
         filterContentForSearchText(searchController.searchBar.text!)
-        
+
     }
-    
+
 }
