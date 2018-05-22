@@ -8,6 +8,7 @@ class UserProfileViewController: UIViewController {
     let ref = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials")
     let tutorialRef = Database.database().reference().child("tutorials")
     let uid = Auth.auth().currentUser!.uid
+    
 
     
     var tutorial = [Tutorial]()
@@ -154,7 +155,7 @@ extension UserProfileViewController: UITableViewDataSource {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "showTutorial"{
+        if segue.identifier == "ShowTutorial"{
             let vc = segue.destination as! StepViewContoller
             vc.tutorial = sender as! Tutorial
         }
@@ -163,7 +164,7 @@ extension UserProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tutorials = tutorial[indexPath.row]
-        performSegue(withIdentifier: "showTutorial", sender: tutorials)
+        performSegue(withIdentifier: "ShowTutorial", sender: tutorials)
     }
 
 }

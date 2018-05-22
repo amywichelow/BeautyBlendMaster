@@ -14,6 +14,7 @@ class TutorialStep {
     let tutorialStepDescription: String
     var stepImage: UIImage?
     var stepImageId: String?
+    var position: Int!
     
     init?(snapshot: DataSnapshot) {
         
@@ -21,6 +22,7 @@ class TutorialStep {
             
             tutorialStepDescription = snapshotData ["tutorialStepDescription"] as! String
             stepImageId = snapshotData ["stepImageId"] as? String
+            position = snapshotData ["position"] as! Int
 
             
         } else {
@@ -29,10 +31,11 @@ class TutorialStep {
     }
     
     
-    init(tutorialStepDescription: String, stepImage: UIImage) {
+    init(tutorialStepDescription: String, stepImage: UIImage, position: Int) {
         
         self.tutorialStepDescription = tutorialStepDescription
         self.stepImage = stepImage
+        self.position = position
 
         
     }

@@ -7,7 +7,18 @@ import Firebase
 import FirebaseAuth
 import Floaty
 
-class HomepageViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, FloatyDelegate {
+
+class HomepageViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchControllerDelegate, UISearchBarDelegate, FloatyDelegate {
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(HomepageViewController.handleRefresh(_:)),
+                                 for: UIControlEvents.valueChanged)
+        refreshControl.tintColor = UIColor(red: 142, green: 117, blue: 179, alpha: 1.0)
+        
+        return refreshControl
+    }()
 
     var floaty = Floaty()
     
@@ -19,11 +30,14 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
     var searchActive : Bool = false
     let searchController = UISearchController(searchResultsController: nil)
     
-        let reuseIdentifier = "collCell"
-        let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    let reuseIdentifier = "collCell"
+    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        self.collectionView?.addSubview(self.refreshControl)
         
         self.searchController.searchResultsUpdater = self
         self.searchController.delegate = self
@@ -34,9 +48,9 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         self.searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search tutorials"
         searchController.searchBar.sizeToFit()
+        definesPresentationContext = true
 
         searchController.searchBar.becomeFirstResponder()
-//        navigationItem.searchController = searchController
 
         self.navigationItem.titleView = searchController.searchBar
         
@@ -45,7 +59,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         collectionView?.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         
-        tutorialRef.queryOrdered(byChild: "date") .observeSingleEvent(of: .value, with: { snapshot in
+        tutorialRef.observeSingleEvent(of: .value, with: { snapshot in
 
             for tutorials in snapshot.children {
                 if let data = tutorials as? DataSnapshot {
@@ -54,11 +68,20 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
                     }
                 }
             }
+            
+            self.tutorials = self.tutorials.sorted(by: { $0.timestamp > $1.timestamp })
+            
             self.collectionView?.reloadData()
 
         })
 
 }
+
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        
+        self.collectionView?.reloadData()
+        refreshControl.endRefreshing()
+    }
     
     func layoutFAB() {
             let item = FloatyItem()
@@ -85,6 +108,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
                     self.present(vc!, animated: true, completion: nil)
         }
         
+
         floaty.paddingX = self.view.frame.width/2 - floaty.frame.width/2
         floaty.fabDelegate = self
         self.view.addSubview(floaty)
@@ -95,80 +119,78 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         return 1
     }
 
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if isFiltering() {
+            return filtered.count
+        }
+            return tutorials.count
+    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        let searchString = searchController.searchBar.text
-        
-        filtered.removeAll()
-        
-        filtered = tutorials.filter({ tutorial -> Bool in
-
-            return tutorial.tutorialName.lowercased() != searchString!.lowercased()
-            
-        })
-
-        collectionView?.reloadData()
-
-    }
-    
-//    filtered = items.filter({ (item) -> Bool in
-//    let countryText: NSString = item as NSString
-//
-//    return (countryText.range(of: searchString!, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
-//    })
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if searchActive {
-            return filtered.count
-        }
-        else
-        {
-            return tutorials.count
-        }
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true
-        collectionView?.reloadData()
-    }
-    
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
         collectionView!.reloadData()
     }
 
-    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        if !searchActive {
-            searchActive = true
-            collectionView?.reloadData()
-        }
-
-        searchController.searchBar.resignFirstResponder()
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
     }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        
+        filtered = tutorials.filter({ Tutorial -> Bool in
+            return Tutorial.tutorialName.lowercased().contains(searchText.lowercased())
+        })
+        
+        collectionView!.reloadData()
+    }
+    
+    
+//    func updateSearchResults(for searchController: UISearchController) {
+//        let searchString = searchController.searchBar.text
+//
+//        filtered.removeAll()
+//
+//        filtered = tutorials.filter({ tutorial -> Bool in
+//
+//            return tutorial.tutorialName.lowercased() != searchString!.lowercased()
+//
+//        })
+//
+//        collectionView?.reloadData()
+//
+//    }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCell
-        let tutorial = tutorials[indexPath.row]
+        let tutorialRef = tutorials[indexPath.row]
+        let tutorial: Tutorial
     
+        if isFiltering() {
+            tutorial = filtered[indexPath.row]
+        } else {
+            tutorial = tutorials[indexPath.row]
+        }
         
         cell.isSelected = false
-        cell.tutorialName?.text = tutorial.tutorialName
-        cell.username.text = tutorial.user
-        cell.duration.text = "\(tutorial.duration) minutes"
-        cell.difficulty.text = "\(tutorial.difficulty)"
+        cell.tutorialName?.text = tutorialRef.tutorialName
+        cell.username.text = tutorialRef.user
+        cell.duration.text = "\(tutorialRef.duration) minutes"
+        cell.difficulty.text = "\(tutorialRef.difficulty)"
         
-        Storage.storage().reference(withPath: tutorial.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
+        Storage.storage().reference(withPath: tutorialRef.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
             tutorial.mainImage = UIImage(data: data!)
-            cell.mainTutorialImage.image = tutorial.mainImage
+            cell.mainTutorialImage.image = tutorialRef.mainImage
         })
        
         cell.animate()
@@ -202,7 +224,6 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         
     }
     
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let tutorial = tutorials[indexPath.row]
         performSegue(withIdentifier: "showTutorial", sender: tutorial)
@@ -220,4 +241,14 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         return sectionInsets
     }
 
+}
+
+extension HomepageViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+                
+        filterContentForSearchText(searchController.searchBar.text!)
+        
+    }
+    
 }

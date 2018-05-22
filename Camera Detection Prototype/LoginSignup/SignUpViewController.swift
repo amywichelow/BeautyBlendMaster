@@ -52,6 +52,8 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpButton(_ sender: UIButton) {
         
+        let fieldTextLength = self.usernameTextField.text!.characters.count
+        
         sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         
         UIView.animate(withDuration: 1.5,
@@ -82,6 +84,19 @@ class SignUpViewController: UIViewController {
             return
         }
         
+        if usernameTextField.text == nil {
+            self.errorValidation.textColor = passwordRed
+            self.errorValidation.text = "Please enter a username"
+            
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.duration = 0.07
+            animation.repeatCount = 4
+            animation.autoreverses = true
+            animation.fromValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x - 10, y: self.errorValidation.center.y))
+            animation.toValue = NSValue(cgPoint: CGPoint(x: self.errorValidation.center.x + 10, y: self.errorValidation.center.y))
+            self.errorValidation.layer.add(animation, forKey: "position")
+        }
+        
         if emailTextField.text == nil {
             
             self.errorValidation.textColor = passwordRed
@@ -97,20 +112,8 @@ class SignUpViewController: UIViewController {
             
         } else {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-                
-                if let firebaseError = error {
-                    
-                    print(firebaseError.localizedDescription)
-                    self.errorValidation.textColor = self.passwordRed
-                    self.errorValidation.text = firebaseError.localizedDescription
-                    
-                    return
-                
-                }
-                
-                let fieldTextLength = self.usernameTextField.text!.characters.count
-                
-                if  fieldTextLength < 6 || fieldTextLength  > 18 {
+
+                if fieldTextLength < 6 || fieldTextLength  > 18 {
                     
                     let alert = UIAlertController(title: "Sorry", message: "Username must be 6 or more characters long", preferredStyle: .alert)
                     let action = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -118,45 +121,50 @@ class SignUpViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                     
                 } else {
-                    
-                    let ref = Database.database().reference(withPath: "users/\(user!.uid)")
-                    let username = Database.database().reference(withPath: "usernames").child("\(user!.uid)")
-
-// HOW TO OBSERVE WHETHER USERNAME ALREADY EXISTS IN DATABASE ASWELL AS DO OTHER IF STATEMENTS
-//                    username.child("\(user!.uid)").observeSingleEvent(of: .value) { (snapshot) in
-//                        if snapshot.exists(){
-//                            print("username already exists")
-//
-//                            self.errorValidation.textColor = self.passwordRed
-//                            self.errorValidation.text = "Username already exists"
-//
-//                            return
-//
-//                        }
-//                    }
-                    
-                    username.setValue(self.usernameTextField.text!) { error, ref in }
-                    
-                    ref.setValue(["username": self.usernameTextField.text!]) { error, ref in }
+                
+                let ref = Database.database().reference(withPath: "users/\(user!.uid)")
+                let username = Database.database().reference(withPath: "usernames")
+                username.observeSingleEvent(of: .value) { (snapshot) in
+                    if snapshot.exists(){
+                        print("username already exists")
                         
-                        if let image = self.profileImageView.image {
-                            
-                            let mediaUploader = MediaUploader()
-                                mediaUploader.uploadMedia(images: [image]) { urls in
-                                
-                                ref.updateChildValues(["profileImage": urls.first!], withCompletionBlock: { error, ref in
-                                   
-                                    print("You have successfully signed up")
-                                    
-                                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
-                                    self.present(vc!, animated: true, completion: nil)
-                                    
-                                })
-                            }
-                        }
+                        self.errorValidation.textColor = self.passwordRed
+                        self.errorValidation.text = "Username already exists"
+                        
+                    if let firebaseError = error {
+                        
+                        print(firebaseError.localizedDescription)
+                        self.errorValidation.textColor = self.passwordRed
+                        self.errorValidation.text = firebaseError.localizedDescription
+                        
+                        return
                     }
                 }
             }
+                        username.setValue(self.usernameTextField.text!) { error, ref in }
+                            
+                        ref.setValue(["username": self.usernameTextField.text!]) { error, ref in }
+                            
+                            if let image = self.profileImageView.image {
+                                
+                                let mediaUploader = MediaUploader()
+                                mediaUploader.uploadMedia(images: [image]) { urls in
+                                    
+                                    ref.updateChildValues(["profileImage": urls.first!], withCompletionBlock: { error, ref in
+                                        
+                                        print("You have successfully signed up")
+                                        
+                                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
+                                        self.present(vc!, animated: true, completion: nil)
+                                        
+                                })
+                                    
+                        }
+                    
+                }
+            }
+        }
+    }
 }
 
 

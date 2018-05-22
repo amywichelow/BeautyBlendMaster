@@ -18,6 +18,7 @@ class Tutorial {
     let duration: Int
     var mainImageId: String?
     var mainImage: UIImage?
+    var timestamp: Int!
     
     let steps = [TutorialStep]()
     
@@ -30,6 +31,7 @@ class Tutorial {
             difficulty = snapshotData ["difficulty"] as! Int
             duration = snapshotData ["duration"] as! Int
             mainImageId = snapshotData ["mainImageId"] as? String
+            timestamp = snapshotData ["timestamp"] as! Int
 
             print(snapshot.childSnapshot(forPath: "steps"))
             

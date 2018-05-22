@@ -59,8 +59,6 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
         self.present(vc!, animated: true, completion: nil)
     }
 
-    //HOW DO I GET IT TO CHECK ALL FIELDS AT THE SAME TIME?
-
     @IBAction func nextStepButton(_ sender: Any) {
 
         guard let tutorialName = tutorialNameTextField.text, !tutorialName.isEmpty, let _ = mainImageView.image, !(mainImageView == nil)  else {

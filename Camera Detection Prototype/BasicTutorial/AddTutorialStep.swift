@@ -14,6 +14,7 @@ import Lottie
 class AddTutorialStep: UIViewController {
     
     var tutorial: Tutorial!
+    var tutorialStep: TutorialStep!
     let newTutorialRef = Database.database().reference().child("tutorials").childByAutoId()
     let userTutorial = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("tutorials").childByAutoId()
     var tutorialSteps = [TutorialStep]()
@@ -25,19 +26,30 @@ class AddTutorialStep: UIViewController {
     @IBOutlet weak var stepTableView: UITableView!
     
     @IBAction func chooseImageButton(_ sender: Any) {
+        
         let imagePickerController = UIImagePickerController()
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: {action in
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }))
+        }
+        alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { action in
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBOutlet weak var stepImageView: UIImageView!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         stepLabel.text = "Step 1"
-        
     }
     
     
@@ -55,8 +67,8 @@ class AddTutorialStep: UIViewController {
             return
         }
         
+        tutorialSteps.append(TutorialStep(tutorialStepDescription: self.tutorialStepDescription.text!, stepImage: self.stepImageView.image!, position: self.tutorialSteps.count))
         
-        tutorialSteps.append(TutorialStep(tutorialStepDescription: self.tutorialStepDescription.text!, stepImage: self.stepImageView.image!))
         tutorialStepDescription.text = nil
         stepImageView.image = nil
         
@@ -65,6 +77,7 @@ class AddTutorialStep: UIViewController {
         stepTableView.reloadData()
         
         print("Step \(tutorialSteps.count)")
+        print("Step Image added")
         
     }
     
@@ -78,7 +91,6 @@ class AddTutorialStep: UIViewController {
             alertController.addAction(defaultAction)
             
             present(alertController, animated: true, completion: nil)
-            
         }
         
         if tutorialStepDescription.text! != "" {
@@ -92,73 +104,75 @@ class AddTutorialStep: UIViewController {
             return
         
         } else {
-        
-        upload { success in
-            print("All steps uploaded")
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
-            self.present(vc!, animated: true, completion: nil)
+            
+            uploadImage { success in
+                print("images uploaded")
+                
+                self.upload { success in
+                    print("all steps uploaded")
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
+                    self.present(vc!, animated: true, completion: nil)
+                }
             }
-        uploadImage { success in
-            print("main image uploaded")
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
-            self.present(vc!, animated: true, completion: nil)
-            }
-
         }
-    }
+}
     
     func uploadImage(completion: @escaping (_ success: Bool) -> Void) {
 
         guard let image = self.tutorial.mainImage else { return }
         let mediaUploader = MediaUploader()
-
+        
         mediaUploader.uploadMedia(images: [image]) { urls in
-
+            
             if let mainImageId = urls.first {
+                
+                
                 self.tutorial.mainImageId = mainImageId
+                
+                self.newTutorialRef.setValue(self.tutorial.toDict(), withCompletionBlock: { error, ref in })
+                self.userTutorial.setValue(self.tutorial.toDict(), withCompletionBlock: { error, ref in })
 
-                self.newTutorialRef.setValue(self.tutorial.toDict(), withCompletionBlock: { errer, ref in
-                    self.userTutorial.setValue(self.tutorial.toDict(), withCompletionBlock: { error, ref in
-
-                    })
-                })
             }
-        }
+            
+            if let stepImageId = urls.first {
+                
+                self.tutorialStep.stepImageId = stepImageId
+                
+                completion(true)
 
+            }
+            
+            
+        }
     }
     
     func upload(completion: @escaping (_ success: Bool) -> Void) {
         
-                newTutorialRef.updateChildValues(tutorial.toDict()) { error, ref in
-
-                    var count = 0
-
-                    for tutorial in self.tutorialSteps {
-                        ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
-                            count += 1
-                            if count == self.tutorialSteps.count {
-                                completion(true)
-                            }
-                        })
+        newTutorialRef.updateChildValues(tutorial.toDict()) { error, ref in
+            var count = 0
+            for tutorial in self.tutorialSteps {
+                ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
+                    count += 1
+                    if count == self.tutorialSteps.count {
+                        completion(true)
                     }
-                }
-
-                userTutorial.updateChildValues(tutorial.toDict()) { error, ref in
-
-                    var count = 0
-
-                    for tutorial in self.tutorialSteps {
-                        ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
-                            count += 1
-                            if count == self.tutorialSteps.count {
-                                completion(true)
-                            }
-                        })
-                    }
-                }
-        
-
+                })
+            }
         }
+
+        userTutorial.updateChildValues(tutorial.toDict()) { error, ref in
+            var count = 0
+            for tutorial in self.tutorialSteps {
+                ref.child("steps").childByAutoId().setValue(tutorial.toDict(), withCompletionBlock: { error, ref in
+                    count += 1
+                        if count == self.tutorialSteps.count {
+                            completion(true)
+                        }
+                    })
+                }
+            }
+    }
 
     let limitLength = 250
     func tutorialStepDescription(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -179,12 +193,9 @@ class AddTutorialStep: UIViewController {
             tableView.endUpdates()
         }
     }
-        
 }
 
 extension AddTutorialStep: UITextFieldDelegate, UITextViewDelegate {
-
-
     func textViewDidChange(_ textView: UITextView) {
         if textView.text == "" {
         
@@ -192,9 +203,7 @@ extension AddTutorialStep: UITextFieldDelegate, UITextViewDelegate {
             
             return
         }
-        
     }
-
 }
 
 extension AddTutorialStep: UITableViewDataSource {
@@ -202,7 +211,6 @@ extension AddTutorialStep: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return tutorialSteps.count
-
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -221,9 +229,5 @@ extension AddTutorialStep: UIImagePickerControllerDelegate,UINavigationControlle
         guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else { return }
         stepImageView.image = image
         dismiss(animated: true, completion: nil)
-        
     }
 }
-
-
-

@@ -25,20 +25,19 @@ class StepViewContoller: UIViewController {
         
         if stepLabel.text == "Step \(tutorialSteps.count + 1)" as String? {
             
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShareViewController")
-            self.present(vc!, animated: true, completion: nil)
+            self.performSegue(withIdentifier: "shareViewController", sender: self)
             
         } else {
             
             stepLabel.text = "Step \(tutorialSteps.count)"
             
+            tutorialStepDescription.text = tutorialStep.tutorialStepDescription
+            stepImageView.image = tutorialStep.stepImage
         }
-            
     }
     
-    
     @IBOutlet weak var stepImageView: UIImageView!
-    
+
     @IBOutlet weak var tutorialStepDescription: UITextView!
     
     var tutorialStep: TutorialStep!
@@ -61,9 +60,8 @@ class StepViewContoller: UIViewController {
         }
         
         
-        Storage.storage().reference(withPath: tutorial.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
-            self.tutorial.mainImage = UIImage(data: data!)
-            self.stepImageView.image = self.tutorial.mainImage
+        Storage.storage().reference(withPath: tutorialStep.stepImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
+            self.tutorialStep.stepImage = UIImage(data: data!)
         })
         
         let tutorialRef = Database.database().reference().child("tutorials").child(tutorial.uuid!).child("steps")
@@ -75,15 +73,13 @@ class StepViewContoller: UIViewController {
                     if let tutorial = TutorialStep(snapshot: data) {
                         self.tutorialSteps.append(tutorial)
                         self.tutorialStepDescription.text = tutorial.tutorialStepDescription
+                        self.stepImageView.image = tutorial.stepImage
                     }
                 }
             }
+            
+            self.tutorialSteps = self.tutorialSteps.sorted(by: { $0.position < $1.position })
+            
         })
-    
-    
-        
-    }
-    
-    
-    
+    }    
 }

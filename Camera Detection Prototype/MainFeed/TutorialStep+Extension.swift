@@ -8,6 +8,7 @@ extension TutorialStep {
         var dict: [String: Any] =  [
             
             "tutorialStepDescription": tutorialStepDescription,
+            "position": position
           
         ]
         

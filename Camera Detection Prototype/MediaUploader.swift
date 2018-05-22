@@ -24,19 +24,15 @@ class MediaUploader {
             let storageRef = Storage.storage().reference().child(random)
             storageRef.putData(imageData, metadata: metadata) { meta, error in
                 if error != nil {
-                    print("error")
+                    print(error as Any)
                 } else {
                     imageURLs.append(random)
                     if imageURLs.count == data.count {
+                        
                         completion(imageURLs)
                     }
                 }
             }
-            
-            
         }
-        
-        
     }
-    
 }

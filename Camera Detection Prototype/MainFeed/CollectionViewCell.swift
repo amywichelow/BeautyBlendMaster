@@ -19,12 +19,12 @@ class CustomCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         tutorialName.text = nil
-        tutorialName.alpha = 0
+        tutorialName.alpha = 0.5
         
     }
  
     func animate() {
-        UIView.animate(withDuration: 1.5) {
+        UIView.animate(withDuration: 1.0) {
             self.tutorialName.alpha = 1.0
         }
     }
