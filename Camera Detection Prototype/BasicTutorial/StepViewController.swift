@@ -13,6 +13,7 @@ import FirebaseStorage
 
 class StepViewContoller: UIViewController {
     
+    @IBOutlet weak var nextStepOutlet: UILabel!
     @IBOutlet weak var stepLabel: UILabel!
     
     @IBOutlet weak var previousStepOutlet: UIButton!
@@ -53,13 +54,6 @@ class StepViewContoller: UIViewController {
             
             return
         }
-        
-        if stepLabel.text == "Step 1" {
-            self.previousStepOutlet.isHidden = false
-            
-        } else {
-            self.previousStepOutlet.isHidden = true
-        }
 
         title = tutorial.tutorialName
         stepLabel.text = "Step \(currentStep + 1)"
@@ -70,6 +64,13 @@ class StepViewContoller: UIViewController {
             self.stepImageView.image  = UIImage(data: data!)
             
         })
+        
+        if stepLabel.text == "Step 1" {
+            self.previousStepOutlet.isHidden = true
+            
+        } else {
+            self.previousStepOutlet.isHidden = false
+        }
         
         let tutorialRef = Database.database().reference().child("tutorials").child(tutorial.uuid!).child("steps")
         
@@ -98,5 +99,9 @@ class StepViewContoller: UIViewController {
         
         showStep()
 
+//        if  currentStep < tutorial.steps.count {
+//            self.nextStepOutlet.text = "Finish"
+//        }
+//        
     }
 }

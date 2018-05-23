@@ -24,6 +24,24 @@ class AddTutorialStep: UIViewController {
     
     @IBOutlet weak var stepTableView: UITableView!
     
+    @IBAction func imageButton(_ sender: Any) {
+        
+        let imagePickerController = UIImagePickerController()
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        imagePickerController.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: {action in
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }))
+        }
+        alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { action in
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     @IBAction func chooseImageButton(_ sender: Any) {
         
         let imagePickerController = UIImagePickerController()
@@ -49,9 +67,6 @@ class AddTutorialStep: UIViewController {
         super.viewDidLoad()
         
         stepLabel.text = "Step 1"
-        
-        stepImageOutlet.image = UIImage(named: "Smokey Eye")
-        tutorialStepDescription.text = "test..."
     }
     
     
@@ -76,10 +91,7 @@ class AddTutorialStep: UIViewController {
         
         tutorialStepDescription.text = nil
         stepImageOutlet.image = nil
-        
-        //Remove these 2 lines
-//        stepImageOutlet.image = UIImage(named: "Smokey Eye")
-//        tutorialStepDescription.text = "test..."
+
         
         stepLabel.text = "Step \(tutorial.steps.count + 1)"
         

@@ -16,6 +16,11 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
 
     }
 
+    @IBAction func imageButton(_ sender: Any) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
     @IBAction func chooseImageButton(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -50,8 +55,6 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         durationSlider.addTarget(self, action:  #selector(durationSliderAction),for: .valueChanged)
-        mainImageView.image = UIImage(named: "Smokey Eye")
-        tutorialNameTextField.text = "Test"
     }
 
 

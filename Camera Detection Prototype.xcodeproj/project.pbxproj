@@ -100,6 +100,7 @@
 		E159221320A4ADF5000ED013 /* ShareTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTutorialViewController.swift; sourceTree = "<group>"; };
 		E15AF6932097791F00739809 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		E16247652046FD080085F0DF /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		E164A2CA20B6131400FEDAF5 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		E173586620499A9300043B5F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		E173586720499A9500043B5F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		E173586820499A9700043B5F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -280,6 +281,7 @@
 				E1A425C52098DCDA004EACBE /* Gotham Bold Regular.ttf */,
 				E1A425C62098DCE1004EACBE /* Gotham Rounded light.ttf */,
 				E1CD75AB20A9E314008BCFC2 /* Gotham Rounded Book.otf */,
+				E164A2CA20B6131400FEDAF5 /* Roboto-Medium.ttf */,
 				E17D215F205D701B002E467B /* Sweet Pea_2.ttf */,
 			);
 			name = Fonts;

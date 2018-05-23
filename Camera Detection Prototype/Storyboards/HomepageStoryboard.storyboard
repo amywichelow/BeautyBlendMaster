@@ -19,6 +19,9 @@
         <array key="Gotham Rounded Book.ttf">
             <string>GothamRounded-Book</string>
         </array>
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Homepage View Controller-->
@@ -218,7 +221,7 @@ Once you've finished, share and show off your final look with your friends on so
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wR-4P-QF9">
-                                        <rect key="frame" x="13" y="40" width="175" height="34"/>
+                                        <rect key="frame" x="13" y="40" width="192" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="14"/>
                                         <state key="normal" title="Choose Image"/>
@@ -249,6 +252,13 @@ Once you've finished, share and show off your final look with your friends on so
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcE-j4-iZz">
+                                                <rect key="frame" x="0.0" y="0.0" width="95" height="103"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="imageButton:" destination="FET-cU-yUq" eventType="touchUpInside" id="fbS-ur-g5Z"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -401,7 +411,7 @@ Once you've finished, share and show off your final look with your friends on so
                                 <rect key="frame" x="51" y="620" width="312" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                <state key="normal" image="addStepsFinalAsset 21">
+                                <state key="normal" image="emptyButton2Asset 58">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -409,6 +419,13 @@ Once you've finished, share and show off your final look with your friends on so
                                     <segue destination="OXQ-Ie-4HN" kind="show" identifier="AddStep" id="GpI-fZ-BnL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcM-hz-8XE">
+                                <rect key="frame" x="85" y="642" width="243" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.99215686270000003" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="TCm-dr-cb8"/>
@@ -447,7 +464,7 @@ Once you've finished, share and show off your final look with your friends on so
                                 <rect key="frame" x="22" y="634" width="179" height="65"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                <state key="normal" image="addStepFinalAsset 23">
+                                <state key="normal" image="emptyButtonAsset 57">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -457,7 +474,7 @@ Once you've finished, share and show off your final look with your friends on so
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bY-2n-Nca">
                                 <rect key="frame" x="209" y="634" width="181" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="finishUploadFinalAsset 22"/>
+                                <state key="normal" image="emptyButtonAsset 57"/>
                                 <connections>
                                     <action selector="finishUploadButton:" destination="OXQ-Ie-4HN" eventType="touchUpInside" id="IPA-fQ-H0J"/>
                                 </connections>
@@ -629,6 +646,13 @@ Once you've finished, share and show off your final look with your friends on so
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy7-hL-VC5">
+                                        <rect key="frame" x="0.0" y="0.0" width="95" height="103"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="imageButton:" destination="OXQ-Ie-4HN" eventType="touchUpInside" id="Tgt-Ul-CUu"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -636,6 +660,20 @@ Once you've finished, share and show off your final look with your friends on so
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gh-hb-VCw">
+                                <rect key="frame" x="48" y="654" width="123" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.99215686270000003" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Finish Upload" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2L-oh-UTL">
+                                <rect key="frame" x="234" y="654" width="131" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.99215686270000003" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="U4G-ic-D0K"/>
@@ -702,7 +740,7 @@ Once you've finished, share and show off your final look with your friends on so
                                 <rect key="frame" x="208" y="634" width="180" height="65"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                <state key="normal" image="nextStepSmallFinalAsset 28">
+                                <state key="normal" image="emptyButtonAsset 57">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -713,7 +751,7 @@ Once you've finished, share and show off your final look with your friends on so
                                 <rect key="frame" x="26" y="634" width="180" height="65"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                <state key="normal" image="previousStepSmallFinalAsset 27">
+                                <state key="normal" image="emptyButtonAsset 57">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -721,6 +759,13 @@ Once you've finished, share and show off your final look with your friends on so
                                     <action selector="previousStepButton:" destination="n20-tx-J8r" eventType="touchUpInside" id="cwI-xS-TNb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Previous Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7A-JR-7pO">
+                                <rect key="frame" x="49" y="654" width="134" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.99215686270000003" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ibg-QK-93D" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
                                 <rect key="frame" x="26" y="86" width="362" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -740,12 +785,20 @@ Once you've finished, share and show off your final look with your friends on so
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Next Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJE-mZ-Clq">
+                                <rect key="frame" x="232" y="649" width="133" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                <color key="textColor" red="0.99607843137254903" green="0.99215686274509807" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Or7-2P-nYQ"/>
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="nextStepOutlet" destination="yJE-mZ-Clq" id="vfo-vQ-LAH"/>
                         <outlet property="previousStepOutlet" destination="Pt1-td-VDW" id="HPa-cZ-tQ0"/>
                         <outlet property="stepImageView" destination="KO5-Dv-rFw" id="TyP-3Q-nwq"/>
                         <outlet property="stepLabel" destination="ICD-N6-HFZ" id="USX-77-ZWT"/>
@@ -768,7 +821,7 @@ Once you've finished, share and show off your final look with your friends on so
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ir-VK-wIu">
                                 <rect key="frame" x="51" y="625" width="316" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <state key="normal" image="finishTutorialButtonAsset 36"/>
+                                <state key="normal" image="emptyButton2Asset 58"/>
                                 <connections>
                                     <action selector="finishTutorialButton:" destination="eky-te-3H6" eventType="touchUpInside" id="HdT-Xq-Ik3"/>
                                     <action selector="signUpButton:" destination="vTi-KJ-EfB" eventType="touchUpInside" id="wcj-s9-0AB"/>
@@ -806,16 +859,16 @@ Once you've finished, share and show off your final look with your friends on so
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share your results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMU-Ly-zes">
                                         <rect key="frame" x="8" y="19" width="327" height="17"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="19"/>
                                         <color key="textColor" red="0.58431372549019611" green="0.47450980392156861" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wMj-Sh-BKu" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
-                                        <rect key="frame" x="127" y="454" width="90" height="40"/>
+                                        <rect key="frame" x="50" y="454" width="244" height="40"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPZ-Dk-qKg" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="90" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="244" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.96470588235294119" green="0.94901960784313721" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <userDefinedRuntimeAttributes>
@@ -825,10 +878,10 @@ Once you've finished, share and show off your final look with your friends on so
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W77-tQ-92O">
-                                                <rect key="frame" x="19" y="5" width="52" height="29"/>
+                                                <rect key="frame" x="0.0" y="5" width="244" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="18"/>
-                                                <state key="normal" title="Share"/>
+                                                <state key="normal" title="Save &amp; Share"/>
                                                 <connections>
                                                     <action selector="shareImage:" destination="eky-te-3H6" eventType="touchUpInside" id="175-GR-29x"/>
                                                 </connections>
@@ -849,6 +902,13 @@ Once you've finished, share and show off your final look with your friends on so
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Finish Tutorial" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQe-Hk-72D">
+                                <rect key="frame" x="78" y="648" width="263" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.99215686270000003" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Fpe-WG-7Pb"/>
@@ -1014,7 +1074,7 @@ Once you've finished, share and show off your final look with your friends on so
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUY-DS-8vr">
-                                <rect key="frame" x="132" y="152" width="150" height="150"/>
+                                <rect key="frame" x="131" y="155" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1096,7 +1156,7 @@ Once you've finished, share and show off your final look with your friends on so
                                         <rect key="frame" x="44" y="456" width="255" height="60"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                        <state key="normal" image="deleteAccountButtonAsset 39">
+                                        <state key="normal" image="emptyButtonRedAsset 58">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -1166,6 +1226,13 @@ Once you've finished, share and show off your final look with your friends on so
                                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delete Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgd-03-c6w">
+                                        <rect key="frame" x="70" y="472" width="203" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                        <color key="textColor" red="0.99607843139999996" green="0.99215686270000003" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92603760960000003" green="0.89298135040000004" blue="0.9507291913" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -1179,7 +1246,7 @@ Once you've finished, share and show off your final look with your friends on so
                                 <rect key="frame" x="51" y="639" width="312" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                <state key="normal" image="saveButtonFinalAsset 29">
+                                <state key="normal" image="emptyButton2Asset 58">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -1187,6 +1254,13 @@ Once you've finished, share and show off your final look with your friends on so
                                     <action selector="saveButton:" destination="6g8-km-b6n" eventType="touchUpInside" id="97r-vD-NY5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Save" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWG-Fh-fLo">
+                                <rect key="frame" x="84" y="662" width="248" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.99215686270000003" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="9IF-Au-a7v"/>
@@ -1338,7 +1412,7 @@ Once you've finished, share and show off your final look with your friends on so
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dk-JH-MFe">
-                                <rect key="frame" x="246" y="669" width="61" height="30"/>
+                                <rect key="frame" x="246" y="670" width="61" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="12"/>
                                 <state key="normal" title="Sign up">
@@ -1359,7 +1433,7 @@ Once you've finished, share and show off your final look with your friends on so
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uds-eb-mvo">
                                 <rect key="frame" x="49" y="595" width="316" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="loginFinalAsset 20">
+                                <state key="normal" image="emptyButton2Asset 58">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1367,6 +1441,13 @@ Once you've finished, share and show off your final look with your friends on so
                                     <action selector="login:" destination="bfb-Wc-mt4" eventType="touchUpInside" id="TnH-ml-MDH"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Log In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbj-Rm-7xT">
+                                <rect key="frame" x="89" y="617" width="236" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.99215686270000003" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="HxY-IM-KFN"/>
@@ -1390,7 +1471,7 @@ Once you've finished, share and show off your final look with your friends on so
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeX-eD-LZf">
-                                <rect key="frame" x="252" y="672" width="55" height="30"/>
+                                <rect key="frame" x="252" y="673" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GothamBold" family="Gotham Bold" pointSize="12"/>
                                 <state key="normal" title="Log in">
@@ -1571,6 +1652,15 @@ Once you've finished, share and show off your final look with your friends on so
                                             <view clipsSubviews="YES" alpha="0.5" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xid-mU-1Kn" customClass="UIViewStyles" customModule="Camera_Detection_Prototype" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="87" height="73"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMU-cU-5HP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="87" height="73"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="imageUploadButton:" destination="vTi-KJ-EfB" eventType="touchUpInside" id="Yda-Kr-wcN"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
@@ -1611,11 +1701,18 @@ Once you've finished, share and show off your final look with your friends on so
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEj-4l-o7F">
                                 <rect key="frame" x="49" y="600" width="316" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <state key="normal" image="signupFinalAsset 19"/>
+                                <state key="normal" image="emptyButton2Asset 58"/>
                                 <connections>
                                     <action selector="signUpButton:" destination="vTi-KJ-EfB" eventType="touchUpInside" id="CiD-j0-v2q"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hk-79-LNw">
+                                <rect key="frame" x="82" y="622" width="251" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.99215686270000003" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Wq9-fP-SRv"/>
@@ -1788,18 +1885,11 @@ Once you've finished, share and show off your final look with your friends on so
     </scenes>
     <resources>
         <image name="aboutMePic" width="414" height="253"/>
-        <image name="addStepFinalAsset 23" width="328" height="123"/>
-        <image name="addStepsFinalAsset 21" width="522" height="123"/>
         <image name="defaultPic" width="1720" height="1720"/>
-        <image name="deleteAccountButtonAsset 39" width="522" height="123"/>
-        <image name="finishTutorialButtonAsset 36" width="522" height="123"/>
-        <image name="finishUploadFinalAsset 22" width="328" height="123"/>
-        <image name="loginFinalAsset 20" width="522" height="123"/>
-        <image name="nextStepSmallFinalAsset 28" width="328" height="123"/>
-        <image name="previousStepSmallFinalAsset 27" width="328" height="123"/>
+        <image name="emptyButton2Asset 58" width="522" height="123"/>
+        <image name="emptyButtonAsset 57" width="328" height="123"/>
+        <image name="emptyButtonRedAsset 58" width="522" height="123"/>
         <image name="quesionAsset 54" width="17" height="32"/>
-        <image name="saveButtonFinalAsset 29" width="522" height="123"/>
-        <image name="signupFinalAsset 19" width="522" height="123"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cuX-j5-tOI"/>

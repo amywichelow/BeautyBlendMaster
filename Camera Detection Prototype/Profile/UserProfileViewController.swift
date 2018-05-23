@@ -22,6 +22,9 @@ class UserProfileViewController: UIViewController {
     
     var appContainer: AppContainerViewController!
     
+
+    
+    
     @IBAction func logoutButton(_ sender: Any) {
         do {
             try Auth.auth().signOut()
