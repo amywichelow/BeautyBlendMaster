@@ -23,10 +23,12 @@ class StepViewContoller: UIViewController {
         showStep()
     }
     
-    @IBOutlet weak var nextStepOutlet: UIButton!
     @IBAction func nextStepButton(_ sender: Any) {
         currentStep += 1
         showStep()
+        
+        print(currentStep)
+        print(tutorial.steps.count)
         
 //        if stepLabel.text == "Step \(tutorial.steps.count + 1)" as String? {
 //
@@ -46,7 +48,7 @@ class StepViewContoller: UIViewController {
     func showStep() {
         
         guard currentStep < tutorial.steps.count else {
-                        
+            
             self.performSegue(withIdentifier: "shareViewController", sender: self)
             
             return
@@ -76,7 +78,7 @@ class StepViewContoller: UIViewController {
             for tutorialSteps in snapshot.children {
                 if let data = tutorialSteps as? DataSnapshot {
                     if let tutorial = TutorialStep(snapshot: data) {
-                        self.tutorial.steps.append(tutorial)
+                     //   self.tutorial.steps.append(tutorial)
                     //    self.tutorialStepDescription.text = tutorial.tutorialStepDescription
                       //  self.stepImageView.image = tutorial.stepImage
                     }

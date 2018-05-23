@@ -21,28 +21,25 @@ class ShareTutorialViewController: UIViewController {
                 imagePickerController.sourceType = .photoLibrary
                 self.present(imagePickerController, animated: true, completion: nil)
             }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
-        
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
         
         self.takePhotoButton.isHidden = true
         
     }
     
     @IBAction func shareImage(_ sender: Any) {
+        
         let vc = UIActivityViewController(activityItems: [shareResultImageView.image!], applicationActivities: nil)
         self.present(vc, animated: true, completion: nil)
     }
-    
-    
     
     @IBAction func finishTutorialButton(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
         self.present(vc!, animated: true, completion: nil)
     }
-    
 }
 
 extension ShareTutorialViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {

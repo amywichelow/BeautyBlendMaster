@@ -746,7 +746,6 @@ Once you've finished, share and show off your final look with your friends on so
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="nextStepOutlet" destination="NYz-7a-NJg" id="Bpb-0o-KKA"/>
                         <outlet property="previousStepOutlet" destination="Pt1-td-VDW" id="HPa-cZ-tQ0"/>
                         <outlet property="stepImageView" destination="KO5-Dv-rFw" id="TyP-3Q-nwq"/>
                         <outlet property="stepLabel" destination="ICD-N6-HFZ" id="USX-77-ZWT"/>
