@@ -34,9 +34,6 @@
 		E1A8A305203B0D1A00F60B21 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8A304203B0D1A00F60B21 /* SignUpViewController.swift */; };
 		E1B3710E1FBF259900877BA2 /* StepTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3710D1FBF259900877BA2 /* StepTwo.swift */; };
 		E1B371101FBF4B0A00877BA2 /* StepThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3710F1FBF4B0A00877BA2 /* StepThree.swift */; };
-		E1B371121FBF4B1500877BA2 /* StepFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B371111FBF4B1500877BA2 /* StepFour.swift */; };
-		E1B371141FBF4B1C00877BA2 /* StepFive.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B371131FBF4B1C00877BA2 /* StepFive.swift */; };
-		E1B371161FBF4B2700877BA2 /* StepSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B371151FBF4B2700877BA2 /* StepSix.swift */; };
 		E1B44D7220A7304500E7F05A /* ShowTutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B44D7120A7304500E7F05A /* ShowTutorialCell.swift */; };
 		E1C458CC20A7B2F0004F335A /* uploadComplete.json in Resources */ = {isa = PBXBuildFile; fileRef = E1C458CB20A7B2F0004F335A /* uploadComplete.json */; };
 		E1C458CE20A7B3D4004F335A /* playAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = E1C458CD20A7B3D4004F335A /* playAnimation.json */; };
@@ -118,9 +115,6 @@
 		E1A8A304203B0D1A00F60B21 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E1B3710D1FBF259900877BA2 /* StepTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTwo.swift; sourceTree = "<group>"; };
 		E1B3710F1FBF4B0A00877BA2 /* StepThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepThree.swift; sourceTree = "<group>"; };
-		E1B371111FBF4B1500877BA2 /* StepFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFour.swift; sourceTree = "<group>"; };
-		E1B371131FBF4B1C00877BA2 /* StepFive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFive.swift; sourceTree = "<group>"; };
-		E1B371151FBF4B2700877BA2 /* StepSix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSix.swift; sourceTree = "<group>"; };
 		E1B44D7120A7304500E7F05A /* ShowTutorialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTutorialCell.swift; sourceTree = "<group>"; };
 		E1C458CB20A7B2F0004F335A /* uploadComplete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = uploadComplete.json; sourceTree = "<group>"; };
 		E1C458CD20A7B3D4004F335A /* playAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = playAnimation.json; sourceTree = "<group>"; };
@@ -219,9 +213,6 @@
 				E1F4D5351FB3537F0063DE5F /* StepOne.swift */,
 				E1B3710D1FBF259900877BA2 /* StepTwo.swift */,
 				E1B3710F1FBF4B0A00877BA2 /* StepThree.swift */,
-				E1B371111FBF4B1500877BA2 /* StepFour.swift */,
-				E1B371131FBF4B1C00877BA2 /* StepFive.swift */,
-				E1B371151FBF4B2700877BA2 /* StepSix.swift */,
 			);
 			path = LiveTutorial;
 			sourceTree = "<group>";
@@ -692,12 +683,10 @@
 				E1E2F66F20A1B30C0044F316 /* MediaUploader.swift in Sources */,
 				E181064C2056DD9D009B7B57 /* UploadViewController.swift in Sources */,
 				E1E1F79E2033076B0099D10A /* LoginViewController.swift in Sources */,
-				E1B371161FBF4B2700877BA2 /* StepSix.swift in Sources */,
 				E1A8542020863F4A00599AA2 /* UserProfileViewController.swift in Sources */,
 				E10B7A18205AB95B004D6925 /* Tutorial+Extension.swift in Sources */,
 				E1F4D50A1FB34F170063DE5F /* LiveTutorialViewController.swift in Sources */,
 				E1E2F67420A206D30044F316 /* EditProfileViewController.swift in Sources */,
-				E1B371121FBF4B1500877BA2 /* StepFour.swift in Sources */,
 				E1E2F66D20A1B1F70044F316 /* String+Extension.swift in Sources */,
 				E11CBD91206020CE004FFE80 /* StepViewController.swift in Sources */,
 				E12D7AEF20459F0600E6B7F2 /* CollectionViewCell.swift in Sources */,
@@ -717,7 +706,6 @@
 				E1B44D7220A7304500E7F05A /* ShowTutorialCell.swift in Sources */,
 				E1F4D5081FB34F170063DE5F /* AppDelegate.swift in Sources */,
 				E15AF6942097791F00739809 /* Users.swift in Sources */,
-				E1B371141FBF4B1C00877BA2 /* StepFive.swift in Sources */,
 				E183446720B432F0006D8F5B /* ShowStepCell.swift in Sources */,
 				E11CBD932061198E004FFE80 /* TutorialStep.swift in Sources */,
 				E135BD2020A60833003104D9 /* InfoViewController.swift in Sources */,

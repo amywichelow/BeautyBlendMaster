@@ -19,53 +19,54 @@ class StepViewContoller: UIViewController {
     
     @IBAction func previousStepButton(_ sender: Any) {
         
-        //take back to tutorial count - 1???
-        
+        currentStep -= 1
+        showStep()
     }
     
+    @IBOutlet weak var nextStepOutlet: UIButton!
     @IBAction func nextStepButton(_ sender: Any) {
+        currentStep += 1
+        showStep()
         
-        if stepLabel.text == "Step \(tutorial.steps.count + 1)" as String? {
-            
+//        if stepLabel.text == "Step \(tutorial.steps.count + 1)" as String? {
+//
+//            self.performSegue(withIdentifier: "shareViewController", sender: self)
+//
+//        }
+        //else {
+//
+//            stepLabel.text = "Step \(tutorial.steps.count)"
+//
+//            print(tutorial.steps.count)
+//
+//
+//        }
+    }
+    
+    func showStep() {
+        
+        guard currentStep < tutorial.steps.count else {
+                        
             self.performSegue(withIdentifier: "shareViewController", sender: self)
             
-        } else {
-            
-            tutorialStepDescription = nil
-            stepImageView = nil
-            
-            stepLabel.text = "Step \(tutorial.steps.count)"
-            
-            tutorialStepDescription.text = tutorial.steps
-            stepImageView.image = tutorial.steps
-            
-        }
-    }
-    
-    @IBOutlet weak var stepImageView: UIImageView!
-
-    @IBOutlet weak var tutorialStepDescription: UITextView!
-    
-    var tutorial: Tutorial!
-    
-    override func viewDidLoad() {
-        
-        stepLabel.text = "Step 1"
-        print(tutorial.tutorialName)
-        
-        title = tutorial.tutorialName
-        for set in tutorial.steps {
-            print(set.tutorialStepDescription)
+            return
         }
         
         if stepLabel.text == "Step 1" {
-            self.previousStepOutlet.isHidden = true } else {
             self.previousStepOutlet.isHidden = false
+            
+        } else {
+            self.previousStepOutlet.isHidden = true
         }
+
+        title = tutorial.tutorialName
+        stepLabel.text = "Step \(currentStep + 1)"
+        self.tutorialStepDescription.text = tutorial.steps[currentStep].tutorialStepDescription
         
-        
-        Storage.storage().reference(withPath: tutorial.steps[0].stepImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
-            //self.tutorialStep.stepImage = UIImage(data: data!)
+        Storage.storage().reference(withPath: tutorial.steps[currentStep].stepImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
+            
+            self.stepImageView.image  = UIImage(data: data!)
+            
         })
         
         let tutorialRef = Database.database().reference().child("tutorials").child(tutorial.uuid!).child("steps")
@@ -76,14 +77,24 @@ class StepViewContoller: UIViewController {
                 if let data = tutorialSteps as? DataSnapshot {
                     if let tutorial = TutorialStep(snapshot: data) {
                         self.tutorial.steps.append(tutorial)
-                        self.tutorialStepDescription.text = tutorial.tutorialStepDescription
-                        self.stepImageView.image = tutorial.stepImage
+                    //    self.tutorialStepDescription.text = tutorial.tutorialStepDescription
+                      //  self.stepImageView.image = tutorial.stepImage
                     }
                 }
             }
-            
-            self.tutorial.steps = self.tutorial.steps.sorted(by: { $0.position < $1.position })
-            
         })
-    }    
+    }
+    
+    @IBOutlet weak var stepImageView: UIImageView!
+
+    @IBOutlet weak var tutorialStepDescription: UITextView!
+    
+    var tutorial: Tutorial!
+    var currentStep = 0
+    
+    override func viewDidLoad() {
+        
+        showStep()
+
+    }
 }

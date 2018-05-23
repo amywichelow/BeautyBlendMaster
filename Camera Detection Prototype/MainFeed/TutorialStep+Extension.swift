@@ -5,11 +5,11 @@ extension TutorialStep {
     
     func toDict() -> [String: Any] {
         
-        var dict: [String: Any] =  [
+        let dict: [String: Any] =  [
             
             "tutorialStepDescription": tutorialStepDescription,
             "position": position,
-            "stepImageId": stepImageId
+            "stepImageId": stepImageId!
             
         ]
         

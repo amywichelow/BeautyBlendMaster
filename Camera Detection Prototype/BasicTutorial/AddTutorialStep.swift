@@ -129,7 +129,8 @@ class AddTutorialStep: UIViewController {
                 self.newTutorialRef.setValue(self.tutorial.toDict(), withCompletionBlock: { error, ref in
                     
                     self.upload(steps: self.tutorial.steps, to: ref, completion: { success in
-                        self.dismiss(animated: true, completion: nil)
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
+                        self.present(vc!, animated: true, completion: nil)
                     })
 
                 })
@@ -146,8 +147,6 @@ class AddTutorialStep: UIViewController {
 //
 //            }
 //
-//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomepageViewControllerContainer")
-//            self.present(vc!, animated: true, completion: nil)
 //        }
         
     }

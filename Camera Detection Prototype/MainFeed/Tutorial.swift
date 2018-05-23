@@ -41,6 +41,8 @@ class Tutorial {
                 }
             }
             
+            steps = steps.sorted(by: { $0.position < $1.position })
+            
         } else {
             return nil
         }

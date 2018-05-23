@@ -32,7 +32,7 @@ class ShareTutorialViewController: UIViewController {
     }
     
     @IBAction func shareImage(_ sender: Any) {
-        let vc = UIActivityViewController(activityItems: [shareResultImageView.image], applicationActivities: nil)
+        let vc = UIActivityViewController(activityItems: [shareResultImageView.image!], applicationActivities: nil)
         self.present(vc, animated: true, completion: nil)
     }
     
