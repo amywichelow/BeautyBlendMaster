@@ -19,20 +19,26 @@ class StepViewContoller: UIViewController {
     
     @IBAction func previousStepButton(_ sender: Any) {
         
+        //take back to tutorial count - 1???
+        
     }
     
     @IBAction func nextStepButton(_ sender: Any) {
         
-        if stepLabel.text == "Step \(tutorialSteps.count + 1)" as String? {
+        if stepLabel.text == "Step \(tutorial.steps.count + 1)" as String? {
             
             self.performSegue(withIdentifier: "shareViewController", sender: self)
             
         } else {
             
-            stepLabel.text = "Step \(tutorialSteps.count)"
+            tutorialStepDescription = nil
+            stepImageView = nil
             
-            tutorialStepDescription.text = tutorialStep.tutorialStepDescription
-            stepImageView.image = tutorialStep.stepImage
+            stepLabel.text = "Step \(tutorial.steps.count)"
+            
+            tutorialStepDescription.text = tutorial.steps
+            stepImageView.image = tutorial.steps
+            
         }
     }
     
@@ -40,9 +46,7 @@ class StepViewContoller: UIViewController {
 
     @IBOutlet weak var tutorialStepDescription: UITextView!
     
-    var tutorialStep: TutorialStep!
     var tutorial: Tutorial!
-    var tutorialSteps = [TutorialStep]()
     
     override func viewDidLoad() {
         
@@ -60,8 +64,8 @@ class StepViewContoller: UIViewController {
         }
         
         
-        Storage.storage().reference(withPath: tutorialStep.stepImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
-            self.tutorialStep.stepImage = UIImage(data: data!)
+        Storage.storage().reference(withPath: tutorial.steps[0].stepImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
+            //self.tutorialStep.stepImage = UIImage(data: data!)
         })
         
         let tutorialRef = Database.database().reference().child("tutorials").child(tutorial.uuid!).child("steps")
@@ -71,14 +75,14 @@ class StepViewContoller: UIViewController {
             for tutorialSteps in snapshot.children {
                 if let data = tutorialSteps as? DataSnapshot {
                     if let tutorial = TutorialStep(snapshot: data) {
-                        self.tutorialSteps.append(tutorial)
+                        self.tutorial.steps.append(tutorial)
                         self.tutorialStepDescription.text = tutorial.tutorialStepDescription
                         self.stepImageView.image = tutorial.stepImage
                     }
                 }
             }
             
-            self.tutorialSteps = self.tutorialSteps.sorted(by: { $0.position < $1.position })
+            self.tutorial.steps = self.tutorial.steps.sorted(by: { $0.position < $1.position })
             
         })
     }    

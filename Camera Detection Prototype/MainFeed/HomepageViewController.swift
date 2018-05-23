@@ -177,7 +177,7 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         let tutorial: Tutorial
     
         if isFiltering() {
-            tutorial = filtered[indexPath.row]
+            tutorial = filtered[indexPath.item]
         } else {
             tutorial = tutorials[indexPath.row]
         }
@@ -189,15 +189,13 @@ class HomepageViewController: UICollectionViewController, UICollectionViewDelega
         cell.difficulty.text = "\(tutorialRef.difficulty)"
         
         Storage.storage().reference(withPath: tutorialRef.mainImageId!).getData(maxSize: 2 * 1024 * 1024, completion: { data, error in
-            print(data as Any)
+           // print(data as Any)
             tutorial.mainImage = UIImage(data: data!)
             cell.mainTutorialImage.image = tutorialRef.mainImage
         })
        
         cell.animate()
-        
-        print("\(tutorial.difficulty)")
-        
+                
         if cell.difficulty.text == "\(1)" {
             cell.difficultyImage.image = UIImage(named: "difficulty1")
         }

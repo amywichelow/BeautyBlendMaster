@@ -50,6 +50,8 @@ class TutorialUploadViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         durationSlider.addTarget(self, action:  #selector(durationSliderAction),for: .valueChanged)
+        mainImageView.image = UIImage(named: "Smokey Eye")
+        tutorialNameTextField.text = "Test"
     }
 
 

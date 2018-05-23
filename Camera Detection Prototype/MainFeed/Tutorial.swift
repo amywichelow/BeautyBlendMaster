@@ -20,7 +20,7 @@ class Tutorial {
     var mainImage: UIImage?
     var timestamp: Int!
     
-    let steps = [TutorialStep]()
+    var steps = [TutorialStep]()
     
     init?(snapshot: DataSnapshot) {
         
@@ -33,7 +33,13 @@ class Tutorial {
             mainImageId = snapshotData ["mainImageId"] as? String
             timestamp = snapshotData ["timestamp"] as! Int
 
-            print(snapshot.childSnapshot(forPath: "steps"))
+            let stepsSnapshot = snapshot.childSnapshot(forPath: "steps")
+            
+            for step in stepsSnapshot.children.allObjects {
+                if let step = TutorialStep(snapshot: step as! DataSnapshot) {
+                    steps.append(step)
+                }
+            }
             
         } else {
             return nil
