@@ -26,7 +26,6 @@ class ShareTutorialViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
         
-        self.takePhotoButton.isHidden = true
         
     }
     
@@ -47,6 +46,7 @@ extension ShareTutorialViewController: UIImagePickerControllerDelegate,UINavigat
         
         guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else { return }
         shareResultImageView.image = image
+        self.takePhotoButton.isHidden = true
         dismiss(animated: true, completion: nil)
     }
 }
