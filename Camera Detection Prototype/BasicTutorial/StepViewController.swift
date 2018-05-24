@@ -70,27 +70,13 @@ class StepViewContoller: UIViewController {
             
         } else {
             self.previousStepOutlet.isHidden = false
-        }
-        
-        let tutorialRef = Database.database().reference().child("tutorials").child(tutorial.uuid!).child("steps")
-        
-        tutorialRef.observeSingleEvent(of: .value, with: { snapshot in
-            
-            for tutorialSteps in snapshot.children {
-                if let data = tutorialSteps as? DataSnapshot {
-                    if let tutorial = TutorialStep(snapshot: data) {
-                     //   self.tutorial.steps.append(tutorial)
-                    //    self.tutorialStepDescription.text = tutorial.tutorialStepDescription
-                      //  self.stepImageView.image = tutorial.stepImage
-                    }
-                }
-            }
-        })
+        }        
     }
     
     @IBOutlet weak var stepImageView: UIImageView!
 
     @IBOutlet weak var tutorialStepDescription: UITextView!
+    
     
     var tutorial: Tutorial!
     var currentStep = 0
